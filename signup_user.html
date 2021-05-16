@@ -24,34 +24,50 @@
 
 <body>
 
-<main>
-  <div class="container m-5 p-5 mx-auto" id="form" style="width: 60%;">
-    <form>
+  <main>
+    <div class="container my-5 p-5">
+      <h1 class="my-5">User Registration Form</h1>
+      <form>
+        
       <div class="form-group">
-        <label for="username">Username:</label>
+        <label for="username">Username / Email</label>
         <input type="email" class="form-control" id="username" placeholder="Enter username">
       
       </div>
+        
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" placeholder="Password">
-        <small id="passwordhelp" class="form-text">
-          Forgot Password?
-          <a href="www.google.com" target="_blank">Click here</a>
-        </small>
       </div>    
-    </form>
-  
-  <hr>
-  <a class="btn btn-danger" role="button" href="client.html">Log in - C</a>
-  <a class="btn btn-primary" role="button" href="user.html">Log in - U</a>
-  
-  </div>
-</main>
+        
+      <div class="form-group">
+        <label for="reenterpassword">Re-enter Password</label>
+        <input type="password" class="form-control" id="reenterpassword" placeholder="Password">
+      </div>
 
-<footer>
-  <p class="text-center my-3">&copy; 2021 CBN - LYF</p>
-</footer>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="address" class="form-control" id="address" placeholder="Address">
+      </div>
+        
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="phone" class="form-control" id="phone" placeholder="phone">
+      </div>
+    
+    </form>
+      
+      <button class="btn btn-info">Register</button>
+      
+    </div>
+  </main>
+
+  <footer class="py-2 fixed-bottom">
+    <div class="container">
+      <p class="m-0 text-center">&copy; 2021 - CBN</p>
+    </div>
+  </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
