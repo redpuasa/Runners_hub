@@ -1,0 +1,74 @@
+html, body{
+    height: 100%;
+}
+
+section{
+    padding: 10%;
+}
+  
+footer{
+    background-color: dimgray;
+    color:white;  
+}
+  
+.fill{ 
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+  
+/*head css*/
+#head{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: url("https://www.fundoodata.com/learning-center/wp-content/uploads/Courier-blog-header-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    color: azure;
+}
+  
+#headContent{
+    padding: 20%;
+}
+
+/*--------------------------------
+    Style for Table - Start
+--------------------------------*/
+.divTable{
+	display: table;
+	width: 100%;
+}
+
+.divTableRow {
+	display: table-row;
+}
+
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+
+.divTableCell, .divTableHead {
+	display: table-cell;
+	padding: 3px 10px;
+    font-size: larger;
+}
+
+.divTableBody {
+	display: table-row-group;
+}
+/*--------------------------------
+    Style for Table - End
+--------------------------------*/
+
+
+  
+ 
+  
+  
+ 
+  
+  
+  
