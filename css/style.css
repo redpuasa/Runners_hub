@@ -33,6 +33,15 @@ footer{
     padding: 20%;
 }
 
+img{
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+textarea{
+    max-height: 800px;
+}
+
 /*--------------------------------
     Style for Table - Start
 --------------------------------*/
