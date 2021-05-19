@@ -47,7 +47,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#service">Services</a>
           </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#client">Client</a>
+            <a class="nav-link js-scroll-trigger" href="#client">Runner</a>
           </li>
           </li><li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#faq">FAQ</a>
@@ -92,6 +92,8 @@
   </section>
   <!--./About-->
 
+  <hr>
+
   <!--Services-->
   <section id="service">
     <div class="container p-0 fill"> 
@@ -115,15 +117,17 @@
   </section>
   <!--./Services-->
 
+  <hr>
+
   <!--Joinus-->
   <section id="client">
-    <div class="container p-0 fill" id="">
-      <h2 class="text-center">Join us as Runner</h2> 
+    <div class="container p-0 fill" id=""> 
       <div class="row">
 
-        <div class="col-sm-6 mt-5">
-          <h2></h2>
-          <a class="btn btn-info text-white" role="button" href="signup_client.html">Sign Up as Runner</a>
+        <div class="col-sm-6 my-auto mt-5">
+          <h2>Become a Runner today</h2>
+          <p>Make a brighter day delivering items to consumer.</p>
+          <a class="btn btn-info text-white w-50 mt-2" role="button" href="signup_client.html">Sign Up as Runner</a>
         </div>
 
         <div class="col-sm-6 mt-5">
@@ -134,21 +138,66 @@
   </section>
   <!--./Joinus-->
 
+  <hr>
+
   <!--faq-->
   <section id="faq">
     <div class="container p-0 fill" id="">
-      <h2 class="text-center">FAQ</h2>
-      <div class="row text-center">
-        <div class="col-sm-3" style="border: 2px solid orange">
-          <p>???</p>
-        </div>
-        <div class="col-sm-3" style="border: 2px solid orange">
-          <p>???</p>
+      <h2 class="text-center">FAQs</h2>
+
+      <div class="row mx-auto mt-5">
+        <div class="col-sm-12 border-bottom border-dark pb-3">
+          <div class="container d-flex">
+            <p class="paraFaqs">How do I become a Runner?</p>
+            <a class="btnToggle ml-auto"><i class="fas fa-chevron-down"></i></a>
+          </div>
+          
+          <div id="paraDisplay1" class="d-none">
+            <p class="ml-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+          </div>
         </div>
       </div>
+
+      <div class="row mx-auto mt-5">
+        <div class="col-sm-12 border-bottom border-dark pb-3">
+          <div class="container d-flex">
+            <p class="paraFaqs">Do I need to update my account for every run?</p>
+            <a class="btnToggle ml-auto"><i class="fas fa-chevron-down"></i></a>
+          </div>
+          
+          <div id="paraDisplay2" class="d-none">
+            <p class="ml-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mx-auto mt-5">
+        <div class="col-sm-12 border-bottom border-dark pb-3">
+          <div class="container d-flex">
+            <p class="paraFaqs">Is Runner Hub free to use?</p>
+            <a class="btnToggle ml-auto"><i class="fas fa-chevron-down"></i></a>
+          </div>
+          
+          <div id="paraDisplay3" class="d-none">
+            <p class="ml-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
   <!--./faq-->
+
+  <hr>
 
   <!--Contact-->
   <section id="contact">
@@ -221,7 +270,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
   <!-- Custom JavaScript for this theme -->
   <script src="js/scrolling-nav.js"></script>
-  
+  <script src="js/toggleFaqs.js"></script>
 
 </body>
 </html>

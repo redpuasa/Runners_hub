@@ -53,6 +53,15 @@ textarea{
     text-shadow: 2px 2px 4px #000000;
 }
 
+.paraFaqs {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.btnToggle {
+    cursor: pointer;
+}
+
 /*--------------------------------
     Style for Table - Start
 --------------------------------*/
