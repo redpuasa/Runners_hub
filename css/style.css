@@ -26,12 +26,9 @@ footer{
     background-image: url("../img/deliveryman.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: right top;
     display: block;
     color: azure;
-}
-  
-#headContent{
-    padding: 20%;
 }
 
 img{
