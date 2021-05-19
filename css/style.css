@@ -1,6 +1,7 @@
 html, body{
     height: 100%;
     font-family: Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 section{
@@ -82,12 +83,18 @@ textarea{
     Style for Table - End
 --------------------------------*/
 
+#toTopBtn {
+    opacity: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 18px;
+    outline: none;
+    background-color: #292b2c;
+    padding: 5px 20px;
+}
 
-  
- 
-  
-  
- 
-  
-  
-  
+#toTopBtn:focus {
+    box-shadow: none;
+}

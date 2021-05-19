@@ -27,3 +27,16 @@
   });
 
 })(jQuery); // End of use strict
+
+let topBtn = document.getElementById("toTopBtn");
+  window.onscroll = function() {
+    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+        topBtn.style.opacity = "1";
+    } else {
+      topBtn.style.opacity = "0";
+    }
+  }
+  topBtn.addEventListener("click", function() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
