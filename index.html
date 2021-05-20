@@ -23,13 +23,13 @@
 <body>
 
   <!--Start Navigation-->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark text-center fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-md navbar-light bg-light text-center fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#">
-        <img src="img/logo.png" alt="logo" width="60x"> 
+        <img src="img/logo2.png" alt="logo" width="60x"> 
       </a>
-      <a class="navbar-brand js-scroll-trigger" href="#">
-          Runner's Hub.
+      <a class="navbar-brand js-scroll-trigger" href="#" id="rh-logo">
+          Runner's Hub
       </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -39,27 +39,27 @@
       <div class="collapse navbar-collapse text-center" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#head">Home</a>
+            <a class="nav-link js-scroll-trigger" id="nav" href="#head">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" id="nav" href="#about">ABOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#service">Services</a>
+            <a class="nav-link js-scroll-trigger" id="nav" href="#service">SERVICES</a>
           </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#client">Runner</a>
-          </li>
-          </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#faq">FAQ</a>
+            <a class="nav-link js-scroll-trigger" href="#client">RUNNER</a>
           </li>
           </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            <a class="nav-link js-scroll-trigger" id="nav" href="#faq">FAQ</a>
           </li>
-          <li class="nav-item">
-            <a class="btn text-white text-nowrap" role="button" href="login.html">Log in</a>
+          </li><li class="nav-item">
+            <a class="nav-link js-scroll-trigger" id="nav" href="#contact">CONTACT</a>
           </li>
-          <li class="nav-item">
-            <a class="btn text-white text-nowrap" role="button" href="signup_user.html">Sign Up</a>
+          <li class="nav-item login">
+            <a class="btn text-nowrap" id="login" role="button" href="login.html">Log in</a>
+          </li>
+          <li class="nav-item signup">
+            <a class="btn text-nowrap" id="signup" role="button" href="signup_user.html">Sign Up</a>
           </li>
         </ul>
       </div>
@@ -69,23 +69,23 @@
   
   <div class="container-fluid p-0 d-flex fill" id="head">
     <div class="container text-white my-auto" id="headContent">
-      <h2 class="title font-weight-bold">RUNNER'S HUB</h2>
-      <h2 class="mt-5">Looking for a delivery??</h2>
+      <h2 class="title font-weight-bold">Looking for a delivery service?</h2>
+      <h2 class="mt-2">Pick your choice & have it delivered</h2>
     </div>
   </div>
 
   <!--About-->
   <section id="about">
     <div class="container p-0 fill" id="">
-      <h2 class="text-center">About</h2>
-      <div class="row">
+      <h2 class="headings text-center">About</h2>
+      <div class="row text-center">
         <div class="col-sm-6 mt-5">
-          <li>mission</li>
-          <li>about app</li>
+          <h3>MISSION</h3>
+          <p></p>
         </div>
 
         <div class="col-sm-6 mt-5">
-          <img src=" " alt="" class="w-100">
+          <h3>DESCRIPTION</h3>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@
   <!--Services-->
   <section id="service">
     <div class="container p-0 fill"> 
-      <h2 class="text-center">Services</h2> 
+      <h2 class="headings text-center">Services</h2> 
       <div class="row">
 
         <div class="col-sm-6 mt-5">
@@ -202,7 +202,7 @@
   <!--Contact-->
   <section id="contact">
     <div class="container p-5 mb-5 fill" id="">
-      <h2 class="text-center">Contact</h2>
+      <h2 class="headings text-center">Contact</h2>
       <div class="row">
 
         <div class="col-sm-6 mt-5 p-5">

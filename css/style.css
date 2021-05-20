@@ -43,14 +43,60 @@ textarea{
 
 .title{
     font-size: 50px;
+    color:  #152b32;
+    font-style: italic;
 }
 
-.mt-5{
-    font-family: Arial;
+.mt-2{
+    color:  #e64525;
+    font-style: italic;
+    font-size: 28px;
 }
 
-#headContent{
-    text-shadow: 2px 2px 4px #000000;
+#rh-logo{
+    font-style: italic;
+    font-weight: bold;
+    color: #152b32;
+}
+
+.headings{
+    font-size: 50px;
+    /*font-style: italic;*/
+    font-weight: bold;
+    color: #152b32;
+}
+
+#login{
+    width: 120px;
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#login:hover{
+    width: 120px;
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+
+#signup{
+    width: 120px;
+    margin-left: 5px;
+    color:  #fff;
+    background-color: #e64525;
+    border: 2px solid #fff;
+    border-radius: 15px;
+}
+
+#signup:hover{
+    width: 120px;
+    margin-left: 5px;
+    color:  #e64525;
+    border: 2px solid #e64525;
+    background-color: #fff;
+    border-radius: 15px;
 }
 
 .paraFaqs {
