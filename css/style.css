@@ -53,6 +53,14 @@ textarea{
     text-shadow: 2px 2px 4px #000000;
 }
 
+.serviceAnimate {
+    transition: 0.5s all ease-in-out;
+}
+
+.serviceAnimate:hover {
+    transform: scale(1.5);
+}
+
 .paraFaqs {
     font-size: 24px;
     font-weight: bold;
