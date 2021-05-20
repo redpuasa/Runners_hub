@@ -53,6 +53,10 @@ textarea{
     text-shadow: 2px 2px 4px #000000;
 }
 
+#service, #faq {
+    background-color: #e4eff5;
+}
+
 .serviceAnimate {
     transition: 0.5s all ease-in-out;
 }
