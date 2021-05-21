@@ -119,6 +119,18 @@ textarea{
     /*border: 2px solid #000;*/
 }
 
+#service, #faq {
+    background-color: #e4eff5;
+}
+
+.serviceAnimate {
+    transition: 0.5s all ease-in-out;
+}
+
+.serviceAnimate:hover {
+    transform: scale(1.5);
+}
+
 .paraFaqs {
     font-size: 24px;
     font-weight: bold;
