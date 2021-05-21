@@ -61,13 +61,13 @@ textarea{
 
 .headings{
     font-size: 50px;
-    /*font-style: italic;*/
     font-weight: bold;
     color: #152b32;
 }
 
 #login{
     width: 120px;
+    margin-left: 5px;
     color:  #e64525;
     border: 2px solid #e64525;
     border-radius: 15px;
@@ -86,7 +86,7 @@ textarea{
     margin-left: 5px;
     color:  #fff;
     background-color: #e64525;
-    border: 2px solid #fff;
+    border: 2px solid #e64525;
     border-radius: 15px;
 }
 
@@ -97,6 +97,26 @@ textarea{
     border: 2px solid #e64525;
     background-color: #fff;
     border-radius: 15px;
+}
+
+/*
+.para-main{
+    margin: 5px 0;
+    padding: 30px 0;
+    background-color: #fcda7b;
+*/
+
+#ul-main{
+    list-style-type: none;
+}
+
+.para{
+    padding: 5px;
+    color: #e64525;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    /*border: 2px solid #000;*/
 }
 
 .paraFaqs {
