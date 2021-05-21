@@ -119,6 +119,10 @@ textarea{
     /*border: 2px solid #000;*/
 }
 
+#para-1{
+    font-weight: bold;
+}
+
 #service, #faq {
     background-color: #e4eff5;
 }
