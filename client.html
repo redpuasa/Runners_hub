@@ -22,27 +22,27 @@
 <body>
 
   <!--Start Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#">Runner's Hub.</a>
+      <a class="navbar-brand js-scroll-trigger" href="#" id="rh-logo">Runner's Hub.</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.html">Home</a>
+            <a class="nav-link js-scroll-trigger" href="index.html">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">About</a>
+            <a class="nav-link js-scroll-trigger" href="#">ABOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Services</a>
+            <a class="nav-link js-scroll-trigger" href="#">SERVICES</a>
           </li><li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">FAQ</a>
           </li>
           </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Contact</a>
+            <a class="nav-link js-scroll-trigger" href="#">CONTACT</a>
           </li>
           </li><li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#"></a>
@@ -59,23 +59,180 @@
 <main>
   
 <div class="container mt-5 p-5 border">
-  <h2 class="text-center">client central display</h2>
+  <h2 class="para text-center">CLIENT CENTRAL DISPLAY</h2>
   <div class="row">
     
     <div class="col-sm-12 border p-5">
-      <p class="text-center">Delivery Request</p>
+      <p class="text-center" id="para-runner">Delivery Request</p>
 
       <div class="divTable">
         <div class="divTableBody">
 
           <div class="divTableRow">
               <div class="divTableCell">User 1</div>
-              <div class="divTableCell"><button>detail</button></div>
+              <div class="divTableCell">
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
+
+              <!-- Modal - Start -->
+              <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delivery details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body"> <!--Modal body - Start-->
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery ID:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_id">
+                        <small>0001</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Customer:</small>
+                      </div>
+                      <div class="divTableCell" id="customer_name">
+                        <small>Michaelangelo</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Contact no.:</small>
+                      </div>
+                      <div class="divTableCell" id="customer_contact">
+                        <small>823 4567</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery date:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_date">
+                        <small>01/01/2021</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery time:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_time">
+                        <small>5pm</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Pickup address:</small>
+                      </div>
+                      <div class="divTableCell" id="pickup_address">
+                        <small>No.9, Jln 14, Jerudong</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery address:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_address">
+                        <small>TAIB, Kiulap</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Status:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_status">
+                        <small>PAID - DEBIT</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Message:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_message">
+                        <small>Give to the receptionist</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Item Details:</small>
+                      </div>
+                    </div>
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Item</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Unit Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                            <td>Brownies</td>
+                            <td>1</td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                            <td>Cupcake - 12 set</td>
+                            <td>1</td>
+                            <td>$12.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery charge:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_totalp">
+                        <small>$4.00</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Total Price:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_totalp">
+                        <small>$26.00</small>
+                      </div>
+                    </div>
+                  </div><!--Modal body - End-->
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <!-- Modal - End -->
+              </div>
           </div>
                       
           <div class="divTableRow">
               <div class="divTableCell">User 2</div>
-              <div class="divTableCell"><button>detail</button></div>
+              <div class="divTableCell">
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal2">Details</button>
+              </div>
           </div>
                       
           <div class="divTableRow">
@@ -107,8 +264,8 @@
 </div>
 
 <div class="container mt-5 p-5 border">
-  <h2 class="text-center">Open Delivery Request</h2>
-  <p class="text-center">Job List</p>
+  <h2 class="para text-center">OPEN DELIVERY REQUEST</h2>
+  <p class="text-center" id="para-runner">Job List</p>
   <div class="row">
 
     <div class="col-sm-12">
@@ -146,7 +303,7 @@
                 <small>Item Delivery: def street 456</small>
               </div>
               <div class="divTableCell border"><button>detail</button></div>
-          </div>            
+          </div>
 
         </div>
       </div>
@@ -157,8 +314,8 @@
 </div>
 
 <div class="container mt-5 p-5 border">
-  <h2 class="text-center">Today's List</h2>
-  <p class="text-center">To do List</p>
+  <h2 class="para text-center">TODAY'S LIST</h2>
+  <!-- <p class="text-center">To do List</p> -->
   <div class="row">
     
     <div class="col-sm-12">

@@ -118,7 +118,7 @@ textarea{
 }
 
 .para{
-    padding: 5px;
+    padding: 5px 0;
     color: #e64525;
     font-size: 20px;
     font-weight: bold;
@@ -128,6 +128,12 @@ textarea{
 
 #para-1{
     font-weight: bold;
+}
+
+#para-runner{
+    font-style: italic;
+    color: #152b32;
+    font-size: 20px;
 }
 /*--------------------------------
     Style for Navigation - End
@@ -146,6 +152,7 @@ textarea{
 
 .serviceAnimate:hover {
     transform: scale(1.5);
+    cursor: pointer;
 }
 /*--------------------------------
     Style for Service - End
@@ -240,3 +247,32 @@ textarea{
 #toTopBtn:focus {
     box-shadow: none;
 }
+
+/*-------------------------------------------
+    Style for Nav [Runner/Client] - Start
+-------------------------------------------*/
+.detail-btn{
+    color:  #fff;
+    background-color: #e64525;
+    border: 2px solid #e64525;
+}
+
+.detail-btn:hover{
+    color:  #e64525;
+    border: 2px solid #e64525;
+    background-color: #fff;
+}
+/*-----------------------------------------
+    Style for Nav [Runner/Client] - End
+-----------------------------------------*/
+
+/*------------------------------------------------
+    Style for Detail btn [Runner/Client] - Start
+-------------------------------------------------*/
+#exampleModalLabel{
+    font-style: italic;
+    color: #e36e25;
+}
+/*------------------------------------------------
+    Style for Detail btn [Runner/Client] - End
+-------------------------------------------------*/
