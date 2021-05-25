@@ -15,7 +15,7 @@ app.set('view engine', 'ejs')
 app.set('layout', 'index')
 
 // Routes
-app.get('', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index', { title: 'Runners-Hub'})
 })
 
