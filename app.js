@@ -11,7 +11,7 @@ app.use(express.static('public'))
 
 // Set Templating Engine
 app.use(expressLayouts)
-app.set('layout', './layout/runner')
+//app.set('layout', './layout/runner')
 app.set('view engine', 'ejs')
 
 // Routes
