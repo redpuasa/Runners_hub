@@ -19,6 +19,10 @@ app.get('', (req, res) => {
     res.render('index', { title: 'Runners-Hub'})
 })
 
+app.get('/runner', (req, res) => {
+    res.render('runner', { title: 'runner page', layout: './layout/runner'})
+})
+
 app.get('/user', (req, res) => {
     res.render('user', { title: 'About Page', layout: './layout/user' })
 })
