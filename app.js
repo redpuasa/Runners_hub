@@ -1,6 +1,6 @@
 // Imports
 const express = require('express')
-const expressLayouts = require('express-ejs-layouts')
+//const expressLayouts = require('express-ejs-layouts')
 const app = express()
 //const port = 3000
 
@@ -10,21 +10,33 @@ app.use(express.static('public'))
 // app.use('/css', express.static(__dirname + 'public/css'))
 
 // Set Templating Engine
-app.use(expressLayouts)
+//app.use(expressLayouts)
 app.set('view engine', 'ejs')
-app.set('layout', 'index')
+//app.set('layout', 'index')
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Runners-Hub'})
+    res.render('index')
 })
 
 app.get('/runner', (req, res) => {
-    res.render('runner', { title: 'runner page', layout: './layout/runner'})
+    res.render('runner')
 })
 
 app.get('/user', (req, res) => {
-    res.render('user', { title: 'About Page', layout: './layout/user' })
+    res.render('user')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/signup_client', (req, res) => {
+    res.render('signup_client')
+})
+
+app.get('/signup_user', (req, res) => {
+    res.render('signup_user')
 })
 
 // Listen on Port 5000

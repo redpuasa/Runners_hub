@@ -1,2 +1,433 @@
-<p>This is the home page and it takes the full width of the layout</p>
-<a href="/about">About</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title></title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!--Start Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#" id="rh-logo">Runner's Hub.</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">SERVICES</a>
+          </li><li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">FAQ</a>
+          </li>
+          </li><li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">CONTACT</a>
+          </li>
+          </li><li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-danger">Log Out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!--End Navigation-->
+
+<main>
+  
+<div class="container mt-5 p-5 border">
+  <h2 class="para text-center">CLIENT CENTRAL DISPLAY</h2>
+  <div class="row">
+    
+    <div class="col-sm-12 border p-5">
+      <p class="text-center" id="para-runner">Delivery Request</p>
+
+      <div class="divTable">
+        <div class="divTableBody">
+
+          <div class="divTableRow">
+              <div class="divTableCell">User 1</div>
+              <div class="divTableCell">
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
+
+              <!-- Modal - Start -->
+              <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delivery details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body"> <!--Modal body - Start-->
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery ID:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_id">
+                        <small>0001</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Customer:</small>
+                      </div>
+                      <div class="divTableCell" id="customer_name">
+                        <small>Michaelangelo</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Contact no.:</small>
+                      </div>
+                      <div class="divTableCell" id="customer_contact">
+                        <small>823 4567</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery date:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_date">
+                        <small>01/01/2021</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery time:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_time">
+                        <small>5pm</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Pickup address:</small>
+                      </div>
+                      <div class="divTableCell" id="pickup_address">
+                        <small>No.9, Jln 14, Jerudong</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery address:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_address">
+                        <small>TAIB, Kiulap</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Status:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_status">
+                        <small>PAID - DEBIT</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Message:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_message">
+                        <small>Give to the receptionist</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Item Details:</small>
+                      </div>
+                    </div>
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Item</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Unit Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                            <td>Brownies</td>
+                            <td>1</td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                            <td>Cupcake - 12 set</td>
+                            <td>1</td>
+                            <td>$12.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery charge:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_totalp">
+                        <small>$4.00</small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Total Price:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_totalp">
+                        <small>$26.00</small>
+                      </div>
+                    </div>
+                  </div><!--Modal body - End-->
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <!-- Modal - End -->
+              </div>
+          </div>
+                      
+          <div class="divTableRow">
+              <div class="divTableCell">User 2</div>
+              <div class="divTableCell">
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal2">Details</button>
+              </div>
+          </div>
+                      
+          <div class="divTableRow">
+              <div class="divTableCell border">-</div>
+              <div class="divTableCell border"><button>detail</button></div>
+          </div>
+                      
+          <div class="divTableRow">
+              <div class="divTableCell border">-</div>
+              <div class="divTableCell border"><button>detail</button></div>
+          </div>  
+                
+        </div>
+      </div>
+      
+    </div>
+    <!--
+    <div class="class-sm-6 border p-5" style="background-color: aquamarine;">
+      <p class="text-center">Notification for inbox</p>
+      <p class="text-center">Account</p>
+      <p class="text-center">Inbox</p>
+      <button class="text-center">
+        <i class="fas fa-sign-out-alt"></i>   
+      </button>
+      
+    </div>
+    -->
+  </div>
+</div>
+
+<div class="container mt-5 p-5 border">
+  <h2 class="para text-center">OPEN DELIVERY REQUEST</h2>
+  <p class="text-center" id="para-runner">Job List</p>
+  <div class="row">
+
+    <div class="col-sm-12">
+               
+      <div class="divTable">
+        <div class="divTableBody">
+
+          <div class="divTableRow">
+            <div class="divTableCell font-weight-bold">&nbsp;</div>
+            <div class="divTableCell font-weight-bold">&nbsp;</div>
+          </div>
+
+          <div class="divTableRow">
+              <div class="divTableCell">User 1</div>
+              <div class="divTableCell">
+                <small>Item Pick-up: abc street 123</small> <br>
+                <small>Item Delivery: def street 456</small>
+              </div>
+              <div class="divTableCell"><button>detail</button></div>
+          </div>
+                
+          <div class="divTableRow">
+              <div class="divTableCell">User 1</div>
+              <div class="divTableCell">
+                <small>Item Pick-up: abc street 123</small> <br>
+                <small>Item Delivery: def street 456</small>
+              </div>
+              <div class="divTableCell"><button>detail</button></div>
+          </div>
+                      
+          <div class="divTableRow">
+              <div class="divTableCell border">User 1</div>
+              <div class="divTableCell border">
+                <small>Item Pick-up: abc street 123</small> <br>
+                <small>Item Delivery: def street 456</small>
+              </div>
+              <div class="divTableCell border"><button>detail</button></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-5 p-5 border">
+  <h2 class="para text-center">TODAY'S LIST</h2>
+  <!-- <p class="text-center">To do List</p> -->
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="divTable">
+        <div class="divTableBody">
+
+          <div class="divTableRow">
+            <div class="divTableCell font-weight-bold">&nbsp;</div>
+            <div class="divTableCell font-weight-bold">&nbsp;</div>
+          </div>
+
+          <div class="divTableRow">
+            <div class="divTableCell "><p class="my-5">Item 1</p></div>
+              <div class="divTableCell">
+                <p>Delivery Date:...</p>
+                <p>Deliver to:...</p>
+                <button class="btn">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+              <div class="divTableCell">
+                <button class="btn mt-3">
+                  <i class="fas fa-check"></i> 
+                </button>
+                <button class="btn mt-3">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+          </div>
+                
+          <div class="divTableRow">
+              <div class="divTableCell"><p class="my-5">Item 2</p></div>
+              <div class="divTableCell">
+                <p>Delivery Date:...</p>
+                <p>Deliver to:...</p>
+                <button class="btn">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+              <div class="divTableCell">
+                <button class="btn mt-3">
+                  <i class="fas fa-check"></i> 
+                </button>
+                <button class="btn mt-3">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+          </div>
+                      
+          <div class="divTableRow">
+              <div class="divTableCell"><p class="my-5">Item 3</p></div>
+              <div class="divTableCell">
+                <p>Delivery Date:...</p>
+                <p>Deliver to:...</p>
+                <button class="btn">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+              <div class="divTableCell">
+                <button class="btn mt-3">
+                  <i class="fas fa-check"></i> 
+                </button>
+                <button class="btn mt-3">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+          </div>
+          
+          <div class="divTableRow">
+              <div class="divTableCell"><p class="my-5">Item 4</p></div>
+              <div class="divTableCell">
+                <p>Delivery Date:...</p>
+                <p>Deliver to:...</p>
+                <button class="btn">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+              <div class="divTableCell">
+                <button class="btn mt-3">
+                  <i class="fas fa-check"></i> 
+                </button>
+                <button class="btn mt-3">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+          </div>
+
+        </div>
+      </div> 
+    </div>
+  </div>
+    <button class="btn ml-auto">History</button>
+    <button class="btn ml-auto">Clear List</button>
+  </div>
+</div>
+
+</main>
+
+<footer class="py-2 fixed-bottom">
+  <div class="container">
+  <p class="m-0 text-center">&copy; 2021 - CBN</p>
+  </div>
+</footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+  <!-- Plugin JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
+  
+  <!--  -->
+  <script src=""></script>
+
+</body>
+</html>

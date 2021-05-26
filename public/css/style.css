@@ -342,3 +342,37 @@ textarea{
 /*------------------------------------------------
     Style sidebar [Runner/Client] - End
 -------------------------------------------------*/
+
+#passwordMessage {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#passwordMessage p {
+    padding: 10px 35px;
+    font-size: 16px;
+}
+
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
