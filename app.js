@@ -16,16 +16,26 @@ app.set('layout', 'index')
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Runners-Hub'})
+    res.render('index', {title: 'Runners-Hub'})
 })
 
 app.get('/runner', (req, res) => {
-    res.render('runner', { title: 'runner page', layout: './layout/runner'})
+    res.render('runner', {title: 'runner page', layout: './layout/runner'})
+})
+
+app.get('/request', (req, res) => {
+    res.render('request', {title: 'Request page', layout: './layout/request'})
+})
+
+app.get('/active', (req, res) => {
+    res.render('active', {title: 'Active Job', layout: './layout/runner_active_job'})
 })
 
 app.get('/user', (req, res) => {
-    res.render('user', { title: 'About Page', layout: './layout/user' })
+    res.render('user', {title: 'About Page', layout: './layout/user' })
 })
+
+
 
 // Listen on Port 5000
 //app.listen(port, () => console.info(`App listening on port ${port}`))
