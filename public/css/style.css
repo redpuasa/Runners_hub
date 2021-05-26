@@ -278,71 +278,8 @@ textarea{
 -------------------------------------------------*/
 
 /*------------------------------------------------
-    Style sidebar [Runner/Client] - Start
+    Style validation form - Start
 -------------------------------------------------*/
-.sidebar {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-}
-  
-  /* The sidebar links */
-.sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-  
-  /* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-    color: #f1f1f1;
-}
-  
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-  
-/* The button used to open the sidebar */
-  .openbtn {
-    cursor: pointer;
-    color: white;
-    border: none;
-}
-  
-.openbtn:hover {
-    background-color: #444;
-}
-  
-  
-#main {
-    transition: margin-left .5s; /* If you want a transition effect */
-    padding: 20px;
-}
-  
- @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-}
-
-/*------------------------------------------------
-    Style sidebar [Runner/Client] - End
--------------------------------------------------*/
-
 #passwordMessage {
     display:none;
     background: #f1f1f1;
@@ -376,3 +313,7 @@ textarea{
     left: -35px;
     content: "✖";
 }
+/*------------------------------------------------
+    Style validation form - End
+-------------------------------------------------*/
+

@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 //Runner Section
 app.get('/runner', (req, res) => {
-    res.render('runner')
+    res.render('runner', {title: 'Runner page', layout: './layout/runner'})
 })
 
 app.get('/request', (req, res) => {
@@ -35,7 +35,6 @@ app.get('/open', (req, res) => {
 app.get('/active', (req, res) => {
     res.render('active', {title: 'Active Job', layout: './layout/runner_active_job'})
 })
-
 //end of runner section
 
 
