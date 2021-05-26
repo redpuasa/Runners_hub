@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,58 +14,51 @@
 </head>
 
 <body>
-    
     <%- include('partials/naviRunner.ejs') %>
 
-    <!--<div class="container mt-5" id="profile">
-        
-      <div class="row">
-
-          <div class="col-sm-12">
-              
-          </div>
-          
-      </div>
-         
-    </div>-->
-    
-    <div class="container mt-5" id="request">
-        
+  <section id="profile">
+    <div class="container">  
         <div class="row">
-
+            <div class="col-sm-12">
+                <%- include('partials/profile.ejs') %>
+            </div>    
+        </div>       
+    </div>
+  </section>
+    
+  <section id="request">
+    <div class="container">  
+        <div class="row">
             <div class="col-sm-12">
                 <%- include('partials/runner_request.ejs') %>
-            </div>
-            
-        </div>
-           
+            </div>    
+        </div>       
     </div>
+  </section>
 
-    <div class="container mt-5" id="open">
-        
+  <section id="open">
+    <div class="container">  
         <div class="row">
-
             <div class="col-sm-12">
-                <%- include('partials/open_job.ejs') %>
-            </div>
-            
-        </div>
-           
+              <%- include('partials/open_job.ejs') %>
+            </div>    
+        </div>       
     </div>
+  </section>
 
-    <div class="container my-5" id="active">
-        
+  <section id="active">
+    <div class="container">  
         <div class="row">
-
             <div class="col-sm-12">
-                <%- include('partials/runner_todo.ejs') %>
-            </div>
-            
-        </div>
-           
+              <%- include('partials/runner_todo.ejs') %>
+            </div>    
+        </div>       
     </div>
+  </section>
 
+  
     <%- include('partials/footer.ejs') %>
+
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>

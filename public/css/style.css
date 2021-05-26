@@ -335,3 +335,22 @@ textarea{
     Style validation form - End
 -------------------------------------------------*/
 
+/*------------------------------------------------
+    Style Runner Interface - Start
+-------------------------------------------------*/
+#edit{
+    float: right;
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#edit:hover{
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+/*------------------------------------------------
+    Style Runner Interface - End
+-------------------------------------------------*/
