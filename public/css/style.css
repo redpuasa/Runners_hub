@@ -96,6 +96,24 @@ textarea{
     border-radius: 15px;
 }
 
+#logout{
+    width: 120px;
+    margin-left: 5px;
+    color:  #fff;
+    background-color: #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#logout:hover{
+    width: 120px;
+    margin-left: 5px;
+    color:  #e64525;
+    border: 2px solid #e64525;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
 #signup{
     width: 120px;
     margin-left: 5px;
