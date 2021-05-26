@@ -9,8 +9,9 @@ section{
 }
 
 footer{
-    background-color: dimgray;
-    color:white;  
+    background-color:#ebedee;
+    color:  #e64525;
+    font-weight: bold;
 }
   
 .fill{ 
@@ -152,7 +153,6 @@ textarea{
 
 .serviceAnimate:hover {
     transform: scale(1.5);
-    cursor: pointer;
 }
 /*--------------------------------
     Style for Service - End
