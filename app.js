@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
+//Runner Section
 app.get('/runner', (req, res) => {
     res.render('runner')
 })
@@ -27,9 +28,16 @@ app.get('/request', (req, res) => {
     res.render('request', {title: 'Request page', layout: './layout/request'})
 })
 
+app.get('/open', (req, res) => {
+    res.render('open', {title: 'Open Board', layout: './layout/runner_open'})
+})
+
 app.get('/active', (req, res) => {
     res.render('active', {title: 'Active Job', layout: './layout/runner_active_job'})
 })
+
+//end of runner section
+
 
 app.get('/user', (req, res) => {
     res.render('user')
