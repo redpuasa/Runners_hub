@@ -1,47 +1,88 @@
 <div class="container mt-5 p-5 border">
     <div class="row">
-      
-      <div class="col-sm-8 border p-5">
-        <p class="text-center">Top Runners</p>
+
+      <div class="col-sm-8 p-5">
+        <h2 class="para text-center mb-5">Top Runners</h2>
+        
         <div class="divTable">
           <div class="divTableBody">
   
             <div class="divTableRow">
                 <div class="divTableCell">(runner-name)</div>
-                <div class="divTableCell"><button>detail</button></div>
+                <div class="divTableCell">
+                  
+                  <!-- Button trigger modal -->
+                <button type="button" class="btn detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
+  
+                <!-- Modal - Start -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">(Runner's Name Goes Here)</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+  
+                    <div class="modal-body"><!--Modal body - Start-->
+                      <%- include('user_privateForm.ejs') %>
+                    </div><!--Modal body - End-->
+  
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <!-- Modal - End -->
+ 
+                </div>
             </div>
                         
             <div class="divTableRow">
                 <div class="divTableCell">(runner-name)</div>
-                <div class="divTableCell"><button>detail</button></div>
+                <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
             </div>
                         
             <div class="divTableRow">
                 <div class="divTableCell">(runner-name)</div>
-                <div class="divTableCell"><button>detail</button></div>
+                <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
             </div>
                         
             <div class="divTableRow">
                 <div class="divTableCell">(runner-name)</div>
-                <div class="divTableCell "><button>detail</button></div>
+                <div class="divTableCell "><button class="btn detail-btn">Details</button></div>
             </div>
                       
             <div class="divTableRow">
                 <div class="divTableCell">(runner-name)</div>
-                <div class="divTableCell"><button>detail</button></div>
+                <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
             </div>
                   
           </div>
         </div>
       </div>
       
-      <div class="col-sm-4 border p-5">
-        <p class="text-center">search box for client</p>
-        <p class="text-center">search criteria</p>
-        <p class="text-center">Inbox</p>
-        <button class="text-center">
+      <div class="col-sm-4 p-5">
+        <h2 class="para text-center mb-5">Search Runners</h2>
+        <form>
+
+        <div class="form-group">
+          <label for="username">Search by name</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter Runner's Name">
+        </div>
+
+        <div class="form-group">
+          <label for="username">Search by rating</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter Runner's Ratings" required>
+        </div>
+
+        <button class="btn detail-btn">
           <i class="fas fa-search"></i>   
         </button>
+      </form>
       </div>
       
     </div>
