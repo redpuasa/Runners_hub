@@ -27,6 +27,10 @@ app.get('/user', (req, res) => {
     res.render('user', {title: 'User page'})
 })
 
+app.get('/admin', (req, res) => {
+    res.render('admin', {title: 'Admin page'})
+})
+
 app.get('/login', (req, res) => {
     res.render('login', {title: 'Login page'})      
 })
