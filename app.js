@@ -16,28 +16,31 @@ app.set('view engine', 'ejs')
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {title: 'Runners Hub'})
 })
 
-//Runner Section
 app.get('/runner', (req, res) => {
-    res.render('runner', {title: 'Runner page', layout: './layout/runner'})
+    res.render('runner', {title: 'Runner page'})
 })
 
 app.get('/user', (req, res) => {
-    res.render('user')
+    res.render('user', {title: 'User page'})
 })
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login', {title: 'Login page'})      
 })
 
-app.get('/signup_client', (req, res) => {
-    res.render('signup_client')
+app.get('/signup_runner', (req, res) => {
+    res.render('signup_runner', {title: 'Runner Registration'})
 })
 
 app.get('/signup_user', (req, res) => {
-    res.render('signup_user')
+    res.render('signup_user', {title: 'User Registration'})
+})
+
+app.get('/validation', (req, res) => {
+    res.render('validation', {title: 'Validation page'})
 })
 
 // Listen on Port 5000

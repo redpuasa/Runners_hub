@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title></title>
+  <title><%- title %></title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
@@ -20,157 +20,52 @@
 </head>
 
 <body>
+  <%- include('partials/naviUser.ejs') %>
+  <main>
 
-  <!--Start Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#">Runner's Hub.</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Services</a>
-          </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">FAQ</a>
-          </li>
-          </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Contact</a>
-          </li>
-          </li><li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#"></a>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-danger">Log Out</button>
-          </li>
-        </ul>
+    <section id="profile">
+      <div class="container">  
+          <div class="row">
+              <div class="col-sm-12">
+                  <%- include('partials/user_profile.ejs') %>
+              </div>    
+          </div>       
       </div>
-    </div>
-  </nav>
-<!--End Navigation-->
-
-<main>
-  
-    <hr>
-    <nav>Account, Inbox, log out</nav>
-    <hr>
+    </section>
     
-    
-    <div class="container mt-5 p-5 border">
-      <h2 class="text-center">user central display</h2>
-      <div class="row">
-        
-        <div class="class-sm-8 border p-5">
-          <p class="text-center">Top Runners</p>
-          <div class="divTable">
-                  <div class="divTableBody">
-    
-        <div class="divTableRow">
-            <div class="divTableCell">client 1</div>
-            <div class="divTableCell"><button>detail</button></div>
-        </div>
-                    
-         <div class="divTableRow">
-            <div class="divTableCell">client 2</div>
-            <div class="divTableCell"><button>detail</button></div>
-        </div>
-                    
-         <div class="divTableRow">
-            <div class="divTableCell border">client 3</div>
-            <div class="divTableCell border"><button>detail</button></div>
-        </div>
-                    
-         <div class="divTableRow">
-            <div class="divTableCell border">client 4</div>
-            <div class="divTableCell border"><button>detail</button></div>
-        </div>
-                   
-        <div class="divTableRow">
-            <div class="divTableCell border">client 5</div>
-            <div class="divTableCell border"><button>detail</button></div>
-        </div>
-                    
-            </div>
-          </div>
-        </div>
-        
-        <div class="class-sm-4 border p-5">
-          <p class="text-center">search box for client</p>
-          <p class="text-center">search criteria</p>
-          <p class="text-center">Inbox</p>
-          <button class="text-center">
-            <i class="fas fa-search"></i>   
-          </button>
-          
-        </div>
-        
+    <section id="top">
+      <div class="container">  
+          <div class="row">
+              <div class="col-sm-12">
+                  <%- include('partials/user_view.ejs') %>
+              </div>    
+          </div>       
       </div>
-    </div>
-    
-    
-    
-    <div class="container mt-5 p-5 border">
-      <h2 class="text-center"></h2>
-      <p class="text-center">Avtive Job Request</p>
-      <div class="row">
-    
-        <div class="col-sm-12">
-                   
-                <div class="divTable">
-                  <div class="divTableBody">
-    
-                <div class="divTableRow">
-                  <div class="divTableCell font-weight-bold">&nbsp;</div>
-                  <div class="divTableCell font-weight-bold">&nbsp;</div>
-                </div>
-    
-    
-        <div class="divTableRow">
-            <div class="divTableCell">Item 1</div>
-            <div class="divTableCell">
-              <p>Client Hired</p> 
-            </div>
-            <div class="divTableCell"><button>detail</button></div>
-        </div>
-                    
-         <div class="divTableRow">
-            <div class="divTableCell">Item 2</div>
-            <div class="divTableCell">
-              <p>Client Hired</p> 
-            </div>
-            <div class="divTableCell"><button>detail</button></div>
-        </div>
-                    
-         <div class="divTableRow">
-            <div class="divTableCell">Item 3</div>
-            <div class="divTableCell">
-              <p>Client Hired</p> 
-            </div>
-            <div class="divTableCell"><button>detail</button></div>
-        </div>            
-    
-            </div>
-          </div>
-        </div>
+    </section>
+
+    <section id="form">
+      <div class="container">  
+          <div class="row">
+              <div class="col-sm-12">
+                  <%- include('partials/user_jobForm.ejs') %>
+              </div>    
+          </div>       
       </div>
-    </div>
-    
-    
+    </section>
 
-</main>
+    <section id="active">
+      <div class="container">  
+          <div class="row">
+              <div class="col-sm-12">
+                  <%- include('partials/user_job.ejs') %>
+              </div>    
+          </div>       
+      </div>
+    </section>
 
-<footer class="py-2 fixed-bottom">
-    <div class="container">
-    <p class="m-0 text-center">&copy; 2021 - CBN</p>
-    </div>
-</footer>
+  </main>
+
+  <%- include('partials/footer.ejs') %>
 
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

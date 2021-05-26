@@ -296,6 +296,81 @@ textarea{
 -------------------------------------------------*/
 
 /*------------------------------------------------
+    Style for Registration Button [Runner/Client] - Start
+-------------------------------------------------*/
+#userBck{
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#userBck:hover{
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+
+#userReg{
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#userReg:hover{
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+
+#runBck{
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#runBck:hover{
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+
+#runReg{
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#runReg:hover{
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+
+#validate{
+    width: 120px;
+    margin-left: 5px;
+    margin:auto;
+    color:  #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#validate:hover{
+    width: 120px;
+    color:  #fff;
+    border: 2px solid #e64525;
+    background-color: #e64525;
+    border-radius: 15px;
+}
+/*------------------------------------------------
+    Style for Registration Button [Runner/Client] - End
+-------------------------------------------------*/
+
+/*------------------------------------------------
     Style validation form - Start
 -------------------------------------------------*/
 #passwordMessage {
