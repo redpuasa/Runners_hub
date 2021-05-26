@@ -23,6 +23,14 @@ app.get('/runner', (req, res) => {
     res.render('runner')
 })
 
+app.get('/request', (req, res) => {
+    res.render('request', {title: 'Request page', layout: './layout/request'})
+})
+
+app.get('/active', (req, res) => {
+    res.render('active', {title: 'Active Job', layout: './layout/runner_active_job'})
+})
+
 app.get('/user', (req, res) => {
     res.render('user')
 })
