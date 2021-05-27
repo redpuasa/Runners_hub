@@ -77,3 +77,28 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 	utilsScript:
 	"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
+
+phoneInputField.addEventListener("input", function(){
+  validatePhone();
+  let code = phoneInput.getSelectedCountryData().dialCode;
+  document.getElementById("code").setAttribute("value", code);
+});
+
+function validatePhone(){
+  if(!(phoneInput.isValidNumber())) {
+    phoneInputField.setCustomValidity("Invalid Phone Number");
+  } else {
+    phoneInputField.setCustomValidity('');
+  }
+}
+
+window.addEventListener("pageshow", function ( event ) {
+  var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+    document.getElementById("registerForm").reset(); 
+  }
+});

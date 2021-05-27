@@ -4,6 +4,8 @@ const express = require('express')
 const app = express()
 //const port = 3000
 
+app.use(express.urlencoded({extended:true}));
+
 // Static Files
 app.use(express.static('public'))
 // Example for other folders - not required
@@ -39,8 +41,10 @@ app.get('/signup_user', (req, res) => {
     res.render('signup_user', {title: 'User Registration'})
 })
 
-app.get('/validation', (req, res) => {
-    res.render('validation', {title: 'Validation page'})
+app.post('/validation', (req, res) => {
+    res.render('validation', {title: 'Validation page'});
+    req.body.phone = req.body.code + req.body.phone
+    console.log(req.body);
 })
 
 // Listen on Port 5000
