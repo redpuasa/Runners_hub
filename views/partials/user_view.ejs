@@ -8,14 +8,43 @@
           <div class="divTableBody">
   
             <div class="divTableRow">
-                <div class="divTableCell">(runner-name)</div>
+                <div class="divTableCell">(runner-name) &nbsp;
+                  <button type="button" class="btn detail-btn" data-toggle="modal" data-target="#exampleModal2">
+                    <i class="fas fa-info-circle"></i>
+                  </button>
+
+                  <!-- Modal - Start -->
+                  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Runner's Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+    
+                      <div class="modal-body"><!--Modal body - Start-->
+                        <%- include('runner_profile.ejs') %>
+                      </div><!--Modal body - End-->
+    
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <!-- Modal - End -->
+
+                </div>
                 <div class="divTableCell">
                   
-                  <!-- Button trigger modal -->
-                <button type="button" class="btn detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn detail-btn" data-toggle="modal" data-target="#exampleModal">Details</button>
   
                 <!-- Modal - Start -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -42,22 +71,34 @@
             </div>
                         
             <div class="divTableRow">
-                <div class="divTableCell">(runner-name)</div>
+                <div class="divTableCell">(runner-name) &nbsp;
+                <button class="btn detail-btn">
+                  <i class="fas fa-info-circle"></i>
+                </button></div>
                 <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
             </div>
                         
             <div class="divTableRow">
-                <div class="divTableCell">(runner-name)</div>
+                <div class="divTableCell">(runner-name) &nbsp;
+                <button class="btn detail-btn">
+                  <i class="fas fa-info-circle"></i>
+                </button></div>
                 <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
             </div>
                         
             <div class="divTableRow">
-                <div class="divTableCell">(runner-name)</div>
+                <div class="divTableCell">(runner-name) &nbsp;
+                <button class="btn detail-btn">
+                  <i class="fas fa-info-circle"></i>
+                </button></div>
                 <div class="divTableCell "><button class="btn detail-btn">Details</button></div>
             </div>
                       
             <div class="divTableRow">
-                <div class="divTableCell">(runner-name)</div>
+                <div class="divTableCell">(runner-name) &nbsp;
+                <button class="btn detail-btn">
+                  <i class="fas fa-info-circle"></i>
+                </button></div>
                 <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
             </div>
                   

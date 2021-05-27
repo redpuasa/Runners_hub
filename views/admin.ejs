@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title><%- title %></title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="icon" href="img/logo.png">
+
+  <style>
+    .container {
+      max-width: 600px;
+    }
+
+    section.header {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    section.content {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    .value-img {
+      display: block;
+      text-align: center;
+    }
+
+    .imgs {
+      max-width: 100%;
+    }
+
+    @media (min-width: 550px) {
+      .header {
+        margin-top: 10rem;
+      }
+    }
+
+    .button.button-primary {
+      background-color: #f9c04d !important;
+      border-color: #f9c04d !important;
+    }
+
+    .button.button-secondary {
+      background-color: #eee !important;
+      border-color: #eee !important;
+    }
+    /* Grid Zoom*/
+    .grid {
+      column-count: 4;
+      column-gap: 1rem;
+    }
+
+    .grid figure {
+      display: inline-block;
+      margin: 0 0 0 0;
+      width: 100%;
+    }
+
+    .grid img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+    
+</head>
+
+<body>
+
+  <!--Start Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light text-center fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#">
+        <img src="img/logo2.png" alt="logo" width="60x"> 
+      </a>
+      <a class="navbar-brand js-scroll-trigger" href="#" id="rh-logo">
+          Runner's Hub
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="btn text-nowrap" id="admin" role="button" href="/admin">A</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" id="nav" href="/">HOME</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--End Navigation-->
+  <main>
+
+  <div class="container mt-5 p-5">
+    <h1 class="para text-center">Project Proposal</h1>
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-center">
+            <img src="docs/propo.jpg" alt="proposal.jpg">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <a href="docs/propo.pdf" download="proposal" role="button" style="color:#e36e25"><i class="fas fa-download"></i></a>
+            <h2 class="para text-center">Limitation of Existing Applications</h2>
+            <p class="font-weight-bold mt-4">Such as: "GoMamam", "Hey Domo", "Tapow"</p>
+            <p>Current exsiting apps are base on vendors(mainly based on food) and user only.</p>
+            <p>Some of these apps charges are expensive.</p>
+
+            <h2 class="para text-center mt-5">To overcome the limitation</h2>
+            <p>User has a choice of runners selection depending on their charges, ratings and etc.</p>
+            <p>Since, the web app is focusing on the centralizing the runners as well; some of these runners maybe has the offer of picking up packages outside Brunei [in which currently are not applicable].</p>
+            <p>Runners has the ability to set their own charges.</p>
+            <p>With the development of Runner's Hub App, it may attract more job seekers to register as a runner.</p>
+
+            <h2 class="para text-center mt-5">Future Improvement</h2>
+            <p>-</p>
+            <p>-</p>
+            <p>-</p>
+        </div>
+    </div>
+  </div>
+
+  <div class="container p-5 value-img">
+    <h2 class="para text-center">Runner's Hub Flow Chart</h2>
+    <img id="img-default" src="docs/Runners_hub_FC.jpg" data-action="zoom" data-original="docs/Runners_hub_FC.jpg" alt="" class="imgs">
+  </div>
+
+  <div class="container p-5 value-img">
+    <h2 class="para text-center">Runner's Hub Gantt Chart</h2>
+    <img id="img-default" src="docs/Runners_hub_GC.jpg" data-action="zoom" data-original="docs/Runners_hub_GC.jpg" alt="" class="imgs">
+  </div>
+
+</main>
+  
+  <%- include('partials/footer.ejs') %>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+  <!-- Plugin JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/zooming.min.js"></script>
+<script>
+  new Zooming().listen('.grid img')
+</script>
+<script>
+  const defaultZooming = new Zooming()
+  const customZooming = new Zooming()
+  const config = customZooming.config()
+  const TRANSITION_DURATION_DEFAULT = config.transitionDuration
+  const BG_COLOR_DEFAULT = config.bgColor
+  const SCALE_BASE_DEFAULT = config.scaleBase
+  const ACTIVE_CLASS = 'button-primary'
+
+  const btnFast = document.getElementById('btn-fast')
+  const btnDark = document.getElementById('btn-dark')
+  const btnScaleSmall = document.getElementById('btn-scale-small')
+
+  document.addEventListener('DOMContentLoaded', function () {
+    defaultZooming.listen('#img-default')
+    customZooming.listen('#img-custom')
+  })
+
+  btnFast.addEventListener('click', function (event) {
+    const transitionDuration = toggleActive(btnFast)
+      ? 0.2
+      : TRANSITION_DURATION_DEFAULT
+
+    customZooming.config({ transitionDuration })
+  })
+
+  btnDark.addEventListener('click', function (event) {
+    const bgColor = toggleActive(btnDark)
+      ? 'black'
+      : BG_COLOR_DEFAULT
+
+    customZooming.config({ bgColor })
+  })
+
+  btnScaleSmall.addEventListener('click', function (event) {
+    const scaleBase = toggleActive(btnScaleSmall)
+      ? 0.7
+      : SCALE_BASE_DEFAULT
+
+    customZooming.config({ scaleBase })
+  })
+
+  function isActive(el) {
+    return el.classList.contains(ACTIVE_CLASS)
+  }
+
+  function activate(el) {
+    el.classList.add(ACTIVE_CLASS)
+  }
+
+  function deactivate(el) {
+    el.classList.remove(ACTIVE_CLASS)
+  }
+
+  function toggleActive(el) {
+    if (isActive(el)) {
+      deactivate(el)
+      return false
+    } else {
+      activate(el)
+      return true
+    }
+  }
+</script>
+</body>
+</html>
