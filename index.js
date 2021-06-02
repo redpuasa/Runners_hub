@@ -2,7 +2,14 @@
 const express = require('express')
 //const expressLayouts = require('express-ejs-layouts')
 const app = express()
+const routes = require('./routes/app');
 //const port = 3000
+const mongoose = require("mongoose");
+
+const db = require("./config/keys").MongoURI;
+mongoose.connect(db, { newURLParser: true})
+.then(console.log("MongoDB connected"))
+.catch(err => console.log(err));
 
 app.use(express.urlencoded({extended:true}));
 
@@ -17,39 +24,7 @@ app.set('view engine', 'ejs')
 //app.set('layout', 'index')
 
 // Routes
-app.get('/', (req, res) => {
-    res.render('index', {title: 'Runners Hub'})
-})
-
-app.get('/runner', (req, res) => {
-    res.render('runner', {title: 'Runner page'})
-})
-
-app.get('/user', (req, res) => {
-    res.render('user', {title: 'User page'})
-})
-
-app.get('/admin', (req, res) => {
-    res.render('admin', {title: 'Admin page'})
-})
-
-app.get('/login', (req, res) => {
-    res.render('login', {title: 'Login page'})      
-})
-
-app.get('/signup_runner', (req, res) => {
-    res.render('signup_runner', {title: 'Runner Registration'})
-})
-
-app.get('/signup_user', (req, res) => {
-    res.render('signup_user', {title: 'User Registration'})
-})
-
-app.post('/validation', (req, res) => {
-    res.render('validation', {title: 'Validation page'});
-    req.body.phone = req.body.code + req.body.phone
-    console.log(req.body);
-})
+app.use("/", routes);
 
 // Listen on Port 5000
 //app.listen(port, () => console.info(`App listening on port ${port}`))
