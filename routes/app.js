@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 const Runner = require('../models/runners');
+const { render } = require('ejs');
 
 router.get('/', (req, res) => {
     res.render('index', {title: 'Runners Hub'})
@@ -20,7 +21,7 @@ router.get('/admin', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('login', {title: 'Login page'})      
+    res.render('login', {title: 'Login page'})
 })
 
 router.get('/signup_runner', (req, res) => {
@@ -39,7 +40,8 @@ router.post('/validation', (req, res) => {
         Password: req.body.password,
         Email: req.body.email,
         Address: req.body.address,
-        Phone: req.body.phone
+        Phone: req.body.phone,
+        Status: req.body.status
     });
     user.save(function (err, user) {
     if (err) return console.error(err);
