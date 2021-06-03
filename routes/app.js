@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/users');
-const Runner = require('../models/runners');
 const { render } = require('ejs');
 
 router.get('/', (req, res) => {
-    res.render('index', {title: 'Runners Hub'})
+    res.render('index', {title: 'Runners Hub'});
 })
 
 router.get('/runner', (req, res) => {
@@ -21,9 +19,7 @@ router.get('/admin', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    User.find({}, function(User){
-        res.render('user', {title: 'Login page'})
-    })
+    res.render('login', {title: 'Login page'})
 })
 
 router.get('/signup_runner', (req, res) => {

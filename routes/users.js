@@ -3,6 +3,34 @@ const router = express.Router();
 const User = require('../models/users');
 const Runner = require('../models/runners');
 
+router.post('/dashboard', (req, res) => {
+    let success = false;
+    User.find({}, function(err, users) {
+        users.forEach(function(user) {
+            if (user._id === req.body.email && user.Password === req.body.password) {
+                res.render('user', {title: "User page", username: user.Username});
+                success = true;
+            }
+        });
+    })
+    Runner.find({}, function(err, runners) {
+        runners.forEach(function(runner) {
+            if (runner.Email === req.body.email && runner.Password === req.body.password) {
+                res.render('runner', {title: "Runner page", username: runner.Username});
+                success = true
+            }
+        });
+        if (!success) {
+            res.render('error', {
+                title: 'Error page',
+                head: 'Unsuccessful login',
+                message: 'Incorrect email or password',
+                href: "login"
+            });
+        }
+    })
+})
+
 router.post('/validation', (req, res) => {  
     req.body.phone = req.body.code + req.body.phone
     let user = new User({
@@ -18,7 +46,8 @@ router.post('/validation', (req, res) => {
     	if (err.name === "MongoError" && err.code === 11000) {
     		res.render('error', {
     			title: 'Error page',
-    			username: req.body.username,
+                head: 'Username already exist',
+                message: 'Please use a different username',
     			href: "signup_user"
     		});
     	}
@@ -43,7 +72,8 @@ router.post('/runner-validation', (req, res) => {
     	if (err.name === "MongoError" && err.code === 11000) {
     		res.render('error', {
     			title: 'Error page',
-    			username: req.body.username,
+                head: 'Username already exist',
+                message: 'Please use a different username',
     			href: "signup_runner"
     		});
     	}
