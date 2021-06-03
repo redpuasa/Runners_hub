@@ -4,6 +4,13 @@ const User = require('../models/users');
 const Runner = require('../models/runners');
 const { render } = require('ejs');
 
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost/user"
+MongoClient.connect (url, (err,db) => {
+    var cursor = db.collection('user').find({username: "redsha"});
+    cursor.each((err,docs) => {console.log(doc)})
+})
+
 router.get('/', (req, res) => {
     res.render('index', {title: 'Runners Hub'})
 })
@@ -21,7 +28,7 @@ router.get('/admin', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('login', {title: 'Login page'})
+    res.render('login', {title: 'Login page'}) 
 })
 
 router.get('/signup_runner', (req, res) => {
@@ -36,9 +43,9 @@ router.post('/validation', (req, res) => {
     res.render('validation', {title: 'Validation page'});
     req.body.phone = req.body.code + req.body.phone
     let user = new User({
+        _id: req.body.email,
         Username: req.body.username,
         Password: req.body.password,
-        Email: req.body.email,
         Address: req.body.address,
         Phone: req.body.phone,
         Status: req.body.status
