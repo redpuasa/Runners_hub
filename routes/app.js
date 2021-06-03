@@ -4,13 +4,6 @@ const User = require('../models/users');
 const Runner = require('../models/runners');
 const { render } = require('ejs');
 
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://localhost/user"
-MongoClient.connect (url, (err,db) => {
-    var cursor = db.collection('user').find({username: "redsha"});
-    cursor.each((err,docs) => {console.log(doc)})
-})
-
 router.get('/', (req, res) => {
     res.render('index', {title: 'Runners Hub'})
 })
@@ -28,7 +21,9 @@ router.get('/admin', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('login', {title: 'Login page'}) 
+    User.find({}, function(User){
+        res.render('user', {title: 'Login page'})
+    })
 })
 
 router.get('/signup_runner', (req, res) => {
