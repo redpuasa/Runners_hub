@@ -7,7 +7,7 @@ router.post('/dashboard', (req, res) => {
     let success = false;
     User.find({}, function(err, users) {
         users.forEach(function(user) {
-            if (user._id === req.body.email && user.Password === req.body.password) {
+            if (user.Email === req.body.email && user.Password === req.body.password) {
                 res.render('user', {title: "User page", username: user.Username});
                 success = true;
             }
@@ -34,7 +34,7 @@ router.post('/dashboard', (req, res) => {
 router.post('/validation', (req, res) => {  
     req.body.phone = req.body.code + req.body.phone
     let user = new User({
-        _id: req.body.email,
+        Email: req.body.email,
         Username: req.body.username,
         Password: req.body.password,
         Address: req.body.address,
