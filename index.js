@@ -3,6 +3,7 @@ const express = require('express')
 //const expressLayouts = require('express-ejs-layouts')
 const app = express()
 const routes = require('./routes/app');
+const users = require('./routes/users');
 
 app.use(express.urlencoded({extended:true}));
 
@@ -25,6 +26,7 @@ mongoose.connect(db, { newURLParser: true})
 
 // Routes
 app.use("/", routes);
+app.use("/", users);
 
 // Establishing the port 
 const PORT = process.env.PORT || 5000;
