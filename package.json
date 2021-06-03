@@ -1,7 +1,7 @@
 {
   "name": "runners-hub",
   "version": "1.0.0",
-  "description": "",
+  "description": "Centralized runner application",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
