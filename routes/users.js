@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 const Runner = require('../models/runners');
+const bcrypt = require('bcrypt');
+const config = require('../config/authUser');
+
 
 router.post('/dashboard', (req, res) => {
     let success = false;
@@ -11,6 +14,11 @@ router.post('/dashboard', (req, res) => {
                 res.render('user', {title: "User page", username: user.Username});
                 success = true;
             }
+            /*if (user.User_status != "Active") {
+                return res.status(401).send({
+                message: "Pending Account. Please Verify Your Email!",
+                });
+            }*/
         });
     })
     Runner.find({}, function(err, runners) {
@@ -33,14 +41,21 @@ router.post('/dashboard', (req, res) => {
 
 router.post('/validation', (req, res) => {  
     req.body.phone = req.body.code + req.body.phone
+    /*const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let token = '';
+        for (let i = 0; i < 25; i++) {
+            token += characters[Math.floor(Math.random() * characters.length )];
+        }*/
     let user = new User({
         Email: req.body.email,
         Username: req.body.username,
-        Password: req.body.password,
+        Password: bcrypt.hashSync(req.body.password, 8),
         Address: req.body.address,
         Phone: req.body.phone,
-        Status: req.body.status
+        Status: req.body.status,
+        Verification_Code: token,
     });
+    console.log({Username: req.body.username, Password: bcrypt.hashSync(req.body.password, 8)})
     user.save(function (err) {
     if (err) {
     	if (err.name === "MongoError" && err.code === 11000) {
@@ -61,7 +76,7 @@ router.post('/runner-validation', (req, res) => {
     req.body.phone = req.body.code + req.body.phone
     let runner = new Runner({
         Username: req.body.username,
-        Password: req.body.password,
+        Password: bcrypt.hashSync(req.body.password, 8),
         Email: req.body.email,
         Phone: req.body.phone,
         Organization: req.body.radioComp,
