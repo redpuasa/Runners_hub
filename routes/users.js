@@ -52,7 +52,7 @@ router.post('/validation', (req, res) => {
         Address: req.body.address,
         Phone: req.body.phone,
         Status: req.body.status,
-        Verification_Code: token,
+        //Verification_Code: token,
     });
     console.log({Username: req.body.username, Password: req.body.password})
     user.save(function (err) {

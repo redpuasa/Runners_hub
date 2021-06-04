@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 //MongoDB Connection
 const mongoose = require("mongoose");
 const db = require("./config/keys").MongoURI;
-mongoose.connect(db, { newURLParser: true})
+mongoose.connect(db, { newURLParser: true, useUnifiedTopology: true})
 .then(console.log("MongoDB connected"))
 .catch(err => console.log(err));
 
