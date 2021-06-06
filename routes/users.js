@@ -13,11 +13,6 @@ router.post('/dashboard', (req, res) => {
                 res.render('user', {title: "User page", username: user.Username});
                 success = true;
             }
-            /*if (user.User_status != "Active") {
-                return res.status(401).send({
-                message: "Pending Account. Please Verify Your Email!",
-                });
-            }*/
         });
     })
     Runner.find({}, function(err, runners) {
