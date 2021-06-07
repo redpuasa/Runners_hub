@@ -2,17 +2,12 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 const Runner = require('../models/runners');
-<<<<<<< Updated upstream
 const openOrder = require('../models/open_order');
 const privateOrder = require('../models/private_order');
 
 let runnerList = [];
 let orderList = [];
 let currentUser = {};
-=======
-const PrivateOrder = require('../models/private_order');
-
->>>>>>> Stashed changes
 
 router.post('/dashboard', (req, res) => {
     let success = false;
@@ -23,6 +18,7 @@ router.post('/dashboard', (req, res) => {
             orderList.push(order);
         })
     });
+
     Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
             runnerList.push(runner);
@@ -42,13 +38,11 @@ router.post('/dashboard', (req, res) => {
                 success = true;
             }
         });
-<<<<<<< Updated upstream
+
         Runner.find({}, function(err, runners) {
-=======
     })
 
     Runner.find({}, function(err, runners) {
->>>>>>> Stashed changes
         runners.forEach(function(runner) {
             if (runner.Email === req.body.email && runner.Password === req.body.password) {
                 
@@ -73,24 +67,6 @@ router.post('/dashboard', (req, res) => {
             });
         }
     })
-
-<<<<<<< Updated upstream
-    })
-    })
-=======
-    //NOT SURE WITH THIS ONE
-    /*
-    PrivateOrder.find({}, function(err, private_order) {
-        private_order.forEach(function(privatePost) {
-            if (privatePost.Email === req.body.email && privatePost.Password === req.body.password) {
-                res.render('privatePost', {title: "Private Request page", username: privatePost.Username});
-                success = true;
-            }
-        });
-    })
-    */
-    //NOT SURE WITH THIS ONE
->>>>>>> Stashed changes
 })
 
 router.post('/validation', (req, res) => {  
@@ -152,66 +128,6 @@ router.post('/runner-validation', (req, res) => {
 	});
 })
 
-<<<<<<< Updated upstream
-router.post('/postrequest', (req, res) => {
-    let order = new openOrder({
-        Username: req.body.username,
-        Deli_date: req.body.deli_date,
-        Deli_time: req.body.deli_time,
-        Pickup_address: req.body.Pickup_Address,
-        Delivery_address: req.body.Delivery_Address,
-        Item_stat: req.body.radioStatus,
-        Phone: req.body.phone,
-        Message: req.body.message,
-        Status: req.body.orderStatus
-    });
-    order.save(function (err) {
-    if (err) {
-        res.render('error', {
-            title: 'Error page',
-            head: err.name,
-            message: 'err.code',
-            href: "/dashboard"
-        });
-    } else {
-        res.render('user', {
-            title: 'User page',
-            username: currentUser.Username,
-            email: currentUser.Email,
-            address: currentUser.Address,
-            phone: currentUser.Phone,
-            runners: runnerList
-        });
-    }
-    });
-})
-
-router.post('/postprivate', (req, res) => {
-    let privateorder = new privateOrder({
-        Username: req.body.username,
-        Deli_date: req.body.deli_date,
-        Deli_time: req.body.deli_time,
-        Pickup_address: req.body.Pickup_Address,
-        Delivery_address: req.body.Delivery_Address,
-        Item_stat: req.body.radioStatus,
-        Phone: req.body.phone,
-        Message: req.body.message,
-        Status: req.body.orderStatus
-    });
-    privateorder.save(function (err) {
-    if (err) {
-        res.render('error', {
-            title: 'Error page',
-            head: err.name,
-            message: 'err.code',
-            href: "/dashboard"
-        });
-    } else {
-        res.render('user', {title: 'User page'});
-    }
-    });
-})
-=======
 //USER POST NEW PRIVATE REQUEST 
 router.post('/privateOrder', (req, res) => {  
     req.body.phone = req.body.code + req.body.phone
@@ -273,6 +189,5 @@ router.post('/user_profile', (req, res) => {
     });
 })
 //USER POST NEW OPEN REQUEST 
->>>>>>> Stashed changes
 
 module.exports = router;
