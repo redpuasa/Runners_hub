@@ -18,7 +18,6 @@ router.post('/dashboard', (req, res) => {
             orderList.push(order);
         })
     });
-
     Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
             runnerList.push(runner);
@@ -38,11 +37,7 @@ router.post('/dashboard', (req, res) => {
                 success = true;
             }
         });
-
         Runner.find({}, function(err, runners) {
-    })
-
-    Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
             if (runner.Email === req.body.email && runner.Password === req.body.password) {
                 
@@ -66,6 +61,9 @@ router.post('/dashboard', (req, res) => {
                 href: "login"
             });
         }
+    })
+
+    })
     })
 })
 
@@ -128,66 +126,63 @@ router.post('/runner-validation', (req, res) => {
 	});
 })
 
-//USER POST NEW PRIVATE REQUEST 
-router.post('/privateOrder', (req, res) => {  
-    req.body.phone = req.body.code + req.body.phone
-    let privatePost = new Private_Order ({
+router.post('/postrequest', (req, res) => {
+    let order = new openOrder({
         Username: req.body.username,
         Deli_date: req.body.deli_date,
         Deli_time: req.body.deli_time,
-        Pickup_address: req.body.pickup_address,
-        Delivery_address: req.body.deli_address,
-        Item_stat: req.body.item_stat,
+        Pickup_address: req.body.Pickup_Address,
+        Delivery_address: req.body.Delivery_Address,
+        Item_stat: req.body.radioStatus,
         Phone: req.body.phone,
-        Message: req.body.message
+        Message: req.body.message,
+        Status: req.body.orderStatus
     });
-
-    console.log({Username: req.body.username})
-    privatePost.save(function (err) {
+    order.save(function (err) {
     if (err) {
-    	if (err.name === "MongoError" && err.code === 11000) {
-    		res.render('error', {
-    			title: 'Error page',
-                message: 'Error 404',
-    			href: "user_privateForm"
-    		});
-    	}
+        res.render('error', {
+            title: 'Error page',
+            head: err.name,
+            message: 'err.code',
+            href: "/dashboard"
+        });
     } else {
-    	res.render('user_profile', {title: 'Private Post Page'});
+        res.render('user', {
+            title: 'User page',
+            username: currentUser.Username,
+            email: currentUser.Email,
+            address: currentUser.Address,
+            phone: currentUser.Phone,
+            runners: runnerList
+        });
     }
     });
 })
-//USER POST NEW PRIVATE REQUEST 
 
-//USER POST NEW OPEN REQUEST 
-router.post('/user_profile', (req, res) => {  
-    req.body.phone = req.body.code + req.body.phone
-    let openPost = new Open_Order ({
+router.post('/postprivate', (req, res) => {
+    let privateorder = new privateOrder({
         Username: req.body.username,
         Deli_date: req.body.deli_date,
         Deli_time: req.body.deli_time,
-        Pickup_address: req.body.pickup_address,
-        Delivery_address: req.body.deli_address,
-        Item_stat: req.body.item_stat,
+        Pickup_address: req.body.Pickup_Address,
+        Delivery_address: req.body.Delivery_Address,
+        Item_stat: req.body.radioStatus,
         Phone: req.body.phone,
-        Message: req.body.message
+        Message: req.body.message,
+        Status: req.body.orderStatus
     });
-
-    console.log({Username: req.body.username})
-    privatePost.save(function (err) {
+    privateorder.save(function (err) {
     if (err) {
-    	if (err.name === "MongoError" && err.code === 11000) {
-    		res.render('error', {
-    			title: 'Error page',
-                message: 'Error 404',
-    			href: "user_jobForm"
-    		});
-    	}
+        res.render('error', {
+            title: 'Error page',
+            head: err.name,
+            message: 'err.code',
+            href: "/dashboard"
+        });
     } else {
-    	res.render('user_profile', {title: 'Open Post Page'});
+        res.render('user', {title: 'User page'});
     }
     });
 })
-//USER POST NEW OPEN REQUEST 
 
 module.exports = router;
