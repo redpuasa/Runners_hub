@@ -2,12 +2,17 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
 const Runner = require('../models/runners');
+<<<<<<< Updated upstream
 const openOrder = require('../models/open_order');
 const privateOrder = require('../models/private_order');
 
 let runnerList = [];
 let orderList = [];
 let currentUser = {};
+=======
+const PrivateOrder = require('../models/private_order');
+
+>>>>>>> Stashed changes
 
 router.post('/dashboard', (req, res) => {
     let success = false;
@@ -37,7 +42,13 @@ router.post('/dashboard', (req, res) => {
                 success = true;
             }
         });
+<<<<<<< Updated upstream
         Runner.find({}, function(err, runners) {
+=======
+    })
+
+    Runner.find({}, function(err, runners) {
+>>>>>>> Stashed changes
         runners.forEach(function(runner) {
             if (runner.Email === req.body.email && runner.Password === req.body.password) {
                 
@@ -63,8 +74,23 @@ router.post('/dashboard', (req, res) => {
         }
     })
 
+<<<<<<< Updated upstream
     })
     })
+=======
+    //NOT SURE WITH THIS ONE
+    /*
+    PrivateOrder.find({}, function(err, private_order) {
+        private_order.forEach(function(privatePost) {
+            if (privatePost.Email === req.body.email && privatePost.Password === req.body.password) {
+                res.render('privatePost', {title: "Private Request page", username: privatePost.Username});
+                success = true;
+            }
+        });
+    })
+    */
+    //NOT SURE WITH THIS ONE
+>>>>>>> Stashed changes
 })
 
 router.post('/validation', (req, res) => {  
@@ -126,6 +152,7 @@ router.post('/runner-validation', (req, res) => {
 	});
 })
 
+<<<<<<< Updated upstream
 router.post('/postrequest', (req, res) => {
     let order = new openOrder({
         Username: req.body.username,
@@ -184,5 +211,68 @@ router.post('/postprivate', (req, res) => {
     }
     });
 })
+=======
+//USER POST NEW PRIVATE REQUEST 
+router.post('/privateOrder', (req, res) => {  
+    req.body.phone = req.body.code + req.body.phone
+    let privatePost = new Private_Order ({
+        Username: req.body.username,
+        Deli_date: req.body.deli_date,
+        Deli_time: req.body.deli_time,
+        Pickup_address: req.body.pickup_address,
+        Delivery_address: req.body.deli_address,
+        Item_stat: req.body.item_stat,
+        Phone: req.body.phone,
+        Message: req.body.message
+    });
+
+    console.log({Username: req.body.username})
+    privatePost.save(function (err) {
+    if (err) {
+    	if (err.name === "MongoError" && err.code === 11000) {
+    		res.render('error', {
+    			title: 'Error page',
+                message: 'Error 404',
+    			href: "user_privateForm"
+    		});
+    	}
+    } else {
+    	res.render('user_profile', {title: 'Private Post Page'});
+    }
+    });
+})
+//USER POST NEW PRIVATE REQUEST 
+
+//USER POST NEW OPEN REQUEST 
+router.post('/user_profile', (req, res) => {  
+    req.body.phone = req.body.code + req.body.phone
+    let openPost = new Open_Order ({
+        Username: req.body.username,
+        Deli_date: req.body.deli_date,
+        Deli_time: req.body.deli_time,
+        Pickup_address: req.body.pickup_address,
+        Delivery_address: req.body.deli_address,
+        Item_stat: req.body.item_stat,
+        Phone: req.body.phone,
+        Message: req.body.message
+    });
+
+    console.log({Username: req.body.username})
+    privatePost.save(function (err) {
+    if (err) {
+    	if (err.name === "MongoError" && err.code === 11000) {
+    		res.render('error', {
+    			title: 'Error page',
+                message: 'Error 404',
+    			href: "user_jobForm"
+    		});
+    	}
+    } else {
+    	res.render('user_profile', {title: 'Open Post Page'});
+    }
+    });
+})
+//USER POST NEW OPEN REQUEST 
+>>>>>>> Stashed changes
 
 module.exports = router;
