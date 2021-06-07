@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const PrivateOrderSchema = new mongoose.Schema({
      Username:{
         type: String,
-        unique: true,
         lowercase: true,
         required: true,
         trim: true
@@ -40,6 +39,9 @@ const PrivateOrderSchema = new mongoose.Schema({
     Message:{
         type: String,
         required: true
+    },
+    Status: {
+        type: String
     }
 });
 

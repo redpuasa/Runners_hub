@@ -2,15 +2,15 @@
   <h2 class="para text-center">OPEN DELIVERY REQUEST</h2>
   <p class="text-center" id="para-runner">Job List</p>
 
-      <!--Username 1-->
+      <% orders.forEach(function(order, index) { %>
       <div class="row mx-auto mt-5">
         <div class="col-sm-12 border-bottom border-dark pb-3">
           <div class="container d-flex">
-            <p class="paraFaqs">Username 1</p>
+            <p class="paraFaqs">User <%= index + 1 %></p>
             <a class="btnToggle ml-auto"><i class="fas fa-chevron-down"></i></a>
           </div>
           
-          <div id="paraDisplay1" class="d-none">
+          <div id="paraDisplay<%= index %>" class="d-none">
             <!--list-->
             <div class="divTableRow">
               <div class="divTableCell">
@@ -26,7 +26,7 @@
                 <small>Customer:</small>
               </div>
               <div class="divTableCell" id="customer_name">
-                <small>Cici</small>
+                <small><%= order.Username %></small>
               </div>
             </div>
 
@@ -35,7 +35,7 @@
                 <small>Contact no.:</small>
               </div>
               <div class="divTableCell" id="customer_contact">
-                <small>823 4567</small>
+                <small><%= order.Phone %></small>
               </div>
             </div>
 
@@ -44,7 +44,7 @@
                 <small>Delivery date:</small>
               </div>
               <div class="divTableCell" id="deli_date">
-                <small>01/01/2021</small>
+                <small><%= order.Deli_date %></small>
               </div>
             </div>
 
@@ -53,7 +53,7 @@
                 <small>Delivery time:</small>
               </div>
               <div class="divTableCell" id="deli_time">
-                <small>2pm</small>
+                <small><%= order.Deli_time %></small>
               </div>
             </div>
 
@@ -62,7 +62,7 @@
                 <small>Pickup address:</small>
               </div>
               <div class="divTableCell" id="pickup_address">
-                <small>No.10, Jln 15, Bebuloh</small>
+                <small><%= order.Pickup_address %></small>
               </div>
             </div>
 
@@ -71,7 +71,7 @@
                 <small>Delivery address:</small>
               </div>
               <div class="divTableCell" id="deli_address">
-                <small>No.11, Jln Balai, Sg Hanching</small>
+                <small><%= order.Delivery_address %></small>
               </div>
             </div>
 
@@ -80,7 +80,7 @@
                 <small>Status:</small>
               </div>
               <div class="divTableCell" id="deli_status">
-                <small>UNPAID - CASH</small>
+                <small><%= order.Item_stat %></small>
               </div>
             </div>
 
@@ -89,7 +89,7 @@
                 <small>Message:</small>
               </div>
               <div class="divTableCell" id="deli_message">
-                <small>-</small>
+                <small><%= order.Message %></small>
               </div>
             </div>
 
@@ -153,160 +153,9 @@
           </div>
         </div>
       </div>
-      <!--Username 1-->
+      <% }); %>
 
-      <!--Username 2-->
-      <div class="row mx-auto mt-5">
-        <div class="col-sm-12 border-bottom border-dark pb-3">
-          <div class="container d-flex">
-            <p class="paraFaqs">Username 2</p>
-            <a class="btnToggle ml-auto"><i class="fas fa-chevron-down"></i></a>
-          </div>
-          
-          <div id="paraDisplay2" class="d-none">
-            <!--list-->
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery ID:</small>
-              </div>
-              <div class="divTableCell" id="deli_id">
-                <small>0004</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Customer:</small>
-              </div>
-              <div class="divTableCell" id="customer_name">
-                <small>Don</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Contact no.:</small>
-              </div>
-              <div class="divTableCell" id="customer_contact">
-                <small>823 4567</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery date:</small>
-              </div>
-              <div class="divTableCell" id="deli_date">
-                <small>02/02/2021</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery time:</small>
-              </div>
-              <div class="divTableCell" id="deli_time">
-                <small>9pm</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Pickup address:</small>
-              </div>
-              <div class="divTableCell" id="pickup_address">
-                <small>No.10, Jln 15, Bebuloh</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery address:</small>
-              </div>
-              <div class="divTableCell" id="deli_address">
-                <small>No.11, Jln Balai, Sg Hanching</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Status:</small>
-              </div>
-              <div class="divTableCell" id="deli_status">
-                <small>UNPAID - CASH</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Message:</small>
-              </div>
-              <div class="divTableCell" id="deli_message">
-                <small>-</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Item Details:</small>
-              </div>
-            </div>
-
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Unit Price</th>
-                  <th scope="col">Total Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                    <td>Poppets</td>
-                    <td>10</td>
-                    <td>$50.00</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery charge:</small>
-              </div>
-              <div class="divTableCell" id="deli_totalp">
-                <small>$3.00</small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Total Price:</small>
-              </div>
-              <div class="divTableCell" id="deli_totalp">
-                <small>$53.00</small>
-              </div>
-            </div>
-            <!--list-->
-
-            <!--Buttons-->
-            <div class="container d-flex">
-              <div class="row ml-auto mt-2">
-                <div class="col-sm-12">
-                  <!-- Accept button -->
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Accept</button>
-  
-                  <!-- Decline button -->
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Decline</button>
-                </div>
-              </div>
-            </div>
-            <!--Buttons-->
-          </div>
-        </div>
-      </div>
-      <!--Username 2-->
+      
 </div>
 
 <script src="js/toggleFaqs.js"></script>

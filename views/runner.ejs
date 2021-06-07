@@ -20,7 +20,29 @@
     <div class="container">  
         <div class="row">
             <div class="col-sm-12">
-                <%- include('partials/runner_profile.ejs') %>
+                <div class="container border mt-5 p-5">
+                    <h2 class="para text-center mb-5"><%= username %></h2>
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <h3 class="para text-center mb-5"><%= username %>'s Detail</h3>
+                            <p class="text-center">Email: <%= email %></p>
+                            <p class="text-center">Phone: <%= phone %></p>
+                            <p class="text-center">Organization: <%= organization %></p>
+                            <p class="text-center">Payment: <%= payment %></p>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <h3 class="para text-center mb-5">Runner's Charges</h3>
+                            <p class="text-center">Brunei Muara - $2.00</p>
+                            <p class="text-center">Tutong</p>
+                            <p class="text-center">Kuala Belait</p>
+                            <p class="text-center">Seria</p>
+                            <p class="text-center">Temburong</p>
+                            <p class="text-center">Outside Brunei</p>
+                        </div>
+                    </div>
+                </div>
             </div>    
         </div>       
     </div>

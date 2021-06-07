@@ -1,12 +1,13 @@
 <div class="container border mt-5 p-5">
-    <h2 class="para text-center mb-5"><%= username %></h2>
+    <h2 class="para text-center mb-5"><%= runner.Username %></h2>
     <div class="row">
 
         <div class="col-sm-6">
-            <h3 class="para text-center mb-5">Runner's Detail</h3>
-            <p class="text-center">Runner's Detail</p>
-            <p class="text-center">Runner's Detail</p>
-            <p class="text-center">Runner's Detail</p>
+            <h3 class="para text-center mb-5"><%= runner.Username %>'s Detail</h3>
+            <p class="text-center">Email: <%= runner.Email %></p>
+            <p class="text-center">Phone: <%= runner.Phone %></p>
+            <p class="text-center">Organization: <%= runner.Organization %></p>
+            <p class="text-center">Payment: <%= runner.Payment %></p>
         </div>
 
         <div class="col-sm-6">

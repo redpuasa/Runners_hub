@@ -6,27 +6,52 @@
         
         <div class="divTable">
           <div class="divTableBody">
-  
-            <div class="divTableRow">
-                <div class="divTableCell">(runner-name) &nbsp;
-                  <button type="button" class="btn detail-btn" data-toggle="modal" data-target="#exampleModal2">
-                    <i class="fas fa-info-circle"></i>
-                  </button>
+                
+              <% runners.forEach(function(runner, index) { %>
+                <div class="divTableRow">
+                  <div class="divTableCell"><%= runner.Username %> &nbsp;
+                    <button class="btn detail-btn" data-toggle="modal" data-target="#runnerModal<%= index %>">
+                      <i class="fas fa-info-circle"></i>
+                    </button></div>
+                    <div class="divTableCell"><button class="btn detail-btn" data-toggle="modal" data-target="#requestModal<%= index %>">Details</button></div>
+                </div>
 
-                  <!-- Modal - Start -->
-                  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal - Start -->
+                  <div class="modal fade" id="runnerModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="#runnerModal<%= index %>Label" aria-hidden="true">
     
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Runner's Details</h5>
+                        <h5 class="modal-title" id="#runnerModal<%= index %>Label"><%= runner.Username %>'s Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
     
                       <div class="modal-body"><!--Modal body - Start-->
-                        <%- include('runner_profile.ejs') %>
+                        <div class="container border mt-5 p-5">
+                            <h2 class="para text-center mb-5"><%= runner.Username %></h2>
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <h3 class="para text-center mb-5"><%= runner.Username %>'s Detail</h3>
+                                    <p class="text-center">Email: <%= runner.Email %></p>
+                                    <p class="text-center">Phone: <%= runner.Phone %></p>
+                                    <p class="text-center">Organization: <%= runner.Organization %></p>
+                                    <p class="text-center">Payment: <%= runner.Payment %></p>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <h3 class="para text-center mb-5">Runner's Charges</h3>
+                                    <p class="text-center">Brunei Muara - $2.00</p>
+                                    <p class="text-center">Tutong</p>
+                                    <p class="text-center">Kuala Belait</p>
+                                    <p class="text-center">Seria</p>
+                                    <p class="text-center">Temburong</p>
+                                    <p class="text-center">Outside Brunei</p>
+                                </div>
+                            </div>
+                        </div>
                       </div><!--Modal body - End-->
     
                       <div class="modal-footer">
@@ -37,19 +62,13 @@
                   </div>
                   <!-- Modal - End -->
 
-                </div>
-                <div class="divTableCell">
-                  
-                <!-- Button trigger modal -->
-                <button type="button" class="btn detail-btn" data-toggle="modal" data-target="#exampleModal">Details</button>
-  
-                <!-- Modal - Start -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <!-- Modal - Start -->
+                <div class="modal fade" id="requestModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="requestModal<%= index %>Label" aria-hidden="true">
   
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">(Runner's Name Goes Here)</h5>
+                      <h5 class="modal-title" id="requestModal<%= index %>Label"><%= runner.Username %></h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -66,42 +85,10 @@
                 </div>
                 </div>
                 <!-- Modal - End -->
- 
-                </div>
-            </div>
-                        
-            <div class="divTableRow">
-                <div class="divTableCell">(runner-name) &nbsp;
-                <button class="btn detail-btn">
-                  <i class="fas fa-info-circle"></i>
-                </button></div>
-                <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
-            </div>
-                        
-            <div class="divTableRow">
-                <div class="divTableCell">(runner-name) &nbsp;
-                <button class="btn detail-btn">
-                  <i class="fas fa-info-circle"></i>
-                </button></div>
-                <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
-            </div>
-                        
-            <div class="divTableRow">
-                <div class="divTableCell">(runner-name) &nbsp;
-                <button class="btn detail-btn">
-                  <i class="fas fa-info-circle"></i>
-                </button></div>
-                <div class="divTableCell "><button class="btn detail-btn">Details</button></div>
-            </div>
-                      
-            <div class="divTableRow">
-                <div class="divTableCell">(runner-name) &nbsp;
-                <button class="btn detail-btn">
-                  <i class="fas fa-info-circle"></i>
-                </button></div>
-                <div class="divTableCell"><button class="btn detail-btn">Details</button></div>
-            </div>
+
+              <% }); %>
                   
+
           </div>
         </div>
       </div>
