@@ -50,6 +50,11 @@ footer{
 /*--------------------------------
     Style for Navigation - Start
 --------------------------------*/
+/*Change the colour of the active nav link*/
+.navbar-nav a.nav-link.active{
+    color: #e64525 !important;
+}
+
 textarea{
     max-height: 800px;
 }
