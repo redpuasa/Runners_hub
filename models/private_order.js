@@ -41,9 +41,6 @@ const PrivateOrderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Status: {
-        type: String
-    },
     Runner: {
         type: String
     }
