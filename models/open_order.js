@@ -30,8 +30,7 @@ const OpenOrderSchema = new mongoose.Schema({
         trim: true
     },
     Item_stat:{
-        type: String,
-        possibleValues: ['Paid','Not Paid(Paid by Runner)','Not Paid(Paid Later)']
+        type: String
     },
     Phone:{
         type: Number,

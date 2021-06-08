@@ -4,65 +4,64 @@
     <h2 class="para text-center"></h2>
     <p class="text-center" id="para-runner">This will be seen by the specific runner</p>
 
-    <form id="privateOrderForm" method="POST" action="/user_privateForm">
+    <form id="privateOrderForm" method="POST" action="/postprivate">
         
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+            <input type="text" class="form-control" id="username" name="username" value="<%= username %>" readonly="readonly">
         </div>
 
         <div class="form-group">
-            <label for="address">Delivery Date</label>
-            <input type="date" class="form-control" id="address" name="deli_date" placeholder="Date" required>
+            <label for="deli-date">Delivery Date</label>
+            <input type="date" class="form-control" id="deli_date" name="deli-date" placeholder="Date" required>
         </div>
 
         <div class="form-group">
-            <label for="address">Delivery Time</label>
-            <input type="time" class="form-control" id="time" name="deli_time" placeholder="Time" required>
+            <label for="deli-time">Delivery Time</label>
+            <input type="time" class="form-control" id="deli_time" name="deli-time" placeholder="Time" required>
         </div>
         
         <div class="form-group">
-            <label for="address">Pick-up Address</label>
-            <input type="text" class="form-control" id="Pickup_Address" name="pickup_address" placeholder="Pick-up Address">
+            <label for="Pickup_Address">Pick-up Address</label>
+            <input type="text" class="form-control" id="Pickup_Address" name="Pickup_Address" placeholder="Pick-up Address" required>
         </div>
 
         <div class="form-group">
-            <label for="address">Delivery Address</label>
-            <input type="text" class="form-control" id="Delivery_Address" name="deli_address" placeholder="Delivery Address">
+            <label for="Delivery_Address">Delivery Address</label>
+            <input type="text" class="form-control" id="Delivery_Address" name="Delivery_Address" placeholder="Delivery Address" required>
         </div>
         
         <div class="form-group">
             <label for="-">Item Status</label><br>
 
             <div>
-                <label class="radio-inline"><input type="radio" name="item_stat" id="paid" value="paid">&nbsp; Paid</label>
+                <label class="radio-inline"><input type="radio" name="item_stat" id="paid" value="Paid" checked>&nbsp; Paid</label>
             </div>
 
             <div>
-                <label class="radio-inline"><input type="radio" name="item_stat" id="notPaid-runner" value="notpaid-runner">&nbsp; Not Paid (Paid by Runner)</label>
+                <label class="radio-inline"><input type="radio" name="item_stat" id="notPaid-runner" value="Not Paid (Paid by Runner)">&nbsp; Not Paid (Paid by Runner)</label>
             </div>
 
             <div>
-                <label class="radio-inline"><input type="radio" name="item_stat" id="notPaid-later" value="notpaid-later">&nbsp; Not Paid (Paid Later)</label> 
+                <label class="radio-inline"><input type="radio" name="item_stat" id="notPaid-later" value="Not Paid (Paid Later)">&nbsp; Not Paid (Paid Later)</label> 
             </div>
         </div>
 
         <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="XXXXXXX">
+            <input type="text" class="form-control" id="phone" name="phone" value="<%= phone %>" readonly="readonly">
         </div>
 
         <div class="form-group">
             <label for="message">Message</label>
-            <textarea class="w-100 form-control" id="message" name="message" placeholder="Please enter intsruction, if required."></textarea>
+            <textarea class="w-100 form-control" id="message" name="message" placeholder="Please enter intsruction, if required." required></textarea>
         </div>
 
         <div class="form-group">
-            <input type="hidden" id="orderStatus" name="orderStatus" value="Private">
+            <input type="hidden" id="orderStatus" name="orderStatus">
         </div>
 
         <button type="submit" class="btn btn-info">Post</button>
     </form>
     
-    <a class="btn" href="#"><button type="submit" class="btn btn-info" id="addPriPost">Post</button></a>
 </div>

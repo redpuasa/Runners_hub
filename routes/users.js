@@ -133,7 +133,7 @@ router.post('/postrequest', (req, res) => {
         Deli_time: req.body.deli_time,
         Pickup_address: req.body.Pickup_Address,
         Delivery_address: req.body.Delivery_Address,
-        Item_stat: req.body.radioStatus,
+        Item_stat: req.body.item_stat,
         Phone: req.body.phone,
         Message: req.body.message,
         Status: req.body.orderStatus
@@ -166,7 +166,7 @@ router.post('/postprivate', (req, res) => {
         Deli_time: req.body.deli_time,
         Pickup_address: req.body.Pickup_Address,
         Delivery_address: req.body.Delivery_Address,
-        Item_stat: req.body.radioStatus,
+        Item_stat: req.body.item_stat,
         Phone: req.body.phone,
         Message: req.body.message,
         Status: req.body.orderStatus
@@ -176,11 +176,18 @@ router.post('/postprivate', (req, res) => {
         res.render('error', {
             title: 'Error page',
             head: err.name,
-            message: 'err.code',
+            message: err,
             href: "/dashboard"
         });
     } else {
-        res.render('user', {title: 'User page'});
+        res.render('user', {
+            title: 'User page',
+            username: currentUser.Username,
+            email: currentUser.Email,
+            address: currentUser.Address,
+            phone: currentUser.Phone,
+            runners: runnerList
+        });
     }
     });
 })
