@@ -96,11 +96,6 @@ router.post('/dashboard', (req, res) => {
 
 router.post('/validation', (req, res) => {  
     req.body.phone = req.body.code + req.body.phone
-    /*const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let token = '';
-        for (let i = 0; i < 25; i++) {
-            token += characters[Math.floor(Math.random() * characters.length )];
-        }*/
     let user = new User({
         Email: req.body.email,
         Username: req.body.username,
@@ -108,7 +103,6 @@ router.post('/validation', (req, res) => {
         Address: req.body.address,
         Phone: req.body.phone,
         Status: req.body.status,
-        //Verification_Code: token,
     });
     user.save(function (err) {
     if (err) {
