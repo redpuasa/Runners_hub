@@ -200,6 +200,7 @@ textarea{
     Style for FAQ - Start
 --------------------------------*/
 .paraFaqs {
+    color: #e64525;
     font-size: 20px;
     font-weight: bold;
 }
