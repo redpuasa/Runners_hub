@@ -42,21 +42,7 @@ router.post('/dashboard', (req, res) => {
         Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
             if (runner.Email === req.body.email && runner.Password === req.body.password) {
-                res.render('runner', {
-                    title: "Runner page",
-                    username: runner.Username,
-                    email: runner.Email,
-                    phone: runner.Phone,
-                    payment: runner.Payment,
-                    organization: runner.Organization,
-                    orders: orderList
-                });
-                privateOrder.find({'Status': "Active", 'Runner' : runner.Username}, function(err, orders) {
-                    orders.forEach(function(order) {
-                        todoList.push(order);
-                    })
-
-                });
+                currentRunner = runner;
                 privateOrder.find({'Runner' : runner.Username}, function(err, orders) {
                     orders.forEach(function(order) {
                         privateList.push(order);
@@ -92,6 +78,7 @@ router.post('/dashboard', (req, res) => {
 
 router.post('/validation', (req, res) => {  
     req.body.phone = req.body.code + req.body.phone
+    
     let user = new User({
         Email: req.body.email,
         Username: req.body.username,
@@ -205,78 +192,6 @@ router.post('/postprivate', (req, res) => {
             runners: runnerList
         });
     }
-    });
-});
-
-router.post('/acceptorder', (req, res) => {
-    let query = {'_id' : req.body.DeliveryID};
-    let newUpdate = {$set: {'Status' : "Active", 'Runner': req.body.orderRunner}}
-    openOrder.updateOne(query, newUpdate, function(err, res) {
-        if (err) throw err;
-    });
-    orderList = [];
-    openOrder.find({}, function(err, orders) {
-        orders.forEach(function(order) {
-            if (order.Status === "Open") {
-                orderList.push(order);
-            }
-        })
-        openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
-            orders.forEach(function(order, index) {
-                if (!(orders[index]._id === order._id)) {
-                    if (index === orders.length - 1) {
-                        todoList.push(order);
-                    }
-                }
-            })
-        });
-        res.render('runner', {
-            title: "Runner page",
-            username: currentRunner.Username,
-            email: currentRunner.Email,
-            phone: currentRunner.Phone,
-            organization: currentRunner.Organization,
-            payment: currentRunner.Payment,
-            orders: orderList,
-            privates: privateList,
-            todo: todoList
-        });
-    });
-})
-
-router.post('/acceptprivate', (req, res) => {
-    let query = {'_id' : req.body.DeliveryID};
-    let newUpdate = {$set: {'Status' : "Active"}}
-    privateOrder.updateOne(query, newUpdate, function(err, res) {
-        if (err) throw err;
-    });
-    privateList = [];
-    privateOrder.find({}, function(err, orders) {
-        orders.forEach(function(order) {
-            if (order.Status === "Pending") {
-                privateList.push(order);
-            }
-        })
-        privateOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
-            orders.forEach(function(order, index) {
-                if (!(orders[index]._id === order._id)) {
-                    if (index === orders.length - 1) {
-                        todoList.push(order);
-                    }
-                }
-            })
-        });
-        res.render('runner', {
-            title: "Runner page",
-            username: currentRunner.Username,
-            email: currentRunner.Email,
-            phone: currentRunner.Phone,
-            organization: currentRunner.Organization,
-            payment: currentRunner.Payment,
-            orders: orderList,
-            privates: privateList,
-            todo: todoList
-        });
     });
 })
 
