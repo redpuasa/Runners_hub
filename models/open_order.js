@@ -8,12 +8,14 @@ const OpenOrderSchema = new mongoose.Schema({
     },
     Deli_date:{
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
     Deli_time:{
         //type: String,
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
     Pickup_address:{
         type: String,
@@ -28,8 +30,7 @@ const OpenOrderSchema = new mongoose.Schema({
         trim: true
     },
     Item_stat:{
-        type: String,
-        possibleValues: ['Paid','Not Paid(Paid by Runner)','Not Paid(Paid Later)']
+        type: String
     },
     Phone:{
         type: Number,

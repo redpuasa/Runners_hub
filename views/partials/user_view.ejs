@@ -19,7 +19,7 @@
                 <!-- Modal - Start -->
                   <div class="modal fade" id="runnerModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="#runnerModal<%= index %>Label" aria-hidden="true">
     
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="#runnerModal<%= index %>Label"><%= runner.Username %>'s Details</h5>
@@ -65,7 +65,7 @@
                   <!-- Modal - Start -->
                 <div class="modal fade" id="requestModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="requestModal<%= index %>Label" aria-hidden="true">
   
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="requestModal<%= index %>Label"><%= runner.Username %></h5>
@@ -75,7 +75,7 @@
                     </div>
   
                     <div class="modal-body"><!--Modal body - Start-->
-                      <%- include('user_privateForm.ejs') %>
+                      <%- include('user_privateForm.ejs', {runner: runner.Username}) %>
                     </div><!--Modal body - End-->
   
                     <div class="modal-footer">
