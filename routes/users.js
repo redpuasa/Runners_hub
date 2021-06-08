@@ -46,7 +46,8 @@ router.post('/dashboard', (req, res) => {
         });
         Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
-            if (runner.Email === req.body.email && runner.Password === req.body.password) {
+            if (runner.Email === req.body.email && runner.Password === req.body.password) {rs
+                
                 currentRunner = runner;
                 openOrder.find({'Runner' : runner.Username}, function(err, orders) {
                     orders.forEach(function(order) {
@@ -57,6 +58,7 @@ router.post('/dashboard', (req, res) => {
                     orders.forEach(function(order) {
                         todoList.push(order);
                     })
+
                 });
                 privateOrder.find({'Runner' : runner.Username}, function(err, orders) {
                     orders.forEach(function(order) {
@@ -217,7 +219,31 @@ router.post('/postprivate', (req, res) => {
         });
     }
     });
-})
+});
+
+router.get("/edit_profile", (req,res) => {
+    res.render("editUserProfile", {title:"tester"})
+});
+
+router.get("/edit-profile", (req,res) => {
+    res.render("editRunnerProfile", {title:"tester"})
+});
+
+router.patch('/runner/:id', (req, res) => {
+    
+    runner.save(function (err) {
+    if (err) {
+        res.render('error', {
+            title: 'Error page',
+            head: err.name,
+            message: 'err.code',
+            href: "/dashboard"
+        });
+    } else {
+        res.render('runner', {title: 'Runner page'});
+    }
+    });
+});
 
 router.post('/acceptorder', (req, res) => {
     let query = {'_id' : req.body.DeliveryID};

@@ -26,9 +26,32 @@ const RunnerSchema = new mongoose.Schema({
 	},
 	Payment: {
 		type: String,
-	}
+	},
+	fName: {
+		type: String,
+	},
+	lName:{
+		type: String,
+	},
+	brunei:{
+		type: String,
+	},
+	temburong: {
+		type: String,
+	},
+	tutong: {
+		type: String,
+	},
+	seria: {
+		type: String,
+	},
+	kb: {
+		type: String,
+	},
+	outside: {
+		type: String,
+	},
 });
 
 const Runner = mongoose.model('Runner', RunnerSchema);
-
 module.exports = Runner;
