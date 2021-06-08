@@ -43,6 +43,9 @@ const OpenOrderSchema = new mongoose.Schema({
     },
     Status: {
         type: String
+    },
+    Runner: {
+        type: String
     }
 });
 

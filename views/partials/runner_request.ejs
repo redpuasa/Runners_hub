@@ -1,147 +1,154 @@
 <div class="container mt-5 p-5 border">
-    <h2 class="para text-center">PERSONAL DELIVERY REQUEST</h2>
-    <p class="text-center" id="para-runner">Job List</p>
-    <div class="row">
+  <h2 class="para text-center">PERSONAL DELIVERY REQUEST</h2>
+  <p class="text-center" id="para-runner">Job List</p>
+  <div class="row">
+    
+    <div class="col-sm-12 p-5">
       
-      <div class="col-sm-12 p-5">
-        
-        <div class="divTable">
-          <div class="divTableBody">
+      <div class="divTable">
+        <div class="divTableBody">
 
-            <% privates.forEach(function(order, index) { %>
-            <div class="divTableRow">
-                <div class="divTableCell">User <%= index + 1 %></div>
-                <div class="divTableCell">
-                  
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index %>">Details</button>
-  
-                <!-- Modal - Start -->
-                <div class="modal fade" id="exampleModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModal<%= index %>Label" aria-hidden="true">
-  
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModal<%= index %>Label">Delivery details</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+          <% privates.forEach(function(order, index) { %>
+          <div class="divTableRow">
+              <div class="divTableCell">User <%= index + 1 %></div>
+              <div class="divTableCell">
+                
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index %>">Details</button>
+
+              <!-- Modal - Start -->
+              <div class="modal fade" id="exampleModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModal<%= index %>Label" aria-hidden="true">
+
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal<%= index %>Label">Delivery details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body"> <!--Modal body - Start-->
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery ID:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_id">
+                        <small><%= order._id %></small>
+                      </div>
                     </div>
-  
-                    <div class="modal-body"> <!--Modal body - Start-->
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Delivery ID:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_id">
-                          <small>0001</small>
-                        </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Customer:</small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Customer:</small>
-                        </div>
-                        <div class="divTableCell" id="customer_name">
-                          <small><%= order.Username %></small>
-                        </div>
+                      <div class="divTableCell" id="customer_name">
+                        <small><%= order.Username %></small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Contact no.:</small>
-                        </div>
-                        <div class="divTableCell" id="customer_contact">
-                          <small><%= order.Phone %></small>
-                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Contact no.:</small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Delivery date:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_date">
-                          <small><%= order.Deli_date %></small>
-                        </div>
+                      <div class="divTableCell" id="customer_contact">
+                        <small><%= order.Phone %></small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Delivery time:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_time">
-                          <small><%= order.Deli_time %></small>
-                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery date:</small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Pickup address:</small>
-                        </div>
-                        <div class="divTableCell" id="pickup_address">
-                          <small><%= order.Pickup_address %></small>
-                        </div>
+                      <div class="divTableCell" id="deli_date">
+                        <small><%= order.Deli_date %></small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Delivery address:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_address">
-                          <small><%= order.Delivery_address %></small>
-                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery time:</small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Status:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_status">
-                          <small><%= order.Item_stat %></small>
-                        </div>
+                      <div class="divTableCell" id="deli_time">
+                        <small><%= order.Deli_time %></small>
                       </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Message:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_message">
-                          <small><%= order.Message %></small>
-                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Pickup address:</small>
                       </div>
-  
-                      <!--Buttons-->
-                      <div class="container d-flex">
-                        <div class="row ml-auto mt-2">
-                          <div class="col-sm-12">
+                      <div class="divTableCell" id="pickup_address">
+                        <small><%= order.Pickup_address %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery address:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_address">
+                        <small><%= order.Delivery_address %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Status:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_status">
+                        <small><%= order.Item_stat %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Message:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_message">
+                        <small><%= order.Message %></small>
+                      </div>
+                    </div>
+
+                    <!--Buttons-->
+                    <div class="container d-flex">
+                      <div class="row ml-auto mt-2">
+                        <div class="col-sm-12">
+
+                          <form action="/acceptprivate" method="POST">
+                            <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                            <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
+
                             <!-- Accept button -->
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Accept</button>
+                            <button type="submit" class="btn btn-success">Accept</button>
             
                             <!-- Decline button -->
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Decline</button>
-                          </div>
+                            <button type="button" class="btn btn-danger">Decline</button>
+                          </form>
+                          
                         </div>
                       </div>
-                      <!--Buttons-->
-
-                    </div><!--Modal body - End-->
-  
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
+                    <!--Buttons-->
+
+                  </div><!--Modal body - End-->
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
-                </div>
-                <!-- Modal - End -->
               </div>
+              </div>
+              <!-- Modal - End -->
             </div>
-                        
-            <% }); %>
-                  
           </div>
+                      
+          <% }); %>
+                
         </div>
-        
       </div>
-
+      
     </div>
+
   </div>
+</div>
