@@ -8,6 +8,7 @@ const privateOrder = require('../models/private_order');
 let runnerList = [];
 let orderList = [];
 let currentUser = {};
+let currentRunner = {};
 
 router.post('/dashboard', (req, res) => {
     let success = false;
@@ -40,7 +41,7 @@ router.post('/dashboard', (req, res) => {
         Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
             if (runner.Email === req.body.email && runner.Password === req.body.password) {
-                
+                currentRunner = runner;
                 res.render('runner', {
                     title: "Runner page",
                     username: runner.Username,
@@ -83,7 +84,6 @@ router.post('/validation', (req, res) => {
         Status: req.body.status,
         //Verification_Code: token,
     });
-    console.log({Username: req.body.username, Password: req.body.password})
     user.save(function (err) {
     if (err) {
     	if (err.name === "MongoError" && err.code === 11000) {
@@ -143,7 +143,7 @@ router.post('/postrequest', (req, res) => {
         res.render('error', {
             title: 'Error page',
             head: err.name,
-            message: 'err.code',
+            message: err,
             href: "/dashboard"
         });
     } else {

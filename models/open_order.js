@@ -8,12 +8,14 @@ const OpenOrderSchema = new mongoose.Schema({
     },
     Deli_date:{
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
     Deli_time:{
         //type: String,
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
     Pickup_address:{
         type: String,
