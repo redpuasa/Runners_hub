@@ -52,7 +52,7 @@
     <div class="container">  
         <div class="row">
             <div class="col-sm-12">
-                <%- include('partials/runner_request.ejs') %>
+                <%- include('partials/runner_request.ejs', {runner: username}) %>
             </div>    
         </div>       
     </div>
@@ -62,7 +62,7 @@
     <div class="container">  
         <div class="row">
             <div class="col-sm-12">
-              <%- include('partials/runner_open.ejs') %>
+              <%- include('partials/runner_open.ejs', {runner: username}) %>
             </div>    
         </div>       
     </div>
@@ -72,7 +72,7 @@
     <div class="container">  
         <div class="row">
             <div class="col-sm-12">
-              <%- include('partials/runner_todo.ejs') %>
+              <%- include('partials/runner_todo.ejs', {todo: todo}) %>
             </div>    
         </div>       
     </div>

@@ -34,7 +34,7 @@
                           <small>Delivery ID:</small>
                         </div>
                         <div class="divTableCell" id="deli_id">
-                          <small>0001</small>
+                          <small><%= order._id %></small>
                         </div>
                       </div>
   
@@ -114,11 +114,18 @@
                       <div class="container d-flex">
                         <div class="row ml-auto mt-2">
                           <div class="col-sm-12">
-                            <!-- Accept button -->
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Accept</button>
-            
-                            <!-- Decline button -->
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Decline</button>
+
+                            <form action="/acceptprivate" method="POST">
+                              <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                              <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
+
+                              <!-- Accept button -->
+                              <button type="submit" class="btn btn-success">Accept</button>
+              
+                              <!-- Decline button -->
+                              <button type="button" class="btn btn-danger">Decline</button>
+                            </form>
+                            
                           </div>
                         </div>
                       </div>
