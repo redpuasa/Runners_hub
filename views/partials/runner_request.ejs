@@ -7,21 +7,22 @@
         
         <div class="divTable">
           <div class="divTableBody">
-  
+
+            <% privates.forEach(function(order, index) { %>
             <div class="divTableRow">
-                <div class="divTableCell">User 1</div>
+                <div class="divTableCell">User <%= index + 1 %></div>
                 <div class="divTableCell">
                   
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
+                <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index %>">Details</button>
   
                 <!-- Modal - Start -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModal<%= index %>Label" aria-hidden="true">
   
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Delivery details</h5>
+                      <h5 class="modal-title" id="exampleModal<%= index %>Label">Delivery details</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -42,7 +43,7 @@
                           <small>Customer:</small>
                         </div>
                         <div class="divTableCell" id="customer_name">
-                          <small>Michaelangelo</small>
+                          <small><%= order.Username %></small>
                         </div>
                       </div>
   
@@ -51,7 +52,7 @@
                           <small>Contact no.:</small>
                         </div>
                         <div class="divTableCell" id="customer_contact">
-                          <small>823 4567</small>
+                          <small><%= order.Phone %></small>
                         </div>
                       </div>
   
@@ -60,7 +61,7 @@
                           <small>Delivery date:</small>
                         </div>
                         <div class="divTableCell" id="deli_date">
-                          <small>01/01/2021</small>
+                          <small><%= order.Deli_date %></small>
                         </div>
                       </div>
   
@@ -69,7 +70,7 @@
                           <small>Delivery time:</small>
                         </div>
                         <div class="divTableCell" id="deli_time">
-                          <small>5pm</small>
+                          <small><%= order.Deli_time %></small>
                         </div>
                       </div>
   
@@ -78,7 +79,7 @@
                           <small>Pickup address:</small>
                         </div>
                         <div class="divTableCell" id="pickup_address">
-                          <small>No.9, Jln 14, Jerudong</small>
+                          <small><%= order.Pickup_address %></small>
                         </div>
                       </div>
   
@@ -87,7 +88,7 @@
                           <small>Delivery address:</small>
                         </div>
                         <div class="divTableCell" id="deli_address">
-                          <small>TAIB, Kiulap</small>
+                          <small><%= order.Delivery_address %></small>
                         </div>
                       </div>
   
@@ -96,7 +97,7 @@
                           <small>Status:</small>
                         </div>
                         <div class="divTableCell" id="deli_status">
-                          <small>PAID - DEBIT</small>
+                          <small><%= order.Item_stat %></small>
                         </div>
                       </div>
   
@@ -105,58 +106,24 @@
                           <small>Message:</small>
                         </div>
                         <div class="divTableCell" id="deli_message">
-                          <small>Give to the receptionist</small>
+                          <small><%= order.Message %></small>
                         </div>
                       </div>
   
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Item Details:</small>
+                      <!--Buttons-->
+                      <div class="container d-flex">
+                        <div class="row ml-auto mt-2">
+                          <div class="col-sm-12">
+                            <!-- Accept button -->
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Accept</button>
+            
+                            <!-- Decline button -->
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Decline</button>
+                          </div>
                         </div>
                       </div>
-  
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Item</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Total Price</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                              <td>Brownies</td>
-                              <td>1</td>
-                              <td>$10.00</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                              <td>Cupcake - 12 set</td>
-                              <td>1</td>
-                              <td>$12.00</td>
-                          </tr>
-                        </tbody>
-                      </table>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Delivery charge:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_totalp">
-                          <small>$4.00</small>
-                        </div>
-                      </div>
-  
-                      <div class="divTableRow">
-                        <div class="divTableCell">
-                          <small>Total Price:</small>
-                        </div>
-                        <div class="divTableCell" id="deli_totalp">
-                          <small>$26.00</small>
-                        </div>
-                      </div>
+                      <!--Buttons-->
+
                     </div><!--Modal body - End-->
   
                     <div class="modal-footer">
@@ -169,27 +136,7 @@
               </div>
             </div>
                         
-            <div class="divTableRow">
-                <div class="divTableCell">User 2</div>
-                <div class="divTableCell">
-                  <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal2">Details</button>
-                </div>
-            </div>
-                        
-            <div class="divTableRow">
-                <div class="divTableCell">-</div>
-                <div class="divTableCell">
-                    <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
-                </div>
-            </div>
-                        
-            <div class="divTableRow">
-                <div class="divTableCell">-</div>
-                <div class="divTableCell">
-                    <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal1">Details</button>
-                </div>
-            </div>  
+            <% }); %>
                   
           </div>
         </div>

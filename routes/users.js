@@ -7,6 +7,7 @@ const privateOrder = require('../models/private_order');
 
 let runnerList = [];
 let orderList = [];
+let privateList = [];
 let currentUser = {};
 let currentRunner = {};
 
@@ -42,15 +43,22 @@ router.post('/dashboard', (req, res) => {
         runners.forEach(function(runner) {
             if (runner.Email === req.body.email && runner.Password === req.body.password) {
                 currentRunner = runner;
-                res.render('runner', {
-                    title: "Runner page",
-                    username: runner.Username,
-                    email: runner.Email,
-                    phone: runner.Phone,
-                    organization: runner.Organization,
-                    payment: runner.Payment,
-                    orders: orderList
+                privateOrder.find({'Runner' : runner.Username}, function(err, orders) {
+                    orders.forEach(function(order) {
+                        privateList.push(order);
+                    })
+                    res.render('runner', {
+                        title: "Runner page",
+                        username: runner.Username,
+                        email: runner.Email,
+                        phone: runner.Phone,
+                        organization: runner.Organization,
+                        payment: runner.Payment,
+                        orders: orderList,
+                        privates: privateList
+                    });
                 });
+                
                 success = true
             }
         });
@@ -169,7 +177,7 @@ router.post('/postprivate', (req, res) => {
         Item_stat: req.body.item_stat,
         Phone: req.body.phone,
         Message: req.body.message,
-        Status: req.body.orderStatus
+        Runner: req.body.orderRunner
     });
     privateorder.save(function (err) {
     if (err) {
