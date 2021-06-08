@@ -46,8 +46,8 @@ router.post('/dashboard', (req, res) => {
         });
         Runner.find({}, function(err, runners) {
         runners.forEach(function(runner) {
-            if (runner.Email === req.body.email && runner.Password === req.body.password) {
-<<<<<<< Updated upstream
+            if (runner.Email === req.body.email && runner.Password === req.body.password) {rs
+                
                 currentRunner = runner;
                 openOrder.find({'Runner' : runner.Username}, function(err, orders) {
                     orders.forEach(function(order) {
@@ -58,16 +58,7 @@ router.post('/dashboard', (req, res) => {
                     orders.forEach(function(order) {
                         todoList.push(order);
                     })
-=======
-                res.render('runner', {
-                    title: "Runner page",
-                    username: runner.Username,
-                    email: runner.Email,
-                    phone: runner.Phone,
-                    organization: runner.Organization,
-                    payment: runner.Payment,
-                    orders: orderList
->>>>>>> Stashed changes
+
                 });
                 privateOrder.find({'Runner' : runner.Username}, function(err, orders) {
                     orders.forEach(function(order) {
