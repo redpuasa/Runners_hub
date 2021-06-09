@@ -233,39 +233,40 @@ function acceptOrder(req, res) {
         if (err) throw err;
     });
     orderList = [];
-    openOrder.find({}, function(err, orders) {
-        orders.forEach(function(order) {
-            if (order.Status === "Open") {
-                orderList.push(order);
-            }
-        })
-    });
+    
     todoList = [];
     openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
         })
-    }); 
-    privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
-        orders.forEach(function(order) {
-            todoList.push(order);
-        })
-        setTimeout(function() {
-            res.render('runner', {
-                title: "Runner page",
-                username: currentRunner.Username,
-                email: currentRunner.Email,
-                phone: currentRunner.Phone,
-                organization: currentRunner.Organization,
-                payment: currentRunner.Payment,
-                orders: orderList,
-                privates: privateList,
-                todo: todoList
+        privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+            orders.forEach(function(order) {
+                todoList.push(order);
+            })
+            openOrder.find({}, function(err, orders) {
+                orders.forEach(function(order) {
+                    if (order.Status === "Open") {
+                        orderList.push(order);
+                    }
+                })
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
             });
-        }, 600);
-    });
+        });
+    }); 
+    
     
 }
+
 function acceptPrivate(req, res) {
     let query = {'_id' : req.body.DeliveryID};
     let newUpdate = {$set: {'Status' : "Active"}}
@@ -273,38 +274,36 @@ function acceptPrivate(req, res) {
         if (err) throw err;
     });
     privateList = [];
-    privateOrder.find({}, function(err, orders) {
-        orders.forEach(function(order) {
-            if (order.Status === "Pending") {
-                privateList.push(order);
-            }
-        })
-    });
     todoList = [];
     openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
         })
-        
-    });
-    privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
-        orders.forEach(function(order) {
-            todoList.push(order);
-        })
-        setTimeout(function() {
-            res.render('runner', {
-                title: "Runner page",
-                username: currentRunner.Username,
-                email: currentRunner.Email,
-                phone: currentRunner.Phone,
-                organization: currentRunner.Organization,
-                payment: currentRunner.Payment,
-                orders: orderList,
-                privates: privateList,
-                todo: todoList
+        privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+            orders.forEach(function(order) {
+                todoList.push(order);
+            })
+            privateOrder.find({}, function(err, orders) {
+                orders.forEach(function(order) {
+                    if (order.Status === "Pending") {
+                        privateList.push(order);
+                    }
+                })
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
             });
-        }, 600);
+        });
     });
+    
 }
 
 module.exports = router;

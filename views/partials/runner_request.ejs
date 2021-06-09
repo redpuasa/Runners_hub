@@ -8,6 +8,13 @@
       <div class="divTable">
         <div class="divTableBody">
 
+          <% if(privates.length === 0) { %>
+          <div class="row mx-auto mt-5">
+            <div class="col-sm-12 border-bottom border-dark pb-3">
+              <p class="text-center">No private request currently</p>
+            </div>
+          </div>
+          <% } else { %>
           <% privates.forEach(function(order, index) { %>
           <div class="divTableRow">
               <div class="divTableCell">User <%= index + 1 %></div>
@@ -143,7 +150,7 @@
             </div>
           </div>
                       
-          <% }); %>
+          <% }); } %>
                 
         </div>
       </div>

@@ -2,6 +2,13 @@
   <h2 class="para text-center">OPEN DELIVERY REQUEST</h2>
   <p class="text-center" id="para-runner">Job List</p>
 
+      <% if(orders.length === 0) { %>
+      <div class="row mx-auto mt-5">
+        <div class="col-sm-12 border-bottom border-dark pb-3">
+          <p class="text-center">No open request currently</p>
+        </div>
+      </div>
+      <% } else { %>
       <% orders.forEach(function(order, index) { %>
       <div class="row mx-auto mt-5">
         <div class="col-sm-12 border-bottom border-dark pb-3">
@@ -118,7 +125,7 @@
           </div>
         </div>
       </div>
-      <% }); %>
+      <% });} %>
 
       
 </div>
