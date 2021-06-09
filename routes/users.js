@@ -64,30 +64,34 @@ router.post('/dashboard', (req, res) => {
                             privateList.push(order);
                         }
                     })
-                    res.render('runner', {
-                        title: "Runner page",
-                        username: runner.Username,
-                        email: runner.Email,
-                        phone: runner.Phone,
-                        organization: runner.Organization,
-                        payment: runner.Payment,
-                        orders: orderList,
-                        privates: privateList,
-                        todo: todoList
-                    });
+                    setTimeout(function() {
+                        res.render('runner', {
+                            title: "Runner page",
+                            username: runner.Username,
+                            email: runner.Email,
+                            phone: runner.Phone,
+                            organization: runner.Organization,
+                            payment: runner.Payment,
+                            orders: orderList,
+                            privates: privateList,
+                            todo: todoList
+                        });
+                    }, 200);
                 });
                 
                 success = true
             }
         });
-        if (!success) {
-            res.render('error', {
-                title: 'Error page',
-                head: 'Unsuccessful login',
-                message: 'Incorrect email or password',
-                href: "login"
-            });
-        }
+        setTimeout(function() {
+            if (!success) {
+                res.render('error', {
+                    title: 'Error page',
+                    head: 'Unsuccessful login',
+                    message: 'Incorrect email or password',
+                    href: "login"
+                });
+            }
+        }, 200);
     })
 
     })
@@ -214,6 +218,7 @@ router.post('/postprivate', (req, res) => {
 })
 
 router.post('/acceptorder', (req, res) => {
+    let i = 0;
     let query = {'_id' : req.body.DeliveryID};
     let newUpdate = {$set: {'Status' : "Active", 'Runner': req.body.orderRunner}}
     openOrder.updateOne(query, newUpdate, function(err, res) {
@@ -224,32 +229,42 @@ router.post('/acceptorder', (req, res) => {
         orders.forEach(function(order) {
             if (order.Status === "Open") {
                 orderList.push(order);
+                i++;
             }
         })
-        openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
-            orders.forEach(function(order, index) {
-                if (!(orders[index]._id === order._id)) {
-                    if (index === orders.length - 1) {
-                        todoList.push(order);
-                    }
-                }
-            })
-        });
-        res.render('runner', {
-            title: "Runner page",
-            username: currentRunner.Username,
-            email: currentRunner.Email,
-            phone: currentRunner.Phone,
-            organization: currentRunner.Organization,
-            payment: currentRunner.Payment,
-            orders: orderList,
-            privates: privateList,
-            todo: todoList
-        });
+    });
+    todoList = [];
+    openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
+        orders.forEach(function(order) {
+            todoList.push(order);
+            i++;
+        })
+    }); 
+    privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+        orders.forEach(function(order) {
+            todoList.push(order);
+            i++;
+        })
+        setTimeout(function() {
+            if (i > 2) {
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
+            }
+        }, 200);
     });
 })
 
 router.post('/acceptprivate', (req, res) => {
+    let i = 0;
     let query = {'_id' : req.body.DeliveryID};
     let newUpdate = {$set: {'Status' : "Active"}}
     privateOrder.updateOne(query, newUpdate, function(err, res) {
@@ -260,29 +275,40 @@ router.post('/acceptprivate', (req, res) => {
         orders.forEach(function(order) {
             if (order.Status === "Pending") {
                 privateList.push(order);
+                i++;
             }
         })
-        privateOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
-            orders.forEach(function(order, index) {
-                if (!(orders[index]._id === order._id)) {
-                    if (index === orders.length - 1) {
-                        todoList.push(order);
-                    }
-                }
-            })
-        });
-        res.render('runner', {
-            title: "Runner page",
-            username: currentRunner.Username,
-            email: currentRunner.Email,
-            phone: currentRunner.Phone,
-            organization: currentRunner.Organization,
-            payment: currentRunner.Payment,
-            orders: orderList,
-            privates: privateList,
-            todo: todoList
-        });
     });
+    todoList = [];
+    openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
+        orders.forEach(function(order) {
+            todoList.push(order);
+            i++;
+        })
+        
+    });
+    privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+        orders.forEach(function(order) {
+            todoList.push(order);
+            i++;
+        })
+        setTimeout(function() {
+            if (i > 2) {
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
+            }
+        }, 200);
+    });
+    
 })
 
 module.exports = router;
