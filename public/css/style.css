@@ -446,7 +446,8 @@ textarea{
 /* Changing the open form request colour */
 #open_request_form{
     background-color: #152b32;
-    margin: 10px;
+    border-radius: 20px;
+    color: #fff;
 }
 /*------------------------------------------------
     Style for Make a Request - End
