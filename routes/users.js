@@ -13,89 +13,100 @@ let currentUser = {};
 let currentRunner = {};
 
 router.post('/dashboard', (req, res) => {
-    let success = false;
-    runnerList = [];
-    orderList = [];
-    privateList = [];
-    todoList = [];
-    openOrder.find({}, function(err, orders) {
-        orders.forEach(function(order) {
-            if (order.Status === "Open") {
-                orderList.push(order);
-            }
-        })
-    });
-    Runner.find({}, function(err, runners) {
-        runners.forEach(function(runner) {
-            runnerList.push(runner);
-        })
-        User.find({}, function(err, users) {
-        users.forEach(function(user) {
-            if (user.Email === req.body.email && user.Password === req.body.password) {
-                currentUser = user;
-                res.render('user', {
-                    title: "User page",
-                    username: user.Username,
-                    email: user.Email,
-                    address: user.Address,
-                    phone: user.Phone,
-                    runners: runnerList
-                });
-                success = true;
-            }
+    if (req.body.formMethod === "Login") {
+        let success = false;
+        runnerList = [];
+        orderList = [];
+        privateList = [];
+        todoList = [];
+        openOrder.find({}, function(err, orders) {
+            orders.forEach(function(order) {
+                if (order.Status === "Open") {
+                    orderList.push(order);
+                }
+            })
         });
         Runner.find({}, function(err, runners) {
-        runners.forEach(function(runner) {
-            if (runner.Email === req.body.email && runner.Password === req.body.password) {
-                currentRunner = runner;
-                openOrder.find({'Runner' : runner.Username}, function(err, orders) {
-                    orders.forEach(function(order) {
-                        todoList.push(order);
-                    })
-                });
-                privateOrder.find({'Status': "Active", 'Runner' : runner.Username}, function(err, orders) {
-                    orders.forEach(function(order) {
-                        todoList.push(order);
-                    })
-                });
-                privateOrder.find({'Runner' : runner.Username}, function(err, orders) {
-                    orders.forEach(function(order) {
-                        if (order.Status === "Pending") {
-                            privateList.push(order);
-                        }
-                    })
-                    setTimeout(function() {
-                        res.render('runner', {
-                            title: "Runner page",
-                            username: runner.Username,
-                            email: runner.Email,
-                            phone: runner.Phone,
-                            organization: runner.Organization,
-                            payment: runner.Payment,
-                            orders: orderList,
-                            privates: privateList,
-                            todo: todoList
-                        });
-                    }, 200);
-                });
-                
-                success = true
-            }
-        });
-        setTimeout(function() {
-            if (!success) {
-                res.render('error', {
-                    title: 'Error page',
-                    head: 'Unsuccessful login',
-                    message: 'Incorrect email or password',
-                    href: "login"
-                });
-            }
-        }, 200);
-    })
+            runners.forEach(function(runner) {
+                runnerList.push(runner);
+            })
+            User.find({}, function(err, users) {
+            users.forEach(function(user) {
+                if (user.Email === req.body.email && user.Password === req.body.password) {
+                    currentUser = user;
+                    res.render('user', {
+                        title: "User page",
+                        username: user.Username,
+                        email: user.Email,
+                        address: user.Address,
+                        phone: user.Phone,
+                        runners: runnerList
+                    });
+                    success = true;
+                }
+            });
+            Runner.find({}, function(err, runners) {
+            runners.forEach(function(runner) {
+                if (runner.Email === req.body.email && runner.Password === req.body.password) {
+                    currentRunner = runner;
+                    openOrder.find({'Runner' : runner.Username}, function(err, orders) {
+                        orders.forEach(function(order) {
+                            todoList.push(order);
+                        })
+                    });
+                    privateOrder.find({'Status': "Active", 'Runner' : runner.Username}, function(err, orders) {
+                        orders.forEach(function(order) {
+                            todoList.push(order);
+                        })
+                    });
+                    privateOrder.find({'Runner' : runner.Username}, function(err, orders) {
+                        orders.forEach(function(order) {
+                            if (order.Status === "Pending") {
+                                privateList.push(order);
+                            }
+                        })
+                        setTimeout(function() {
+                            res.render('runner', {
+                                title: "Runner page",
+                                username: runner.Username,
+                                email: runner.Email,
+                                phone: runner.Phone,
+                                organization: runner.Organization,
+                                payment: runner.Payment,
+                                orders: orderList,
+                                privates: privateList,
+                                todo: todoList
+                            });
+                        }, 200);
+                    });
+                    
+                    success = true
+                }
+            });
+            setTimeout(function() {
+                if (!success) {
+                    res.render('error', {
+                        title: 'Error page',
+                        head: 'Unsuccessful login',
+                        message: 'Incorrect email or password',
+                        href: "login"
+                    });
+                }
+            }, 200);
+        })
 
-    })
-    })
+        })
+        })
+
+    } else if (req.body.formMethod === "openRequest") {
+        postRequest(req, res);
+    } else if (req.body.formMethod === "privateRequest") {
+        postPrivate(req, res);
+    } else if (req.body.formMethod === "openAccept") {
+        acceptOrder(req, res);
+    } else if (req.body.formMethod === "privateAccept") {
+        acceptPrivate(req, res);
+    }
 })
 
 router.post('/validation', (req, res) => {  
@@ -149,8 +160,7 @@ router.post('/runner-validation', (req, res) => {
     }
 	});
 })
-
-router.post('/postrequest', (req, res) => {
+function postRequest(req, res) {
     let order = new openOrder({
         Username: req.body.username,
         Deli_date: req.body.deli_date,
@@ -181,9 +191,8 @@ router.post('/postrequest', (req, res) => {
         });
     }
     });
-})
-
-router.post('/postprivate', (req, res) => {
+}
+function postPrivate(req, res) {
     let privateorder = new privateOrder({
         Username: req.body.username,
         Deli_date: req.body.deli_date,
@@ -215,10 +224,9 @@ router.post('/postprivate', (req, res) => {
         });
     }
     });
-})
+}
 
-router.post('/acceptorder', (req, res) => {
-    let i = 0;
+function acceptOrder(req, res) {
     let query = {'_id' : req.body.DeliveryID};
     let newUpdate = {$set: {'Status' : "Active", 'Runner': req.body.orderRunner}}
     openOrder.updateOne(query, newUpdate, function(err, res) {
@@ -229,7 +237,6 @@ router.post('/acceptorder', (req, res) => {
         orders.forEach(function(order) {
             if (order.Status === "Open") {
                 orderList.push(order);
-                i++;
             }
         })
     });
@@ -237,34 +244,29 @@ router.post('/acceptorder', (req, res) => {
     openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
-            i++;
         })
     }); 
     privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
-            i++;
         })
         setTimeout(function() {
-            if (i > 2) {
-                res.render('runner', {
-                    title: "Runner page",
-                    username: currentRunner.Username,
-                    email: currentRunner.Email,
-                    phone: currentRunner.Phone,
-                    organization: currentRunner.Organization,
-                    payment: currentRunner.Payment,
-                    orders: orderList,
-                    privates: privateList,
-                    todo: todoList
-                });
-            }
-        }, 200);
+            res.render('runner', {
+                title: "Runner page",
+                username: currentRunner.Username,
+                email: currentRunner.Email,
+                phone: currentRunner.Phone,
+                organization: currentRunner.Organization,
+                payment: currentRunner.Payment,
+                orders: orderList,
+                privates: privateList,
+                todo: todoList
+            });
+        }, 600);
     });
-})
-
-router.post('/acceptprivate', (req, res) => {
-    let i = 0;
+    
+}
+function acceptPrivate(req, res) {
     let query = {'_id' : req.body.DeliveryID};
     let newUpdate = {$set: {'Status' : "Active"}}
     privateOrder.updateOne(query, newUpdate, function(err, res) {
@@ -275,7 +277,6 @@ router.post('/acceptprivate', (req, res) => {
         orders.forEach(function(order) {
             if (order.Status === "Pending") {
                 privateList.push(order);
-                i++;
             }
         })
     });
@@ -283,32 +284,27 @@ router.post('/acceptprivate', (req, res) => {
     openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
-            i++;
         })
         
     });
     privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
-            i++;
         })
         setTimeout(function() {
-            if (i > 2) {
-                res.render('runner', {
-                    title: "Runner page",
-                    username: currentRunner.Username,
-                    email: currentRunner.Email,
-                    phone: currentRunner.Phone,
-                    organization: currentRunner.Organization,
-                    payment: currentRunner.Payment,
-                    orders: orderList,
-                    privates: privateList,
-                    todo: todoList
-                });
-            }
-        }, 200);
+            res.render('runner', {
+                title: "Runner page",
+                username: currentRunner.Username,
+                email: currentRunner.Email,
+                phone: currentRunner.Phone,
+                organization: currentRunner.Organization,
+                payment: currentRunner.Payment,
+                orders: orderList,
+                privates: privateList,
+                todo: todoList
+            });
+        }, 600);
     });
-    
-})
+}
 
 module.exports = router;

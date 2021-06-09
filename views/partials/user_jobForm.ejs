@@ -4,7 +4,7 @@
     <h2 class="para text-center">MAKE A REQUEST</h2>
     <p class="text-center" id="para-runner">This will be seen by all runners</p>
     
-    <form id="openOrderForm" method="POST" action="/postrequest">
+    <form id="openOrderForm" method="POST" action="/dashboard">
         
         <div class="form-group">
             <label for="username">Username</label>
@@ -54,7 +54,7 @@
         <div class="form-group">
             <input type="hidden" id="orderStatus" name="orderStatus" value="Open">
         </div>
-
+        <input type="hidden" name="formMethod" value="openRequest">
         <button type="submit" class="btn detail-btn" id="addOpenPost">Post</button>
 
     </form>
