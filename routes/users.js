@@ -179,6 +179,7 @@ router.post('/runner-validation', (req, res) => {
     }
 	});
 })
+
 function postRequest(req, res) {
     let order = new openOrder({
         Username: req.body.username,
@@ -212,6 +213,7 @@ function postRequest(req, res) {
     }
     });
 }
+
 function postPrivate(req, res) {
     let privateorder = new privateOrder({
         Username: req.body.username,
@@ -286,8 +288,6 @@ function acceptOrder(req, res) {
             });
         });
     }); 
-    
-    
 }
 
 function acceptPrivate(req, res) {
@@ -329,7 +329,53 @@ function acceptPrivate(req, res) {
             });
         });
     });
-    
 }
+
+
+/*
+router.get('edit_profile/:id', (req, res) => {
+    User.findById(req.params.id, (err, doc) =>{
+        if (!err) {
+            res.render('editUserProfile', {
+                title: "test page",
+                user: doc,
+            })
+        }
+    })
+})
+
+function updateUser(req, res){
+    User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err, doc) => {
+        if (!err) {res.redirect('user', {title: "test page"}); }
+        else{
+            if (err.name == "error")
+            handleValidationError(err, req.body);
+            res.render('editUserProfile', {
+                title: 'test page'
+            })
+        }
+    })
+}
+
+router.post('/edit_profile', (req, res) => {
+    updateUser(req, res);
+});
+
+/*
+router.patch('/edit_profile', function(req, res) {
+    let query = {'_id' : req.body.userid};
+    let newUpdate = {$set: {fName: req.body.fName, lName: req.body.lName}};
+    User.updateOne(query, newUpdate, function(err, res) {
+        if (err) throw err;
+    });
+    res.render('user', {
+        title: "User page",
+        username: currentRunner.Username,
+        email: currentRunner.Email,
+        phone: currentRunner.Phone,
+        fName: req.body.fName
+    });
+});
+*/
 
 module.exports = router;

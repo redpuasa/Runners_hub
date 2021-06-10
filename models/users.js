@@ -10,6 +10,9 @@ const UserSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
+	fName:{
+		type: String,
+	},
 	Password: {
 		type: String,
 		required: true,
@@ -28,17 +31,7 @@ const UserSchema = new mongoose.Schema({
 	Status: {
 		type: String,
 	},
-	User_Status: {
-		type: String, 
-      	enum: ['Pending', 'Active'],
-      	default: 'Pending'
-	},
-    Verfication_Code: { 
-      	type: String, 
-      	unique: true 
-	}
 });
 
 const User = mongoose.model('User', UserSchema);
-
 module.exports = User;
