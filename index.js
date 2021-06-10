@@ -5,7 +5,6 @@ const routes = require('./routes/app');
 const users = require('./routes/users');
 
 app.use(express.urlencoded({extended:true}));
-
 // Static Files
 app.use(express.static('public'))
 app.set('view engine', 'ejs')

@@ -32,7 +32,7 @@
       <h1 class="para mb-5">Profile Edit</h1>
 
         <form method="POST" action="/validation">
-        
+        <input type="hidden" name="_id" value="<% user._id %>">
             <div class="form-group">
                 <label for="fName">First Name</label>
                 <input type="text" class="form-control" id="username" name="fName" placeholder="" required>
@@ -57,7 +57,7 @@
                 <input type="phone" class="form-control" id="phone" name="phone" placeholder="phone">
             </div>
 
-            <a class="btn" id="userBck" role="button" href="/user">Return</a>
+            <a class="btn" id="userBck" role="button" href="/user/<% this._id %>">Return</a>
             <button type="submit" class="btn" id="userReg">Register</button>
             
         </form>
