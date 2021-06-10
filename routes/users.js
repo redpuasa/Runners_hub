@@ -329,9 +329,35 @@ function acceptPrivate(req, res) {
     });
 }
 
+/*
+router.post('/user', (req, res) => {
+    req.body.phone = req.body.code + req.body.phone
+    let user = new User({
+        fName: req.body.fName,
+        lName: req.body.lName,
+    });
+    user.save(function (err) {
+    if (err) {
+    	if (err.name === "MongoError" && err.code === 11000) {
+    		res.render('error', {
+    			title: 'Error page',
+                head: 'Username already exist',
+                message: 'Please use a different username',
+    			href: "user"
+    		});
+    	}
+    } else {
+    	res.render('user', {title: 'test page'});
+    }
+	});
+})
+
+router.get('/edit_profile', (req, res) => {
+    res.render('editUserProfile', {title: 'test'})
+});
 
 /*
-router.get('edit_profile/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     User.findById(req.params.id, (err, doc) =>{
         if (!err) {
             res.render('editUserProfile', {
@@ -355,7 +381,7 @@ function updateUser(req, res){
     })
 }
 
-router.post('/edit_profile', (req, res) => {
+router.get('/edit_profile', (req, res) => {
     updateUser(req, res);
 });
 
