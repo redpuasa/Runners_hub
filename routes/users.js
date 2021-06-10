@@ -248,88 +248,83 @@ function postPrivate(req, res) {
 }
 
 function acceptOrder(req, res) {
+    orderList = [];
+    todoList = [];
     let query = {'_id' : req.body.DeliveryID};
     let newUpdate = {$set: {'Status' : "Active", 'Runner': req.body.orderRunner}}
-    openOrder.updateOne(query, newUpdate, function(err, res) {
+    openOrder.updateOne(query, newUpdate, function(err) {
         if (err) throw err;
-    });
-    orderList = [];
-    
-    todoList = [];
-    openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
-        orders.forEach(function(order) {
-            todoList.push(order);
-        })
-        privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
-            orders.forEach(function(order) {
-                todoList.push(order);
-            })
-            openOrder.find({}, function(err, orders) {
+        setTimeout(function() {
+            openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
                 orders.forEach(function(order) {
-                    if (order.Status === "Open") {
-                        orderList.push(order);
-                    }
+                    todoList.push(order);
                 })
-                setTimeout(function() {
-                    res.render('runner', {
-                        title: "Runner page",
-                        username: currentRunner.Username,
-                        email: currentRunner.Email,
-                        phone: currentRunner.Phone,
-                        organization: currentRunner.Organization,
-                        payment: currentRunner.Payment,
-                        orders: orderList,
-                        privates: privateList,
-                        todo: todoList
+                privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+                    orders.forEach(function(order) {
+                        todoList.push(order);
+                    })
+                    openOrder.find({}, function(err, orders) {
+                        orders.forEach(function(order) {
+                            if (order.Status === "Open") {
+                                orderList.push(order);
+                            }
+                        })
+                            res.render('runner', {
+                                title: "Runner page",
+                                username: currentRunner.Username,
+                                email: currentRunner.Email,
+                                phone: currentRunner.Phone,
+                                organization: currentRunner.Organization,
+                                payment: currentRunner.Payment,
+                                orders: orderList,
+                                privates: privateList,
+                                todo: todoList
+                            });
                     });
-                }, 200);
+                });
             });
-        });
-    }); 
-    
-    
+        }, 200);
+    });
 }
 
 function acceptPrivate(req, res) {
-    let query = {'_id' : req.body.DeliveryID};
-    let newUpdate = {$set: {'Status' : "Active"}}
-    privateOrder.updateOne(query, newUpdate, function(err, res) {
-        if (err) throw err;
-    });
     privateList = [];
     todoList = [];
-    openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
-        orders.forEach(function(order) {
-            todoList.push(order);
-        })
-        privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
-            orders.forEach(function(order) {
-                todoList.push(order);
-            })
-            privateOrder.find({}, function(err, orders) {
+    let query = {'_id' : req.body.DeliveryID};
+    let newUpdate = {$set: {'Status' : "Active"}}
+    privateOrder.updateOne(query, newUpdate, function(err) {
+        if (err) throw err;
+        setTimeout(function() {
+            openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
                 orders.forEach(function(order) {
-                    if (order.Status === "Pending") {
-                        privateList.push(order);
-                    }
+                    todoList.push(order);
                 })
-                setTimeout(function() {
-                    
-                    res.render('runner', {
-                        title: "Runner page",
-                        username: currentRunner.Username,
-                        email: currentRunner.Email,
-                        phone: currentRunner.Phone,
-                        organization: currentRunner.Organization,
-                        payment: currentRunner.Payment,
-                        orders: orderList,
-                        privates: privateList,
-                        todo: todoList
+                privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+                    orders.forEach(function(order) {
+                        todoList.push(order);
+                    })
+                    privateOrder.find({}, function(err, orders) {
+                        orders.forEach(function(order) {
+                            if (order.Status === "Pending") {
+                                privateList.push(order);
+                            }
+                        })
+                            res.render('runner', {
+                                title: "Runner page",
+                                username: currentRunner.Username,
+                                email: currentRunner.Email,
+                                phone: currentRunner.Phone,
+                                organization: currentRunner.Organization,
+                                payment: currentRunner.Payment,
+                                orders: orderList,
+                                privates: privateList,
+                                todo: todoList
+                            });
                     });
-                }, 200);
+                });
             });
-        });
+        }, 200);
     });
-    
 }
 
 module.exports = router;
