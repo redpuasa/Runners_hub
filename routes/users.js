@@ -402,4 +402,20 @@ router.patch('/edit_profile', function(req, res) {
 });
 */
 
+router.get('/Reset', (req, res) => {
+    res.render('resetPassword', {title: 'Reset Password'})
+})
+
+router.post('/Reset', (req, res) => {
+   User.find(({email: req.body.email}, (err, user => {
+       if(err || !user) if (err.name === "MongoError" && err.code === 11000) {
+        res.render('error', {
+            title: 'Error page',
+            head: 'Not Exist',
+            message: 'The Email does not exist',
+            href: "user"
+            });
+        }
+   })))
+})
 module.exports = router;
