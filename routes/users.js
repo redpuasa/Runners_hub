@@ -9,6 +9,7 @@ let runnerList = [];
 let orderList = [];
 let privateList = [];
 let todoList = [];
+let activeList = [];
 let currentUser = {};
 let currentRunner = {};
 
@@ -19,6 +20,7 @@ router.post('/dashboard', (req, res) => {
         orderList = [];
         privateList = [];
         todoList = [];
+        activeList = [];
         openOrder.find({}, function(err, orders) {
             orders.forEach(function(order) {
                 if (order.Status === "Open") {
@@ -33,16 +35,33 @@ router.post('/dashboard', (req, res) => {
             User.find({}, function(err, users) {
             users.forEach(function(user) {
                 if (user.Email === req.body.email && user.Password === req.body.password) {
-                    currentUser = user;
-                    res.render('user', {
-                        title: "User page",
-                        username: user.Username,
-                        email: user.Email,
-                        address: user.Address,
-                        phone: user.Phone,
-                        runners: runnerList
+                    openOrder.find({}, function(err, orders) {
+                        orders.forEach(function(order) {
+                            if (order.Status === "Active" && user.Username === order.Username) {
+                                activeList.push(order);
+                            }
+                        })
+                        privateOrder.find({}, function(err, orders) {
+                            orders.forEach(function(order) {
+                                if (order.Status === "Active" && user.Username === order.Username) {
+                                    activeList.push(order);
+                                }
+                            })
+                            res.render('user', {
+                                title: "User page",
+                                username: user.Username,
+                                email: user.Email,
+                                address: user.Address,
+                                phone: user.Phone,
+                                runners: runnerList,
+                                actives: activeList
+                            });
+                        });
+                        currentUser = user;
+                        success = true;
                     });
-                    success = true;
+                    
+                    
                 }
             });
             Runner.find({}, function(err, runners) {
@@ -187,7 +206,8 @@ function postRequest(req, res) {
             email: currentUser.Email,
             address: currentUser.Address,
             phone: currentUser.Phone,
-            runners: runnerList
+            runners: runnerList,
+            actives: activeList
         });
     }
     });
@@ -220,7 +240,8 @@ function postPrivate(req, res) {
             email: currentUser.Email,
             address: currentUser.Address,
             phone: currentUser.Phone,
-            runners: runnerList
+            runners: runnerList,
+            actives: activeList
         });
     }
     });
@@ -249,17 +270,19 @@ function acceptOrder(req, res) {
                         orderList.push(order);
                     }
                 })
-                res.render('runner', {
-                    title: "Runner page",
-                    username: currentRunner.Username,
-                    email: currentRunner.Email,
-                    phone: currentRunner.Phone,
-                    organization: currentRunner.Organization,
-                    payment: currentRunner.Payment,
-                    orders: orderList,
-                    privates: privateList,
-                    todo: todoList
-                });
+                setTimeout(function() {
+                    res.render('runner', {
+                        title: "Runner page",
+                        username: currentRunner.Username,
+                        email: currentRunner.Email,
+                        phone: currentRunner.Phone,
+                        organization: currentRunner.Organization,
+                        payment: currentRunner.Payment,
+                        orders: orderList,
+                        privates: privateList,
+                        todo: todoList
+                    });
+                }, 200);
             });
         });
     }); 
@@ -289,17 +312,20 @@ function acceptPrivate(req, res) {
                         privateList.push(order);
                     }
                 })
-                res.render('runner', {
-                    title: "Runner page",
-                    username: currentRunner.Username,
-                    email: currentRunner.Email,
-                    phone: currentRunner.Phone,
-                    organization: currentRunner.Organization,
-                    payment: currentRunner.Payment,
-                    orders: orderList,
-                    privates: privateList,
-                    todo: todoList
-                });
+                setTimeout(function() {
+                    
+                    res.render('runner', {
+                        title: "Runner page",
+                        username: currentRunner.Username,
+                        email: currentRunner.Email,
+                        phone: currentRunner.Phone,
+                        organization: currentRunner.Organization,
+                        payment: currentRunner.Payment,
+                        orders: orderList,
+                        privates: privateList,
+                        todo: todoList
+                    });
+                }, 200);
             });
         });
     });

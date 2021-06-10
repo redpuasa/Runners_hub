@@ -11,30 +11,23 @@
                         <div class="divTableCell font-weight-bold">&nbsp;</div>
                         <div class="divTableCell font-weight-bold">&nbsp;</div>
                     </div>
-        
+
+                    <% if(actives.length === 0) { %>
+                        <div class="divTableRow">
+                            <div class="divTableCell text-center">
+                                You have not hired a runner currently
+                            </div>
+                        </div>
+                    <% } else { %>
+                    <% actives.forEach(function(order, index) { %>
                     <div class="divTableRow">
-                        <div class="divTableCell text-center">Item 1</div>
+                        <div class="divTableCell text-center">Item <%= index + 1 %></div>
                         <div class="divTableCell">
-                            <p class="text-center">Runner Hired</p> 
+                            <p class="text-center"><%= order.Runner %></p> 
                         </div>
                         <div class="divTableCell d-flex justify-content-center"><button class="btn detail-btn">Details</button></div>
                     </div>
-                                
-                    <div class="divTableRow">
-                        <div class="divTableCell text-center">Item 2</div>
-                        <div class="divTableCell">
-                            <p class="text-center">Runner Hired</p> 
-                        </div>
-                        <div class="divTableCell d-flex justify-content-center"><button class="btn detail-btn">Details</button></div>
-                    </div>
-                                
-                    <div class="divTableRow">
-                        <div class="divTableCell text-center">Item 3</div>
-                        <div class="divTableCell">
-                            <p class="text-center">Runner Hired</p> 
-                        </div>
-                        <div class="divTableCell d-flex justify-content-center"><button class="btn detail-btn">Details</button></div>
-                    </div>            
+                    <% });} %>       
     
                 </div>
             </div>

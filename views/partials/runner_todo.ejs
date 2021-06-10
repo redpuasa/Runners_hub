@@ -11,7 +11,13 @@
             <div class="divTableCell font-weight-bold">&nbsp;</div>
             <div class="divTableCell font-weight-bold">&nbsp;</div>
           </div>
-
+          <% if(todo.length === 0) { %>
+            <div class="divTableRow">
+              <div class="divTableCell ">
+                <p class="my-5">You have no Active Job currently</p>
+              </div>
+            </div>
+          <% } else { %>
           <% todo.forEach(function(order, index) { %>
           <div class="divTableRow">
             <div class="divTableCell "><p class="my-5">Item <%= index + 1 %></p></div>
@@ -130,7 +136,7 @@
         </div>
       </div> 
     </div>
-    <% }); %>
+    <% });} %>
   </div>
 
     <!--<button class="btn ml-auto">History</button>
