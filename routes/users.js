@@ -402,6 +402,41 @@ router.patch('/edit_profile', function(req, res) {
 });
 */
 
+////////////////////////////////////////////////////////////////////////////////
+router.get('/edit_profile', (req, res) => {
+    res.render('editUserProfile', {title: 'test'})
+})
+
+router.post('/edit_profile', (req,res) => { //PUT method only saved onced
+    const query = {'user': currentUser.Username};//<----undefined
+    console.log({'user': currentUser.Username})
+    const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
+    console.log({fName: req.body.fName, lName: req.body.lName})
+    User.findOneAndUpdate(query, updateProfile, {new: true, upsert: true}, (err, doc) => {
+        if (err) return res.status(500, {error: err});
+        return res.render('user');
+    });
+    
+})
+//////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+router.get('/edit_profile/:id/edit', (req, res) => {
+    User.findById(req.params.id, (err, user) => {
+        console.log(req.params.id)
+        res.render("editUSerProfile", {user: user})
+    })
+})
+
+router.put('user/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body.fName, {new: true}, (err, update) =>{
+        if (err) {res.redirect('editUserProfile')}
+        else {res.redirect('user' + req.params.id)}
+    })
+})
+
+////////////////////////////////////////////////////////////
 router.get('/Reset', (req, res) => {
     res.render('resetPassword', {title: 'Reset Password'})
 })
@@ -418,5 +453,5 @@ router.post('/Reset', (req, res) => {
         }
    })))
 })
-
+*/
 module.exports = router;
