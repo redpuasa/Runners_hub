@@ -271,17 +271,17 @@ function acceptOrder(req, res) {
                                 orderList.push(order);
                             }
                         })
-                            res.render('runner', {
-                                title: "Runner page",
-                                username: currentRunner.Username,
-                                email: currentRunner.Email,
-                                phone: currentRunner.Phone,
-                                organization: currentRunner.Organization,
-                                payment: currentRunner.Payment,
-                                orders: orderList,
-                                privates: privateList,
-                                todo: todoList
-                            });
+                        res.render('runner', {
+                            title: "Runner page",
+                            username: currentRunner.Username,
+                            email: currentRunner.Email,
+                            phone: currentRunner.Phone,
+                            organization: currentRunner.Organization,
+                            payment: currentRunner.Payment,
+                            orders: orderList,
+                            privates: privateList,
+                            todo: todoList
+                        });
                     });
                 });
             });
@@ -329,90 +329,38 @@ function acceptPrivate(req, res) {
     });
 }
 
-/*
-router.post('/user', (req, res) => {
-    req.body.phone = req.body.code + req.body.phone
-    let user = new User({
-        fName: req.body.fName,
-        lName: req.body.lName,
-    });
-    user.save(function (err) {
-    if (err) {
-    	if (err.name === "MongoError" && err.code === 11000) {
-    		res.render('error', {
-    			title: 'Error page',
-                head: 'Username already exist',
-                message: 'Please use a different username',
-    			href: "user"
-    		});
-    	}
-    } else {
-    	res.render('user', {title: 'test page'});
-    }
-	});
-})
-
-router.get('/edit_profile', (req, res) => {
-    res.render('editUserProfile', {title: 'test'})
-});
-
-/*
-router.get('/:id', (req, res) => {
-    User.findById(req.params.id, (err, doc) =>{
-        if (!err) {
-            res.render('editUserProfile', {
-                title: "test page",
-                user: doc,
-            })
-        }
-    })
-})
-
-function updateUser(req, res){
-    User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err, doc) => {
-        if (!err) {res.redirect('user', {title: "test page"}); }
-        else{
-            if (err.name == "error")
-            handleValidationError(err, req.body);
-            res.render('editUserProfile', {
-                title: 'test page'
-            })
-        }
-    })
-}
-
-router.get('/edit_profile', (req, res) => {
-    updateUser(req, res);
-});
-
-/*
-router.patch('/edit_profile', function(req, res) {
-    let query = {'_id' : req.body.userid};
-    let newUpdate = {$set: {fName: req.body.fName, lName: req.body.lName}};
-    User.updateOne(query, newUpdate, function(err, res) {
-        if (err) throw err;
-    });
-    res.render('user', {
-        title: "User page",
-        username: currentRunner.Username,
-        email: currentRunner.Email,
-        phone: currentRunner.Phone,
-        fName: req.body.fName
-    });
-});
-*/
-
 ////////////////////////////////////////////////////////////////////////////////
 router.get('/edit_profile', (req, res) => {
-    res.render('editUserProfile', {title: 'test'})
+    res.render('editUserProfile', {title: 'User Page'})
 })
 
 router.post('/edit_profile', (req,res) => { //PUT method only saved onced
     const query = {'username' : currentUser.Username};//<----undefined
     console.log({'username' : currentUser.Username})
-    const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
-    console.log({fName: req.body.fName, lName: req.body.lName})
-    User.findOneAndUpdate(query, updateProfile, {multi: false}, (err, doc) => {
+    const updateProfile = {$set: {fName: ""}}
+    console.log({fName: "", lName: req.body.lName})
+    User.updateOne(query, updateProfile, {multi: true}, (err, doc) => {
+        if (err) return res.status(500, {error: err});
+        return res.render('user', {
+            title: 'User Page', 
+            username: currentUser.Username,
+            email: currentUser.Email,
+            phone: currentUser.Phone,
+            address: currentUser.Address,
+            runners: runnerList,
+            actives: activeList
+        }); 
+    });
+})
+//////////////////////////////////////////////////////////////////////////////////
+
+/*
+console.log({fName: req.body.fName, lName: req.body.lName})
+    User.findOneAndUpdate(query, updateProfile, {new: true, upsert: true}, (err, doc) => {
+        if (err) return res.status(500, {error: err});
+        return res.render('user');
+
+User.findOneAndUpdate(query, updateProfile, {multi: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
         return res.render('user', {
             title: 'User Page', 
@@ -425,17 +373,7 @@ router.post('/edit_profile', (req,res) => { //PUT method only saved onced
         }); 
     
     });
-    
-})
-//////////////////////////////////////////////////////////////////////////////////
-
-/*
-console.log({fName: req.body.fName, lName: req.body.lName})
-    User.findOneAndUpdate(query, updateProfile, {new: true, upsert: true}, (err, doc) => {
-        if (err) return res.status(500, {error: err});
-        return res.render('user');
 */
-
 
 /*
 router.get('/edit_profile/:id/edit', (req, res) => {
