@@ -408,17 +408,33 @@ router.get('/edit_profile', (req, res) => {
 })
 
 router.post('/edit_profile', (req,res) => { //PUT method only saved onced
-    const query = {'user': currentUser.Username};//<----undefined
-    console.log({'user': currentUser.Username})
+    const query = {'username' : currentUser.Username};//<----undefined
+    console.log({'username' : currentUser.Username})
     const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
     console.log({fName: req.body.fName, lName: req.body.lName})
-    User.findOneAndUpdate(query, updateProfile, {new: true, upsert: true}, (err, doc) => {
+    User.findOneAndUpdate(query, updateProfile, {multi: false}, (err, doc) => {
         if (err) return res.status(500, {error: err});
-        return res.render('user');
+        return res.render('user', {
+            title: 'User Page', 
+            username: currentUser.Username,
+            email: currentUser.Email,
+            phone: currentUser.Phone,
+            address: currentUser.Address,
+            runners: runnerList,
+            actives: activeList
+        }); 
+    
     });
     
 })
 //////////////////////////////////////////////////////////////////////////////////
+
+/*
+console.log({fName: req.body.fName, lName: req.body.lName})
+    User.findOneAndUpdate(query, updateProfile, {new: true, upsert: true}, (err, doc) => {
+        if (err) return res.status(500, {error: err});
+        return res.render('user');
+*/
 
 
 /*
