@@ -8,13 +8,10 @@ const PrivateOrderSchema = new mongoose.Schema({
     },
     Deli_date:{
         type: Date,
-        default: Date.now,
         required: true
     },
     Deli_time:{
-        //type: String,
-        type: Date,
-        default: Date.now,
+        type: String,
         required: true
     },
     Pickup_address:{
