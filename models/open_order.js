@@ -16,13 +16,11 @@ const OpenOrderSchema = new mongoose.Schema({
     },
     Pickup_address:{
         type: String,
-        lowercase: true,
         required: true,
         trim: true
     },
     Delivery_address:{
         type: String,
-        lowercase: true,
         required: true,
         trim: true
     },
