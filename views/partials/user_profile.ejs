@@ -1,18 +1,33 @@
 <div class="container border mt-5 p-5">
-    <h2 class="para text-center mb-5"><%= username %></h2>
     <div class="row">
 
         <div class="col-sm-6">
-            <h3 class="para text-center mb-5"><%= username %>'s Detail</h3>
-            <p class="text-center">Email: <%= email %></p>
-            <p class="text-center">Address: <%= address %></p>
-            <p class="text-center">Phone: <%= phone %></p>
+            <h3 class="para mb-5"><%= username %>'s Profile</h3>
+            <p>Email: <%= email %></p>
+            <p>Address: <%= address %></p>
+            <p>Phone: <%= phone %></p>
         </div>
 
         <div class="col-sm-6">
-            <h3 class="para text-center mb-5"></h3>
-            <p class="text-center">Delivery Request to runner: 10 Request</p>
-            <p class="text-center">Delivery Request to runner: 10 Request</p>
+            <h3 class="para mb-5">Select what to do next:</h3>
+            <div class="userNext">
+                <a href="#form" class="text-dark">
+                    <i class="fas fa-plus mr-4"></i>
+                    <span>New Order Request</span>
+                </a>
+            </div>
+            <div class="userNext mt-4">
+                <a href="#top" class="text-dark">
+                    <i class="fas fa-search mr-4"></i>
+                    <span>Search Runner</span>
+                </a>
+            </div>
+            <div class="userNext mt-4">
+                <a href="#active" class="text-dark">
+                    <i class="fas fa-box mr-4"></i>
+                    <span>View Active Job</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
