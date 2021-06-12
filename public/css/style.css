@@ -418,7 +418,15 @@ textarea{
 /*------------------------------------------------
     Style validation form - End
 -------------------------------------------------*/
+.login_bckg{
+    background-color: #152b32;
+    overflow: hidden;
+}
 
+#form{
+    background-color: #fff;
+    border-radius: 10px;
+}
 /*------------------------------------------------
     Style login form - Start
 -------------------------------------------------*/
