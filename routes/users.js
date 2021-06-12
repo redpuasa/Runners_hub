@@ -133,7 +133,10 @@ router.post('/dashboard', (req, res) => {
         acceptOrder(req, res);
     } else if (req.body.formMethod === "privateAccept") {
         acceptPrivate(req, res);
+    } else if (req.body.formMethod === "privateDecline") {
+        declinePrivate(req, res);
     }
+
 })
 
 router.post('/validation', (req, res) => {  
@@ -325,7 +328,7 @@ function acceptPrivate(req, res) {
                     orders.forEach(function(order) {
                         todoList.push(order);
                     })
-                    privateOrder.find({}, function(err, orders) {
+                    privateOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
                         orders.forEach(function(order) {
                             if (order.Status === "Pending") {
                                 privateList.push(order);
@@ -355,6 +358,41 @@ function acceptPrivate(req, res) {
             });
         }, 200);
     });
+}
+
+function declinePrivate(req, res) {
+    privateList = [];
+    let query = {'_id' : req.body.DeliveryID};
+    let newUpdate = {$set: {'Status' : "Decline"}}
+    privateOrder.updateOne(query, newUpdate, function(err) {
+        if (err) throw err;
+        privateOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
+            orders.forEach(function(order) {
+                if (order.Status === "Pending") {
+                    privateList.push(order);
+                }
+            })
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    first: currentRunner.fName,
+                    last: currentRunner.lName,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    brunei: currentRunner.brunei,
+                    temburong: currentRunner.temburong,
+                    tutong: currentRunner.tutong,
+                    seria: currentRunner.seria,
+                    kb: currentRunner.kb,
+                    outside: currentRunner.outside,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
+        });
+    })
 }
 
 router.get('/edit_profile', (req, res) => {
