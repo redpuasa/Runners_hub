@@ -189,10 +189,7 @@
           </div>
           
           <div id="paraDisplay0" class="d-none">
-            <p class="ml-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
+            <p class="ml-3">Click Runner on the navbar which direct to runner section and click sign up as runner, then fill out the registration form. Once your done login and take on the availble order request.</p>
           </div>
         </div>
       </div>
@@ -205,10 +202,7 @@
           </div>
           
           <div id="paraDisplay1" class="d-none">
-            <p class="ml-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
+            <p class="ml-3">Yes, user need to know when they will receive their item. Updating the status of delivery will increase your chance of getting hired again. </p>
           </div>
         </div>
       </div>
@@ -221,10 +215,7 @@
           </div>
           
           <div id="paraDisplay2" class="d-none">
-            <p class="ml-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
+            <p class="ml-3">Yes, Runner's Hub is a platform for user and runner to use for free.</p>
           </div>
         </div>
       </div>
@@ -246,11 +237,11 @@
         </div>
 
         <div class="col-sm-6 mt-5">
-          <form class="form-ticket p-5">
+          <form class="form-ticket p-5" method="POST" action="/ticket">
             <h4 class="sub-ticket text-center mb-5">Submit a Ticket</h4>
             <div class="form-group">
               <label for="username">Subject</label>
-              <select class="ml-2 mt-2 p-2">
+              <select class="ml-2 mt-2 p-2" name="subject">
                 <option>Payment</option>
                 <option>Service</option>
                 <option>Communication</option>
@@ -263,20 +254,20 @@
               
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
             </div>    
               
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter your contact number">
+              <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your contact number" required>
             </div>
       
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea class="w-100 form-control" id="message" placeholder="Send us a message"></textarea>
+              <textarea class="w-100 form-control" id="message" name="message" placeholder="Send us a message" required></textarea>
             </div>
 
-            <a class="btn detail-btn" role="button" href="">Submit</a>  
+            <button class="btn detail-btn" type="submit">Submit</button>  
           </form>
         </div>
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Ticket = require('../models/tickets');
 const { render } = require('ejs');
 
 router.get('/', (req, res) => {
@@ -20,6 +21,28 @@ router.get('/admin', (req, res) => {
 
 router.get('/login', (req, res) => {
     res.render('login', {title: 'Login page'})
+})
+
+router.post('/ticket', (req, res) => {
+    let ticket = new Ticket({
+        Subject: req.body.subject,
+        Name: req.body.name,
+        Phone: req.body.phone,
+        Message: req.body.message
+
+    });
+    ticket.save(function (err) {
+    if (err) {
+        res.render('error', {
+            title: 'Error page',
+            head: err.name,
+            message: err,
+            href: "/"
+        });
+    } else {
+        res.render('index', {title: 'Runners Hub'});
+    }
+    });
 })
 
 //Runner signup
