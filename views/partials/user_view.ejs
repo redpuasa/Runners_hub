@@ -1,3 +1,5 @@
+<!--RUNNER'S SECTION ON USER'S PROFILE-->
+
 <div class="container mt-5 p-5 border">
     <div class="row">
 
@@ -9,11 +11,12 @@
                 
               <% runners.forEach(function(runner, index) { %>
                 <div class="divTableRow">
-                  <div class="divTableCell"><%= runner.Username %> &nbsp;
-                    <button class="btn detail-btn" data-toggle="modal" data-target="#runnerModal<%= index %>">
-                      <i class="fas fa-info-circle"></i>
-                    </button></div>
-                    <div class="divTableCell"><button class="btn detail-btn" data-toggle="modal" data-target="#requestModal<%= index %>">Details</button></div>
+                  <div class="divTableCell"><%= runner.Username %> &nbsp;</div>
+                  <button class="btn detail-btn" data-toggle="modal" data-target="#runnerModal<%= index %>">
+                    <i class="fas fa-info-circle"></i>
+                  </button>
+
+                  <div class="divTableCell"><button class="btn detail-btn" data-toggle="modal" data-target="#requestModal<%= index %>">Details</button></div>
                 </div>
 
                 <!-- Modal - Start -->
