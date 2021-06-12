@@ -30,12 +30,19 @@
           <% } else { %>
           <% privates.forEach(function(order, index) { %>
           <div class="divTableRow">
-              <div class="divTableCell">User <%= index + 1 %></div>
               <div class="divTableCell">
+                <div class="container d-flex">
+                  <p class="mr-3"><%= index + 1 %>.</p>
+                  <p><%= order.Username %></p>
+                </div>
+                  
+              </div>
+              <div class="divTableCell text-right">
                 
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index %>">Details</button>
-
+              <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index %>">Job Details</button>
+              </div>
+          </div>
               <!-- Modal - Start -->
               <div class="modal fade" id="exampleModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModal<%= index %>Label" aria-hidden="true">
 
@@ -160,8 +167,6 @@
               </div>
               </div>
               <!-- Modal - End -->
-            </div>
-          </div>
                       
           <% }); } %>
                 
