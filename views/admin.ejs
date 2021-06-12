@@ -24,10 +24,13 @@
 
 <body>
 
+  <%- include('partials/naviUser.ejs') %> <!--Navigation bar-->
+
 <main>
   <div class="container m-5 p-5 mx-auto">
-    hello admin
-    
+    <% users.forEach(user => { %>
+      <p><% user.username %></p>
+    <%})%>
   </div>
 </main>
 

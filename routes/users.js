@@ -6,6 +6,7 @@ const openOrder = require('../models/open_order');
 const privateOrder = require('../models/private_order');
 
 let runnerList = [];
+let userList = [];
 let orderList = [];
 let privateList = [];
 let todoList = [];
@@ -460,6 +461,15 @@ router.post('/runner', (req,res) => {
             todo: todoList
         }); 
     });
+})
+
+router.get('/admin', (req, res) => {
+    User.find({}, (err, user) => {
+        res.render('admin', {
+            title: 'admin',
+            users: userList,
+        })
+    })
 })
 
 module.exports = router;
