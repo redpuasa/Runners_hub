@@ -50,6 +50,8 @@ router.post('/dashboard', (req, res) => {
                             res.render('user', {
                                 title: "User page",
                                 username: user.Username,
+                                first: currentUser.fName,
+                                last: currentUser.lName,
                                 email: user.Email,
                                 address: user.Address,
                                 phone: user.Phone,
@@ -60,8 +62,6 @@ router.post('/dashboard', (req, res) => {
                         currentUser = user;
                         success = true;
                     });
-                    
-                    
                 }
             });
             Runner.find({}, function(err, runners) {
@@ -88,17 +88,24 @@ router.post('/dashboard', (req, res) => {
                             res.render('runner', {
                                 title: "Runner page",
                                 username: runner.Username,
+                                first: currentRunner.fName,
+                                last: currentRunner.lName,
                                 email: runner.Email,
                                 phone: runner.Phone,
                                 organization: runner.Organization,
                                 payment: runner.Payment,
+                                brunei: currentRunner.brunei,
+                                temburong: currentRunner.temburong,
+                                tutong: currentRunner.tutong,
+                                seria: currentRunner.seria,
+                                kb: currentRunner.kb,
+                                outside: currentRunner.outside,
                                 orders: orderList,
                                 privates: privateList,
                                 todo: todoList
                             });
                         }, 200);
                     });
-                    
                     success = true
                 }
             });
@@ -204,6 +211,8 @@ function postRequest(req, res) {
         res.render('user', {
             title: 'User page',
             username: currentUser.Username,
+            first: currentUser.fName,
+            last: currentUser.lName,
             email: currentUser.Email,
             address: currentUser.Address,
             phone: currentUser.Phone,
@@ -239,6 +248,8 @@ function postPrivate(req, res) {
         res.render('user', {
             title: 'User page',
             username: currentUser.Username,
+            first: currentUser.fName,
+            last: currentUser.lName,
             email: currentUser.Email,
             address: currentUser.Address,
             phone: currentUser.Phone,
@@ -274,10 +285,18 @@ function acceptOrder(req, res) {
                         res.render('runner', {
                             title: "Runner page",
                             username: currentRunner.Username,
+                            first: currentRunner.fName,
+                            last: currentRunner.lName,
                             email: currentRunner.Email,
                             phone: currentRunner.Phone,
                             organization: currentRunner.Organization,
                             payment: currentRunner.Payment,
+                            brunei: currentRunner.brunei,
+                            temburong: currentRunner.temburong,
+                            tutong: currentRunner.tutong,
+                            seria: currentRunner.seria,
+                            kb: currentRunner.kb,
+                            outside: currentRunner.outside,
                             orders: orderList,
                             privates: privateList,
                             todo: todoList
@@ -314,10 +333,18 @@ function acceptPrivate(req, res) {
                             res.render('runner', {
                                 title: "Runner page",
                                 username: currentRunner.Username,
+                                first: currentRunner.fName,
+                                last: currentRunner.lName,
                                 email: currentRunner.Email,
                                 phone: currentRunner.Phone,
                                 organization: currentRunner.Organization,
                                 payment: currentRunner.Payment,
+                                brunei: currentRunner.brunei,
+                                temburong: currentRunner.temburong,
+                                tutong: currentRunner.tutong,
+                                seria: currentRunner.seria,
+                                kb: currentRunner.kb,
+                                outside: currentRunner.outside,
                                 orders: orderList,
                                 privates: privateList,
                                 todo: todoList
@@ -329,21 +356,22 @@ function acceptPrivate(req, res) {
     });
 }
 
-////////////////////////////////////////////////////////////////////////////////
 router.get('/edit_profile', (req, res) => {
     res.render('editUserProfile', {title: 'User Page'})
 })
 
-router.post('/edit_profile', (req,res) => { //PUT method only saved onced
-    const query = {'username' : currentUser.Username};//<----undefined
-    console.log({'username' : currentUser.Username})
-    const updateProfile = {$set: {fName: ""}}
-    console.log({fName: "", lName: req.body.lName})
-    User.updateOne(query, updateProfile, {multi: true}, (err, doc) => {
+router.post('/user', (req,res) => {
+    const query = {"_id" : currentUser._id};
+    console.log({"_id" : currentUser._id})
+    const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
+    console.log({fName: req.body.fName, lName: req.body.lName})
+    User.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
         return res.render('user', {
             title: 'User Page', 
             username: currentUser.Username,
+            first: currentUser.fName,
+            last: currentUser.lName,
             email: currentUser.Email,
             phone: currentUser.Phone,
             address: currentUser.Address,
@@ -352,60 +380,47 @@ router.post('/edit_profile', (req,res) => { //PUT method only saved onced
         }); 
     });
 })
-//////////////////////////////////////////////////////////////////////////////////
 
-/*
-console.log({fName: req.body.fName, lName: req.body.lName})
-    User.findOneAndUpdate(query, updateProfile, {new: true, upsert: true}, (err, doc) => {
-        if (err) return res.status(500, {error: err});
-        return res.render('user');
+router.get('/edit-profile', (req, res) => {
+    res.render('editRunnerProfile', {title: 'Runner Page'})
+})
 
-User.findOneAndUpdate(query, updateProfile, {multi: true}, (err, doc) => {
+router.post('/runner', (req,res) => {
+    const query = {"_id" : currentRunner._id};
+    console.log({"_id" : currentRunner._id})
+    const updateProfile = {$set: {
+        fName: req.body.fName, 
+        lName: req.body.lName,
+        brunei: req.body.brunei,
+        temburong: req.body.temburong,
+        tutong: req.body.tutong,
+        seria: req.body.seria,
+        kb: req.body.kb,
+        outside: req.body.outside,
+    }}
+    console.log({fName: req.body.fName, lName: req.body.lName})
+    Runner.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
-        return res.render('user', {
-            title: 'User Page', 
-            username: currentUser.Username,
-            email: currentUser.Email,
-            phone: currentUser.Phone,
-            address: currentUser.Address,
-            runners: runnerList,
-            actives: activeList
+        return res.render('runner', {
+            title: 'Runner Page', 
+            username: currentRunner.Username,
+            first: currentRunner.fName,
+            last: currentRunner.lName,
+            email: currentRunner.Email,
+            phone: currentRunner.Phone,
+            organization: currentRunner.Organization,
+            payment: currentRunner.Payment,
+            brunei: currentRunner.brunei,
+            temburong: currentRunner.temburong,
+            tutong: currentRunner.tutong,
+            seria: currentRunner.seria,
+            kb: currentRunner.kb,
+            outside: currentRunner.outside,
+            orders: orderList,
+            privates: privateList,
+            todo: todoList
         }); 
-    
     });
-*/
-
-/*
-router.get('/edit_profile/:id/edit', (req, res) => {
-    User.findById(req.params.id, (err, user) => {
-        console.log(req.params.id)
-        res.render("editUSerProfile", {user: user})
-    })
 })
 
-router.put('user/:id', (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body.fName, {new: true}, (err, update) =>{
-        if (err) {res.redirect('editUserProfile')}
-        else {res.redirect('user' + req.params.id)}
-    })
-})
-
-////////////////////////////////////////////////////////////
-router.get('/Reset', (req, res) => {
-    res.render('resetPassword', {title: 'Reset Password'})
-})
-
-router.post('/Reset', (req, res) => {
-   User.find(({email: req.body.email}, (err, user => {
-       if(err || !user) if (err.name === "MongoError" && err.code === 11000) {
-        res.render('error', {
-            title: 'Error page',
-            head: 'Not Exist',
-            message: 'The Email does not exist',
-            href: "user"
-            });
-        }
-   })))
-})
-*/
 module.exports = router;
