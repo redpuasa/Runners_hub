@@ -419,11 +419,14 @@ textarea{
     Style validation form - End
 -------------------------------------------------*/
 .login_bckg{
-    background-color: #152b32;
+    background-image: url("/img/runnersHub_login.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     overflow: hidden;
 }
 
 #form{
+    margin-top: 20px;
     background-color: #fff;
     border-radius: 10px;
 }
