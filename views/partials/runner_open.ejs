@@ -24,120 +24,143 @@
       <% } else { %>
       <% orders.forEach(function(order, index) { %>
       <div class="row mx-auto mt-5">
-        <div class="col-sm-12 border-bottom border-dark pb-3">
+
+        <div class="col-sm-6 pb-3">
           <div class="container d-flex">
-            <p class="paraFaqs">User <%= index + 1 %></p>
-            <a class="btnToggle ml-auto"><i class="fas fa-chevron-down"></i></a>
-          </div>
-          
-          <div id="paraDisplay<%= index %>" class="d-none">
-            <!--list-->
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery ID:</small>
-              </div>
-              <div class="divTableCell" id="deli_id">
-                <small><%= order._id %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Customer:</small>
-              </div>
-              <div class="divTableCell" id="customer_name">
-                <small><%= order.Username %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Contact no.:</small>
-              </div>
-              <div class="divTableCell" id="customer_contact">
-                <small><%= order.Phone %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery date:</small>
-              </div>
-              <div class="divTableCell" id="deli_date">
-                <small><%= order.Deli_date.toDateString() %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery time:</small>
-              </div>
-              <div class="divTableCell" id="deli_time">
-                <small><%= formatTime(order.Deli_time) %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Pickup address:</small>
-              </div>
-              <div class="divTableCell" id="pickup_address">
-                <small><%= order.Pickup_address %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Delivery address:</small>
-              </div>
-              <div class="divTableCell" id="deli_address">
-                <small><%= order.Delivery_address %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Status:</small>
-              </div>
-              <div class="divTableCell" id="deli_status">
-                <small><%= order.Item_stat %></small>
-              </div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">
-                <small>Message:</small>
-              </div>
-              <div class="divTableCell" id="deli_message">
-                <small><%= order.Message %></small>
-              </div>
-            </div>
-
-            <!--list-->
-
-            <!--Buttons-->
-            <div class="container d-flex">
-              <div class="row ml-auto mt-2">
-                <div class="col-sm-12">
-
-                  <form action="/dashboard" method="POST">
-                    <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
-                    <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
-                    <input type="hidden" name="formMethod" value="openAccept">
-                    <!-- Accept button -->
-                    <button type="submit" class="btn btn-success">Accept</button>
-    
-                    <!-- Decline button -->
-                    <button type="button" class="btn btn-danger">Decline</button>
-                  </form>
-
-                </div>
-              </div>
-            </div>
-            <!--Buttons-->
+            <p class="mr-3"><%= index + 1 %>.</p>
+            <p><%= order.Username %></p>
           </div>
         </div>
-      </div>
+
+        <div class="col-sm-6 pb-3 text-center">
+          <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#openModal<%= index %>">Job Details</button>
+        </div>
+          </div>
+          <!-- Modal - Start -->
+              <div class="modal fade" id="openModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="openModal<%= index %>Label" aria-hidden="true">
+
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="openModal<%= index %>Label">Delivery details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body"> <!--Modal body - Start-->
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery ID:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_id">
+                        <small><%= order._id %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Customer:</small>
+                      </div>
+                      <div class="divTableCell" id="customer_name">
+                        <small><%= order.Username %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Contact no.:</small>
+                      </div>
+                      <div class="divTableCell" id="customer_contact">
+                        <small><%= order.Phone %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery date:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_date">
+                        <small><%= order.Deli_date.toDateString() %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery time:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_time">
+                        <small><%= formatTime(order.Deli_time) %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Pickup address:</small>
+                      </div>
+                      <div class="divTableCell" id="pickup_address">
+                        <small><%= order.Pickup_address %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Delivery address:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_address">
+                        <small><%= order.Delivery_address %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Status:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_status">
+                        <small><%= order.Item_stat %></small>
+                      </div>
+                    </div>
+
+                    <div class="divTableRow">
+                      <div class="divTableCell">
+                        <small>Message:</small>
+                      </div>
+                      <div class="divTableCell" id="deli_message">
+                        <small><%= order.Message %></small>
+                      </div>
+                    </div>
+
+                    <!--Buttons-->
+                    <div class="container d-flex">
+                      <div class="row ml-auto mt-2">
+                        <div class="col-sm-12">
+
+                          <form action="/dashboard" method="POST">
+                            <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                            <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
+                            <input type="hidden" name="formMethod" value="privateAccept">
+                            <!-- Accept button -->
+                            <button type="submit" class="btn btn-success">Accept</button>
+            
+                            <!-- Decline button -->
+                            <button type="button" class="btn btn-danger">Decline</button>
+                          </form>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <!--Buttons-->
+
+                  </div><!--Modal body - End-->
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <!-- Modal - End -->
+
       <% });} %>
 
       

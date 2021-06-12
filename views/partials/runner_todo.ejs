@@ -24,7 +24,7 @@
               return time;
             }
           %>
-      
+
           <% if(todo.length === 0) { %>
             <div class="divTableRow">
               <div class="divTableCell ">
@@ -36,7 +36,7 @@
           <div class="divTableRow">
             <div class="divTableCell "><p class="my-5">Item <%= index + 1 %></p></div>
               <div class="divTableCell">
-                <p>Delivery Date: <%= order.Deli_date %></p>
+                <p>Delivery Date: <%= order.Deli_date.toDateString() %>, <%= formatTime(order.Deli_time) %></p>
                 <p>Deliver to: <%= order.Delivery_address %></p>
                   <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index + 50 %>">Job Details</button>
 
