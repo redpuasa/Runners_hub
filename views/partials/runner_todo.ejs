@@ -42,12 +42,22 @@
 
               </div>
               <div class="divTableCell">
-                <button class="btn mt-3" title="Job Completed">
-                  <i class="fas fa-check"></i> 
-                </button>
-                <button class="btn mt-3" title="Remove Job">
-                  <i class="fas fa-times"></i>
-                </button>
+                <form action="/dashboard" method="POST">
+                  <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                  <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
+                  <input type="hidden" name="formMethod" value="jobComplete">
+                  <button type="submit" class="btn mt-3" title="Job Completed">
+                    <i class="fas fa-check"></i> 
+                  </button>
+                </form>
+                <form action="/dashboard" method="POST">
+                  <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                  <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
+                  <input type="hidden" name="formMethod" value="jobRemove">
+                  <button type="submit" class="btn mt-3" title="Remove Job">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </form>
               </div>
               <!-- Modal - Start -->
                 <div class="modal fade" id="exampleModal<%= index + 50 %>" tabindex="-1" role="dialog" aria-labelledby="exampleModal<%= index +50 %>Label" aria-hidden="true">
