@@ -11,6 +11,20 @@
             <div class="divTableCell font-weight-bold">&nbsp;</div>
             <div class="divTableCell font-weight-bold">&nbsp;</div>
           </div>
+
+          <%
+            function formatTime(strTime) {
+              let hour = strTime.slice(0, 2);
+              let minutes = strTime.slice(3, 5);
+              let amPm = hour >= 12 ? 'pm' : 'am';
+              hour = hour % 12;
+              hour = hour ? hour : 12; // the hour '0' should be '12'
+              minutes = minutes < 10 ? '0'+minutes : minutes;
+              let time = hour + ':' + minutes + ' ' + amPm;
+              return time;
+            }
+          %>
+      
           <% if(todo.length === 0) { %>
             <div class="divTableRow">
               <div class="divTableCell ">
@@ -89,7 +103,7 @@
                           <small>Delivery time:</small>
                         </div>
                         <div class="divTableCell" id="deli_time">
-                          <small><%= order.Deli_time %></small>
+                          <small><%= formatTime(order.Deli_time) %></small>
                         </div>
                       </div>
   

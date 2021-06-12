@@ -2,6 +2,19 @@
   <h2 class="para text-center">OPEN DELIVERY REQUEST</h2>
   <p class="text-center" id="para-runner">Job List</p>
 
+      <%
+        function formatTime(strTime) {
+          let hour = strTime.slice(0, 2);
+          let minutes = strTime.slice(3, 5);
+          let amPm = hour >= 12 ? 'pm' : 'am';
+          hour = hour % 12;
+          hour = hour ? hour : 12; // the hour '0' should be '12'
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          let time = hour + ':' + minutes + ' ' + amPm;
+          return time;
+        }
+      %>
+
       <% if(orders.length === 0) { %>
       <div class="row mx-auto mt-5">
         <div class="col-sm-12 border-bottom border-dark pb-3">
@@ -60,7 +73,7 @@
                 <small>Delivery time:</small>
               </div>
               <div class="divTableCell" id="deli_time">
-                <small><%= order.Deli_time %></small>
+                <small><%= formatTime(order.Deli_time) %></small>
               </div>
             </div>
 
