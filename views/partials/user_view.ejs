@@ -34,51 +34,63 @@
                         <div class="container border mt-5 p-5">
                             <div class="row">
 
-                                <div class="col-sm-6">
-                                    <h3 class="para text-center mb-5"><%= runner.Username %>'s Profile</h3>
-                                    <p>Email: <%= runner.Email %></p>
-                                    <p>Phone: <%= runner.Phone %></p>
-                                    <p>Organization: <%= runner.Organization %></p>
-                                    <p>Payment: <%= runner.Payment %></p>
+                              <div class="col-sm-6">
+                                <h3 class="para mb-5"><%= username %>'s Profile</h3>
+                                <table>
+                                    <tr>
+                                        <td>First Name:&nbsp;&nbsp;&nbsp;</td>
+                                        <td><%= first %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name:&nbsp;&nbsp;&nbsp;</td>
+                                        <td><%= last %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:&nbsp;&nbsp;&nbsp;</td>
+                                        <td><%= email %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone:&nbsp;&nbsp;&nbsp;</td>
+                                        <td><%= phone %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payment Preference:&nbsp;&nbsp;&nbsp;</td>
+                                        <td><%= payment %></td>
+                                    </tr>
+                                </table>
+                              </div>
+                    
+                              <div class="col-sm-6 justify-content-center">
+                                  <h3 class="para mb-5">Runner's Charges</h3>
+                                  <table>
+                                      <tr>
+                                          <td>Brunei Muara:&nbsp;&nbsp;&nbsp;</td>
+                                          <td class="px-4 text-center">$<%= brunei %></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Temburong:&nbsp;&nbsp;&nbsp;</td>
+                                          <td class="px-4 text-center">$<%= temburong %></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Tutong:&nbsp;&nbsp;&nbsp;</td>
+                                          <td class="px-4 text-center">$<%= tutong %></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Seria:&nbsp;&nbsp;&nbsp;</td>
+                                          <td class="px-4 text-center">$<%= seria %></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Kuala Belait:&nbsp;&nbsp;&nbsp;</td>
+                                          <td class="px-4 text-center">$<%= kb %></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Outside Brunei:&nbsp;&nbsp;&nbsp;</td>
+                                          <td class="px-4 text-center">$<%= outside %></td>
+                                      </tr>
+                                  </table>
+                                  <small class="mt-5">All currency in Bruneian Dollar(BND)</small>
                                 </div>
-
-                                <div class="col-sm-6">
-<<<<<<< Updated upstream
-                                    <h3 class="para mb-5 text-center">Delivery's Charges</h3>
-                                    <div class="container d-flex justify-content-between">
-                                        <p>Brunei Muara</p>
-                                        <p>$2.00</p>
-                                    </div>
-                                    <div class="container d-flex justify-content-between">
-                                        <p>Tutong</p>
-                                        <p>$2.00</p>
-                                    </div>
-                                    <div class="container d-flex justify-content-between">
-                                        <p>Kuala Belait</p>
-                                        <p>$2.00</p>
-                                    </div>
-                                    <div class="container d-flex justify-content-between">
-                                        <p>Seria</p>
-                                        <p>$2.00</p>
-                                    </div>
-                                    <div class="container d-flex justify-content-between">
-                                        <p>Temburong</p>
-                                        <p>$2.00</p>
-                                    </div>
-                                    <div class="container d-flex justify-content-between">
-                                        <p>Outside Brunei</p>
-                                        <p>$2.00</p>
-                                    </div>
-=======
-                                    <h3 class="para text-center mb-5">Runner's Charges</h3>
-                                    <p class="text-center">Brunei Muara</p>
-                                    <p class="text-center">Tutong</p>
-                                    <p class="text-center">Kuala Belait</p>
-                                    <p class="text-center">Seria</p>
-                                    <p class="text-center">Temburong</p>
-                                    <p class="text-center">Outside Brunei</p>
->>>>>>> Stashed changes
-                                </div>
+                                
                             </div>
                         </div>
                       </div><!--Modal body - End-->
