@@ -135,7 +135,9 @@ router.post('/dashboard', (req, res) => {
     } else if (req.body.formMethod === "privateDecline") {
         declinePrivate(req, res);
     } else if (req.body.formMethod === "jobComplete") {
-        completeJob(req, res);
+        completeJob(req, res, "Complete");
+    } else if (req.body.formMethod === "jobRemove") {
+        completeJob(req, res, "Cancel");
     }
 
 })
@@ -396,10 +398,10 @@ function declinePrivate(req, res) {
     })
 }
 
-function completeJob(req, res) {
+function completeJob(req, res, status) {
     todoList = [];
     let query = {'_id' : req.body.DeliveryID};
-    let newUpdate = {$set: {'Status' : "Complete"}};
+    let newUpdate = {$set: {'Status' : status}};
     privateOrder.find(query, function(err, result) {
         if (!(result.length === 0)) {
             privateOrder.updateOne(query, newUpdate, function(err) {

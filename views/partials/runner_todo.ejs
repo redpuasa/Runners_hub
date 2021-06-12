@@ -51,7 +51,10 @@
                   </button>
                 </form>
                 <form action="/dashboard" method="POST">
-                  <button class="btn mt-3" title="Remove Job">
+                  <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                  <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
+                  <input type="hidden" name="formMethod" value="jobRemove">
+                  <button type="submit" class="btn mt-3" title="Remove Job">
                     <i class="fas fa-times"></i>
                   </button>
                 </form>
