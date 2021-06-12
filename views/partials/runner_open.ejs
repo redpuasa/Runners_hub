@@ -133,17 +133,17 @@
                     <!--Buttons-->
                     <div class="container d-flex">
                       <div class="row ml-auto mt-2">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 d-flex">
 
                           <form action="/dashboard" method="POST">
                             <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
                             <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
-                            <input type="hidden" name="formMethod" value="privateAccept">
+                            <input type="hidden" name="formMethod" value="openAccept">
                             <!-- Accept button -->
-                            <button type="submit" class="btn btn-success">Accept</button>
+                            <button type="submit" class="btn btn-success mr-3">Accept</button>
             
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           </form>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           
                         </div>
                       </div>

@@ -69,7 +69,7 @@ router.post('/dashboard', (req, res) => {
             runners.forEach(function(runner) {
                 if (runner.Email === req.body.email && runner.Password === req.body.password) {
                     currentRunner = runner;
-                    openOrder.find({'Runner' : runner.Username}, function(err, orders) {
+                    openOrder.find({'Status': "Active", 'Runner' : runner.Username}, function(err, orders) {
                         orders.forEach(function(order) {
                             todoList.push(order);
                         })
@@ -135,6 +135,8 @@ router.post('/dashboard', (req, res) => {
         acceptPrivate(req, res);
     } else if (req.body.formMethod === "privateDecline") {
         declinePrivate(req, res);
+    } else if (req.body.formMethod === "jobComplete") {
+        completeJob(req, res);
     }
 
 })
@@ -272,7 +274,7 @@ function acceptOrder(req, res) {
     openOrder.updateOne(query, newUpdate, function(err) {
         if (err) throw err;
         setTimeout(function() {
-            openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
+            openOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
                 orders.forEach(function(order) {
                     todoList.push(order);
                 })
@@ -320,7 +322,7 @@ function acceptPrivate(req, res) {
     privateOrder.updateOne(query, newUpdate, function(err) {
         if (err) throw err;
         setTimeout(function() {
-            openOrder.find({'Runner' : currentRunner.Username}, function(err, orders) {
+            openOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
                 orders.forEach(function(order) {
                     todoList.push(order);
                 })
@@ -392,6 +394,58 @@ function declinePrivate(req, res) {
                     todo: todoList
                 });
         });
+    })
+}
+
+function completeJob(req, res) {
+    todoList = [];
+    let query = {'_id' : req.body.DeliveryID};
+    let newUpdate = {$set: {'Status' : "Complete"}};
+    privateOrder.find(query, function(err, result) {
+        if (!(result.length === 0)) {
+            privateOrder.updateOne(query, newUpdate, function(err) {
+                todoJobRemove(res);
+            });
+        }
+    })
+    openOrder.find(query, function(err, result) {
+        if (!(result.length === 0)) {
+            openOrder.updateOne(query, newUpdate, function(err) {
+                todoJobRemove(res);
+            });
+        }
+    })
+}
+
+function todoJobRemove(res) {
+    openOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+        orders.forEach(function(order) {
+            todoList.push(order);
+        })
+        privateOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
+            orders.forEach(function(order) {
+                todoList.push(order);
+            })
+            res.render('runner', {
+                title: "Runner page",
+                username: currentRunner.Username,
+                first: currentRunner.fName,
+                last: currentRunner.lName,
+                email: currentRunner.Email,
+                phone: currentRunner.Phone,
+                organization: currentRunner.Organization,
+                payment: currentRunner.Payment,
+                brunei: currentRunner.brunei,
+                temburong: currentRunner.temburong,
+                tutong: currentRunner.tutong,
+                seria: currentRunner.seria,
+                kb: currentRunner.kb,
+                outside: currentRunner.outside,
+                orders: orderList,
+                privates: privateList,
+                todo: todoList
+            });
+        })
     })
 }
 
