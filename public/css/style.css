@@ -458,6 +458,35 @@ textarea{
     Style for Make a Request - End
 -------------------------------------------------*/
 
+/*------------------------------------------------
+    Style for Send a Ticket - Start
+-------------------------------------------------*/
+.ticket_op{
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.ticket_op select{
+    width: 100%;
+}
+
+.ticket_op label{
+    display: block;
+    width: 100%;
+}
+
+#ticket_opt{
+    display: inline-block;
+    width: 49%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*------------------------------------------------
+    Style for Send a Ticket - End
+-------------------------------------------------*/
+
 .viewRunner {
     cursor: pointer;
 }
