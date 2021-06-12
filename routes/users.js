@@ -455,10 +455,8 @@ router.get('/edit_profile', (req, res) => {
 })
 
 router.post('/user', (req,res) => {
-    const query = {"_id" : currentUser._id};
-    console.log({"_id" : currentUser._id})
+    const query = {"_id" : currentUser._id}
     const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
-    console.log({fName: req.body.fName, lName: req.body.lName})
     User.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
         return res.render('user', {
@@ -481,7 +479,6 @@ router.get('/edit-profile', (req, res) => {
 
 router.post('/runner', (req,res) => {
     const query = {"_id" : currentRunner._id};
-    console.log({"_id" : currentRunner._id})
     const updateProfile = {$set: {
         fName: req.body.fName, 
         lName: req.body.lName,
@@ -492,7 +489,6 @@ router.post('/runner', (req,res) => {
         kb: req.body.kb,
         outside: req.body.outside,
     }}
-    console.log({fName: req.body.fName, lName: req.body.lName})
     Runner.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
         return res.render('runner', {
