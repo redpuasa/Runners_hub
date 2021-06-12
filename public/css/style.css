@@ -449,6 +449,12 @@ textarea{
     border-radius: 20px;
     color: #fff;
 }
+
+#para_req{
+    padding: 5px 0;
+    color: #e36e25;
+    font-size: 20px;
+}
 /*------------------------------------------------
     Style for Make a Request - End
 -------------------------------------------------*/
