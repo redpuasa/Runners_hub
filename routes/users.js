@@ -6,7 +6,6 @@ const openOrder = require('../models/open_order');
 const privateOrder = require('../models/private_order');
 
 let runnerList = [];
-let userList = [];
 let orderList = [];
 let privateList = [];
 let todoList = [];
@@ -15,7 +14,6 @@ let currentUser = {};
 let currentRunner = {};
 
 router.post('/dashboard', (req, res) => {
-    if (req.body.email === "admin" && req.body.password === "adminrh123"){res.render('admin', {title: 'Admin Page'})}
     if (req.body.formMethod === "Login") {
         let success = false;
         runnerList = [];
@@ -463,13 +461,5 @@ router.post('/runner', (req,res) => {
     });
 })
 
-router.get('/admin', (req, res) => {
-    User.find({}, (err, user) => {
-        res.render('admin', {
-            title: 'admin',
-            users: userList,
-        })
-    })
-})
 
 module.exports = router;
