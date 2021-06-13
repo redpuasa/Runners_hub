@@ -137,6 +137,7 @@
 
                           <form action="/dashboard" method="POST">
                             <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                            <input type="hidden" id="orderUser" name="orderUser" value="<%= order.Username %>">
                             <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
                             <input type="hidden" name="formMethod" value="openAccept">
                             <!-- Accept button -->

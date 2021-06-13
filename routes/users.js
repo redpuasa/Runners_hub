@@ -4,12 +4,14 @@ const User = require('../models/users');
 const Runner = require('../models/runners');
 const openOrder = require('../models/open_order');
 const privateOrder = require('../models/private_order');
+const Notification = require('../models/notification');
 
 let runnerList = [];
 let orderList = [];
 let privateList = [];
 let todoList = [];
 let activeList = [];
+let notifyList = [];
 let currentUser = {};
 let currentRunner = {};
 
@@ -21,6 +23,7 @@ router.post('/dashboard', (req, res) => {
         privateList = [];
         todoList = [];
         activeList = [];
+        notifyList = [];
         openOrder.find({}, function(err, orders) {
             orders.forEach(function(order) {
                 if (order.Status === "Open") {
@@ -35,6 +38,13 @@ router.post('/dashboard', (req, res) => {
             User.find({}, function(err, users) {
             users.forEach(function(user) {
                 if (user.Email === req.body.email && user.Password === req.body.password) {
+                    Notification.find({}, function(err, results) {
+                        results.forEach(function(result) {
+                            if (result.Username === user.Username && result.Status === "Sent") {
+                                notifyList.push(result);
+                            }
+                        })
+                    });
                     openOrder.find({}, function(err, orders) {
                         orders.forEach(function(order) {
                             if (order.Status === "Active" && user.Username === order.Username) {
@@ -56,7 +66,8 @@ router.post('/dashboard', (req, res) => {
                                 address: user.Address,
                                 phone: user.Phone,
                                 runners: runnerList,
-                                actives: activeList
+                                actives: activeList,
+                                notify: notifyList
                             });
                         });
                         currentUser = user;
@@ -140,6 +151,8 @@ router.post('/dashboard', (req, res) => {
         completeJob(req, res, "Cancel");
     } else if (req.body.formMethod === "todoUpdate") {
         updateTodo(req, res);
+    } else if (req.body.formMethod === "notifyRemove") {
+        removeNotify(req, res);
     }
 
 })
@@ -226,7 +239,8 @@ function postRequest(req, res) {
             address: currentUser.Address,
             phone: currentUser.Phone,
             runners: runnerList,
-            actives: activeList
+            actives: activeList,
+            notify: notifyList
         });
     }
     });
@@ -263,7 +277,8 @@ function postPrivate(req, res) {
             address: currentUser.Address,
             phone: currentUser.Phone,
             runners: runnerList,
-            actives: activeList
+            actives: activeList,
+            notify: notifyList
         });
     }
     });
@@ -315,6 +330,18 @@ function acceptOrder(req, res) {
             });
         }, 200);
     });
+    let date = new Date();
+    let addnotify = new Notification({
+        Username: req.body.orderUser,
+        Message: "take on delivery",
+        Date_now: date,
+        Runner: currentRunner.Username,
+        Order: req.body.DeliveryID,
+        Status: "Sent",
+    });
+    addnotify.save(function (err) {
+        if (err) throw err;
+    });
 }
 
 function acceptPrivate(req, res) {
@@ -363,6 +390,18 @@ function acceptPrivate(req, res) {
             });
         }, 200);
     });
+    let date = new Date();
+    let addnotify = new Notification({
+        Username: req.body.orderUser,
+        Message: "accept personal request",
+        Date_now: date,
+        Runner: currentRunner.Username,
+        Order: req.body.DeliveryID,
+        Status: "Sent",
+    });
+    addnotify.save(function (err) {
+        if (err) throw err;
+    });
 }
 
 function declinePrivate(req, res) {
@@ -398,6 +437,18 @@ function declinePrivate(req, res) {
                 });
         });
     })
+    let date = new Date();
+    let addnotify = new Notification({
+        Username: req.body.orderUser,
+        Message: "decline personal request",
+        Date_now: date,
+        Runner: currentRunner.Username,
+        Order: req.body.DeliveryID,
+        Status: "Sent",
+    });
+    addnotify.save(function (err) {
+        if (err) throw err;
+    });
 }
 
 function completeJob(req, res, status) {
@@ -407,20 +458,20 @@ function completeJob(req, res, status) {
     privateOrder.find(query, function(err, result) {
         if (!(result.length === 0)) {
             privateOrder.updateOne(query, newUpdate, function(err) {
-                todoJobRemove(res);
+                todoJobRemove(req, res, status);
             });
         }
     })
     openOrder.find(query, function(err, result) {
         if (!(result.length === 0)) {
             openOrder.updateOne(query, newUpdate, function(err) {
-                todoJobRemove(res);
+                todoJobRemove(req, res, status);
             });
         }
     })
 }
 
-function todoJobRemove(res) {
+function todoJobRemove(req, res, status) {
     openOrder.find({'Status': "Active", 'Runner' : currentRunner.Username}, function(err, orders) {
         orders.forEach(function(order) {
             todoList.push(order);
@@ -450,6 +501,34 @@ function todoJobRemove(res) {
             });
         })
     })
+    if (status === "Complete") {
+        let date = new Date();
+        let addnotify = new Notification({
+            Username: req.body.orderUser,
+            Message: "complete delivery",
+            Date_now: date,
+            Runner: currentRunner.Username,
+            Order: req.body.DeliveryID,
+            Status: "Sent",
+        });
+        addnotify.save(function (err) {
+            if (err) throw err;
+        });
+    } else if (status === "Cancel") {
+        let date = new Date();
+        let addnotify = new Notification({
+            Username: req.body.orderUser,
+            Message: "cancel delivery",
+            Date_now: date,
+            Runner: currentRunner.Username,
+            Order: req.body.DeliveryID,
+            Status: "Sent",
+        });
+        addnotify.save(function (err) {
+            if (err) throw err;
+        });
+    }
+    
 }
 
 function updateTodo(req, res) {
@@ -478,6 +557,18 @@ function updateTodo(req, res) {
                     todo: todoList
                 });
             });
+            let date = new Date();
+            let addnotify = new Notification({
+                Username: req.body.orderUser,
+                Message: req.body.deli_stat,
+                Date_now: date,
+                Runner: currentRunner.Username,
+                Order: req.body.DeliveryID,
+                Status: "Sent",
+            });
+            addnotify.save(function (err) {
+                if (err) throw err;
+            });
         }
     })
     openOrder.find(query, function(err, result) {
@@ -503,7 +594,49 @@ function updateTodo(req, res) {
                     todo: todoList
                 });
             });
+            let date = new Date();
+            let addnotify = new Notification({
+                Username: req.body.orderUser,
+                Message: req.body.deli_stat,
+                Date_now: date,
+                Runner: currentRunner.Username,
+                Order: req.body.DeliveryID,
+                Status: "Sent",
+            });
+            addnotify.save(function (err) {
+                if (err) throw err;
+            });
         }
+    })
+}
+
+function removeNotify(req, res) {
+    notifyList = [];
+    let query = {'_id' : req.body.DeliveryID};
+    let newUpdate = {$set: {'Status' : "Removed"}};
+    Notification.updateOne(query, newUpdate, function(err) {
+        Notification.find({}, function(err, results) {
+            results.forEach(function(result, index) {
+                if (result.Username === currentUser.Username && result.Status === "Sent") {
+                    notifyList.push(result);
+                }
+                if (index === (results.length - 1)) {
+                    res.render('user', {
+                        title: 'User page',
+                        username: currentUser.Username,
+                        first: currentUser.fName,
+                        last: currentUser.lName,
+                        email: currentUser.Email,
+                        address: currentUser.Address,
+                        phone: currentUser.Phone,
+                        runners: runnerList,
+                        actives: activeList,
+                        notify: notifyList
+                    });
+                }
+            })
+            
+        });
     })
 }
 

@@ -1,0 +1,72 @@
+<div class="container border mt-5 p-5">
+    <div class="row">
+
+        <div class="col-sm-12 text-center">
+            <h3 class="para mb-5">Notifications</h3>
+        </div>
+
+    </div>
+    <%
+        function formatTime(date) {
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let amPm = hour >= 12 ? 'pm' : 'am';
+            hour = hour % 12;
+            hour = hour ? hour : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            let time = hour + ':' + minutes + ' ' + amPm;
+            return time;
+        }
+        function convertTimezone(date, timezone) {
+            return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone}));   
+        }
+    %>
+    <% if (notify.length === 0) { %>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Post more order request to get notified often</p>
+        </div>
+    </div>
+    <% } else { %>
+    <div class="row">
+
+        <div class="col-sm-3 text-center">
+            <p class="font-weight-bold">Date</p>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <p class="font-weight-bold">Runner</p>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <p class="font-weight-bold">Message</p>
+        </div>
+
+    </div>
+    <% notify.forEach(function(result) { %>
+    <% 
+        let currentTime = formatTime(convertTimezone(result.Date_now, "Asia/Brunei")); 
+        let currentDate = convertTimezone(result.Date_now, "Asia/Brunei").toDateString() + " " + currentTime;
+    %>
+    <div class="row border-top pt-3">
+        <div class="col-sm-3 text-center">
+            <p><%= currentDate %></p>
+        </div>
+        <div class="col-sm-3 text-center">
+            <p><%= result.Runner %></p>
+        </div>
+        <div class="col-sm-3 text-center">
+            <p><%= result.Message %></p>
+        </div>
+        <div class="col-sm-3 text-center">
+            <form action="/dashboard" method="POST">
+                <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= result._id %>">
+                <input type="hidden" name="formMethod" value="notifyRemove">
+                <button type="submit" class="btn">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <% });} %>  
+</div>

@@ -43,6 +43,7 @@
               <div class="divTableCell d-flex">
                 <form action="/dashboard" method="POST">
                   <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                  <input type="hidden" id="orderUser" name="orderUser" value="<%= order.Username %>">
                   <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
                   <input type="hidden" name="formMethod" value="jobComplete">
                   <button type="submit" class="btn mt-3" title="Job Completed">
@@ -51,6 +52,7 @@
                 </form>
                 <form action="/dashboard" method="POST">
                   <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                  <input type="hidden" id="orderUser" name="orderUser" value="<%= order.Username %>">
                   <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
                   <input type="hidden" name="formMethod" value="jobRemove">
                   <button type="submit" class="btn mt-3" title="Remove Job">
@@ -157,6 +159,7 @@
                           <h5>Delivery Status</h5>
                           <form action="/dashboard" method="POST">
                             <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                            <input type="hidden" id="orderUser" name="orderUser" value="<%= order.Username %>">
                             <input type="hidden" name="formMethod" value="todoUpdate">
                             <select class="py-2 mt-2" name="deli_stat">
                                 <option>Proceed to Pickup Address</option>
