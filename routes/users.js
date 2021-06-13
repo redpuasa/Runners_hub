@@ -271,7 +271,7 @@ function acceptOrder(req, res) {
     orderList = [];
     todoList = [];
     let query = {'_id' : req.body.DeliveryID};
-    let newUpdate = {$set: {'Status' : "Active", 'Runner': req.body.orderRunner}}
+    let newUpdate = {$set: {'Status' : "Active", 'Runner': req.body.orderRunner, 'Deli_stat' : "Proceed to Pickup Address"}}
     openOrder.updateOne(query, newUpdate, function(err) {
         if (err) throw err;
         setTimeout(function() {
@@ -319,7 +319,7 @@ function acceptPrivate(req, res) {
     privateList = [];
     todoList = [];
     let query = {'_id' : req.body.DeliveryID};
-    let newUpdate = {$set: {'Status' : "Active"}}
+    let newUpdate = {$set: {'Status' : "Active", 'Deli_stat' : "Proceed to Pickup Address"}}
     privateOrder.updateOne(query, newUpdate, function(err) {
         if (err) throw err;
         setTimeout(function() {
