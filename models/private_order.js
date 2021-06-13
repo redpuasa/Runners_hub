@@ -41,6 +41,9 @@ const PrivateOrderSchema = new mongoose.Schema({
     },
     Runner: {
         type: String
+    },
+    Deli_stat: {
+        type: String
     }
 });
 
