@@ -455,6 +455,11 @@ textarea{
     background-color: #e64525;
     border-radius: 15px;
 }
+
+.runner_prof{
+    width: 100%;
+    text-align: center;
+}
 /*------------------------------------------------
     Style Runner Interface - End
 -------------------------------------------------*/
@@ -471,6 +476,10 @@ textarea{
     margin: auto;
     vertical-align: middle;
 }
+
+.profile_details{
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+}
 /*------------------------------------------------
     Style User Interface - End
 -------------------------------------------------*/
@@ -483,6 +492,7 @@ textarea{
     background-color: #343a40;
     border-radius: 20px;
     color: #fff;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
 }
 
 #para_req{
