@@ -16,6 +16,7 @@ let currentUser = {};
 let currentRunner = {};
 
 router.post('/dashboard', (req, res) => {
+    if (req.body.email === "admin" && req.body.password === "adminrh123") return res.render("admin", {title: 'admin'})// <= admin access
     if (req.body.formMethod === "Login") {
         let success = false;
         runnerList = [];
