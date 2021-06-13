@@ -43,7 +43,7 @@
         </div>
 
     </div>
-    <% notify.forEach(function(result) { %>
+    <% notify.forEach(function(result,index) { %>
     <% 
         let currentTime = formatTime(convertTimezone(result.Date_now, "Asia/Brunei")); 
         let currentDate = convertTimezone(result.Date_now, "Asia/Brunei").toDateString() + " " + currentTime;
@@ -58,7 +58,36 @@
         <div class="col-sm-3 text-center">
             <p><%= result.Message %></p>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-sm-3 text-center d-flex">
+            <% if (result.Message === "complete delivery") { %>
+            <button class="btn" data-toggle="modal" data-target="#feedbackModal<%= index + 1 %>">
+                <i class="fas fa-comment-dots"></i>
+            </button>
+
+            <div class="modal fade" id="feedbackModal<%= index + 1 %>" tabindex="-1" role="dialog" aria-labelledby="feedbackModal<%= index + 1 %>Title" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="feedbackModal<%= index + 1 %>Title">Feedback</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/dashboard" method="POST">
+                        <input type="hidden" id="notifyRunner" name="notifyRunner" value="<%= result.Runner %>">
+                        <input type="hidden" id="notifyUser" name="notifyUser" value="<%= result.Username %>">
+                        <input type="hidden" name="formMethod" value="feedbackRunner">
+                        <label for="feedback" class="font-weight-bold">How does <%= result.Runner %> perform in this delivery</label>
+                        <textarea class="w-100 form-control" id="message" name="feedback" placeholder="Enter Text Here..." required></textarea>
+                        <button type="submit" class="btn btn-primary mt-3">Send feedback</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% } %> 
             <form action="/dashboard" method="POST">
                 <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= result._id %>">
                 <input type="hidden" name="formMethod" value="notifyRemove">

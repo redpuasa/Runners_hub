@@ -5,6 +5,7 @@ const Runner = require('../models/runners');
 const openOrder = require('../models/open_order');
 const privateOrder = require('../models/private_order');
 const Notification = require('../models/notification');
+const Feedback = require('../models/feedback');
 
 let runnerList = [];
 let orderList = [];
@@ -12,6 +13,7 @@ let privateList = [];
 let todoList = [];
 let activeList = [];
 let notifyList = [];
+let feedbackList = [];
 let currentUser = {};
 let currentRunner = {};
 
@@ -25,6 +27,7 @@ router.post('/dashboard', (req, res) => {
         todoList = [];
         activeList = [];
         notifyList = [];
+        feedbackList = [];
         openOrder.find({}, function(err, orders) {
             orders.forEach(function(order) {
                 if (order.Status === "Open") {
@@ -44,6 +47,11 @@ router.post('/dashboard', (req, res) => {
                             if (result.Username === user.Username && result.Status === "Sent") {
                                 notifyList.push(result);
                             }
+                        })
+                    });
+                    Feedback.find({}, function(err, feedbacks) {
+                        feedbacks.forEach(function(feedback) {
+                            feedbackList.push(feedback);
                         })
                     });
                     openOrder.find({}, function(err, orders) {
@@ -68,7 +76,8 @@ router.post('/dashboard', (req, res) => {
                                 phone: user.Phone,
                                 runners: runnerList,
                                 actives: activeList,
-                                notify: notifyList
+                                notify: notifyList,
+                                feedbacks: feedbackList
                             });
                         });
                         currentUser = user;
@@ -154,6 +163,8 @@ router.post('/dashboard', (req, res) => {
         updateTodo(req, res);
     } else if (req.body.formMethod === "notifyRemove") {
         removeNotify(req, res);
+    } else if (req.body.formMethod === "feedbackRunner") {
+        userFeedback(req, res);
     }
 
 })
@@ -241,7 +252,8 @@ function postRequest(req, res) {
             phone: currentUser.Phone,
             runners: runnerList,
             actives: activeList,
-            notify: notifyList
+            notify: notifyList,
+            feedbacks: feedbackList
         });
     }
     });
@@ -279,7 +291,8 @@ function postPrivate(req, res) {
             phone: currentUser.Phone,
             runners: runnerList,
             actives: activeList,
-            notify: notifyList
+            notify: notifyList,
+            feedbacks: feedbackList
         });
     }
     });
@@ -632,13 +645,44 @@ function removeNotify(req, res) {
                         phone: currentUser.Phone,
                         runners: runnerList,
                         actives: activeList,
-                        notify: notifyList
+                        notify: notifyList,
+                        feedbacks: feedbackList
                     });
                 }
             })
             
         });
     })
+}
+
+function userFeedback(req, res) {
+    feedbackList = [];
+    let addfeedback = new Feedback({
+        User: req.body.notifyUser,
+        Runner: req.body.notifyRunner,
+        Message: req.body.feedback
+    });
+    addfeedback.save(function (err) {
+        if (err) throw err;
+        Feedback.find({}, function(err, feedbacks) {
+            feedbacks.forEach(function(feedback) {
+                feedbackList.push(feedback);
+            })
+            res.render('user', {
+                title: 'User page',
+                username: currentUser.Username,
+                first: currentUser.fName,
+                last: currentUser.lName,
+                email: currentUser.Email,
+                address: currentUser.Address,
+                phone: currentUser.Phone,
+                runners: runnerList,
+                actives: activeList,
+                notify: notifyList,
+                feedbacks: feedbackList
+            });
+        });
+    });
 }
 
 router.get('/edit_profile', (req, res) => {

@@ -93,6 +93,14 @@
                                 
                             </div>
                         </div>
+                        
+                        <% feedbacks.forEach(function(feedback) { %>
+                        <% if (feedback.Runner === runner.Username) { %>
+                        <div class="container border">
+                          <h5 class="mt-3"><%= feedback.User %>'s Review</h5>
+                          <p><%= feedback.Message %></p>
+                        </div>
+                        <% }}); %>
                       </div><!--Modal body - End-->
     
                       <div class="modal-footer">
