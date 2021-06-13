@@ -40,7 +40,7 @@
                   <button type="button" class="btn btn-secondary detail-btn" data-toggle="modal" data-target="#exampleModal<%= index + 50 %>">Job Details</button>
 
               </div>
-              <div class="divTableCell">
+              <div class="divTableCell d-flex">
                 <form action="/dashboard" method="POST">
                   <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
                   <input type="hidden" id="orderRunner" name="orderRunner" value="<%= username %>">
@@ -150,6 +150,24 @@
                         <div class="divTableCell" id="deli_message">
                           <small><%= order.Message %></small>
                         </div>
+                      </div>
+
+                      <div class="container text-center mt-3 pt-3 border-top">
+                        <div class="container">
+                          <h5>Delivery Status</h5>
+                          <form action="/dashboard" method="POST">
+                            <input type="hidden" id="DeliveryID" name="DeliveryID" value="<%= order._id %>">
+                            <input type="hidden" name="formMethod" value="todoUpdate">
+                            <select class="py-2 mt-2" name="deli_stat">
+                                <option>Proceed to Pickup Address</option>
+                                <option>Proceed to Delivery Address</option>
+                            </select><br>
+                            <button class="btn detail-btn mt-3" type="submit">Update</button> 
+                            
+                          </form>
+                          
+                        </div>
+                          
                       </div>
 
                     </div><!--Modal body - End-->

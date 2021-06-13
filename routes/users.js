@@ -138,6 +138,8 @@ router.post('/dashboard', (req, res) => {
         completeJob(req, res, "Complete");
     } else if (req.body.formMethod === "jobRemove") {
         completeJob(req, res, "Cancel");
+    } else if (req.body.formMethod === "todoUpdate") {
+        updateTodo(req, res);
     }
 
 })
@@ -447,6 +449,61 @@ function todoJobRemove(res) {
                 todo: todoList
             });
         })
+    })
+}
+
+function updateTodo(req, res) {
+    let query = {'_id' : req.body.DeliveryID};
+    let newUpdate = {$set: {'Deli_stat' : req.body.deli_stat}};
+    privateOrder.find(query, function(err, result) {
+        if (!(result.length === 0)) {
+            privateOrder.updateOne(query, newUpdate, function(err) {
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    first: currentRunner.fName,
+                    last: currentRunner.lName,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    brunei: currentRunner.brunei,
+                    temburong: currentRunner.temburong,
+                    tutong: currentRunner.tutong,
+                    seria: currentRunner.seria,
+                    kb: currentRunner.kb,
+                    outside: currentRunner.outside,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
+            });
+        }
+    })
+    openOrder.find(query, function(err, result) {
+        if (!(result.length === 0)) {
+            openOrder.updateOne(query, newUpdate, function(err) {
+                res.render('runner', {
+                    title: "Runner page",
+                    username: currentRunner.Username,
+                    first: currentRunner.fName,
+                    last: currentRunner.lName,
+                    email: currentRunner.Email,
+                    phone: currentRunner.Phone,
+                    organization: currentRunner.Organization,
+                    payment: currentRunner.Payment,
+                    brunei: currentRunner.brunei,
+                    temburong: currentRunner.temburong,
+                    tutong: currentRunner.tutong,
+                    seria: currentRunner.seria,
+                    kb: currentRunner.kb,
+                    outside: currentRunner.outside,
+                    orders: orderList,
+                    privates: privateList,
+                    todo: todoList
+                });
+            });
+        }
     })
 }
 
