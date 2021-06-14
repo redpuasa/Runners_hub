@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -15,31 +16,23 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- Custom styles -->
   <link href="css/style.css" rel="stylesheet">
+ 
+
+  
+
 </head>
 
 <body>
 
-  <%- include('partials/naviUser.ejs') %> <!--Navigation bar-->
-
 <main>
-  <div class="container m-5 p-5 mx-auto">
-    <div class="row">
-      <div class="col-sm-12">
-        <% runners.forEach(function(runner) { %>
-          <p><%= runner.Username %></p>
-      <% }); %>
-      </div>
-    </div>
-  </div>
+  <div class="container m-5 p-5 mx-auto" id="form" style="width: 60%;">
+    <h1 class="para text-center">Account Updated</h1>
+    <p class="text-center">Please login to your account.</p>
 
-  <div class="container m-5 p-5 mx-auto">
-    <div class="row">
-      <div class="col-sm-12">
-        <% users.forEach(function(user) { %>
-          <p><%= user.Username %></p>
-      <% }); %>
-      </div>
-    </div>
+    
+    <a class="btn d-flex justify-content-center mt-5" id="validate" role="button" href="/login">Log In</a>
+    
+    
   </div>
 </main>
 
@@ -56,6 +49,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
   
   <!-- Custom JavaScript-->
+  <!-- <script src="js/tempLogin"></script> -->
 
 </body>
 </html>

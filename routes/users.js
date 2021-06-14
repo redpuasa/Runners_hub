@@ -16,9 +16,13 @@ let notifyList = [];
 let feedbackList = [];
 let currentUser = {};
 let currentRunner = {};
+let ticketList = {};
+let userList = {};
 
 router.post('/dashboard', (req, res) => {
-    if (req.body.email === "admin" && req.body.password === "adminrh123") return res.render("admin", {title: 'admin'})// <= admin access
+    /*if(req.body.username === "admin" && req.body.password === "admin"){
+        user(req,res)
+    }*/
     if (req.body.formMethod === "Login") {
         let success = false;
         runnerList = [];
@@ -165,8 +169,7 @@ router.post('/dashboard', (req, res) => {
         removeNotify(req, res);
     } else if (req.body.formMethod === "feedbackRunner") {
         userFeedback(req, res);
-    }
-
+    } 
 })
 
 router.post('/validation', (req, res) => {  
@@ -624,6 +627,21 @@ function updateTodo(req, res) {
     })
 }
 
+/*
+function user(req, res){
+    User.find({}, (err, users) => {
+        users.forEach(function(user) {
+            userList.push(user);
+        })
+    })
+    res.render('admin', {
+        title: 'Admin Page',
+        runner: runnerList,
+        user: userList,
+    })
+}
+*/
+
 function removeNotify(req, res) {
     notifyList = [];
     let query = {'_id' : req.body.DeliveryID};
@@ -694,8 +712,8 @@ router.post('/user', (req,res) => {
     const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
     User.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
-        return res.render('user', {
-            title: 'User Page', 
+        return res.render('acc-update', {
+            title: 'Account Updated', 
             username: currentUser.Username,
             first: currentUser.fName,
             last: currentUser.lName,
@@ -717,6 +735,8 @@ router.post('/runner', (req,res) => {
     const updateProfile = {$set: {
         fName: req.body.fName, 
         lName: req.body.lName,
+        phone: req.body.Phone,
+        address: req.body.Address,
         brunei: req.body.brunei,
         temburong: req.body.temburong,
         tutong: req.body.tutong,
@@ -726,8 +746,8 @@ router.post('/runner', (req,res) => {
     }}
     Runner.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
-        return res.render('runner', {
-            title: 'Runner Page', 
+        return res.render('acc-update', {
+            title: 'Account Updated', 
             username: currentRunner.Username,
             first: currentRunner.fName,
             last: currentRunner.lName,
