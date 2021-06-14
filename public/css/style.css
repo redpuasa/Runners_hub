@@ -460,6 +460,10 @@ textarea{
     width: 100%;
     text-align: center;
 }
+
+#runner-modal{
+    margin: 30px;
+}
 /*------------------------------------------------
     Style Runner Interface - End
 -------------------------------------------------*/
@@ -513,6 +517,7 @@ textarea{
     margin-left: 45px;
 }
 
+
 .modal-footer{
     margin: 40px;
 }
@@ -531,17 +536,19 @@ textarea{
 /*------------------------------------------------
     Style for Make an Open Request - Start
 -------------------------------------------------*/
-/* Changing the open form request colour */
 #open_request_form{
-    background-color: #343a40;
-    border-radius: 20px;
+    margin: 20px;
+    padding-bottom: 50px;
+    background-color: #152b32;
+    border-radius: 15px;
     color: #fff;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
 }
 
 #para_req{
-    padding: 5px 0;
-    color: #e36e25;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    color: #e64525;
     font-size: 20px;
 }
 /*------------------------------------------------
