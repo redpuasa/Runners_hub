@@ -488,6 +488,7 @@ textarea{
     Style for Make a Private Request - Start
 -------------------------------------------------*/
 #post_btn{
+    margin-top: 10px;
     background-color: #e64525;
     border: 2px solid #e64525;
 }
@@ -498,8 +499,30 @@ textarea{
     color: #e64525;
 }
 
-#runnerModal{
-    border: solid #152b32;
+.modal{
+    border: 2px solid #152b32;
+}
+
+.modal-header{
+    background-color: #152b32;
+    color: #fff;
+    border-bottom: 5px solid #e64525;
+}
+
+.modal-title{
+    margin-left: 45px;
+}
+
+.modal-footer{
+    margin: 40px;
+}
+
+.close{
+    color: #fff;
+}
+
+.close:hover{
+    color: #ebedee;
 }
 /*------------------------------------------------
     Style for Make a Private Request - End
