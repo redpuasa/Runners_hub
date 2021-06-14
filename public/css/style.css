@@ -590,3 +590,17 @@ textarea{
 .viewRunner:hover {
     text-decoration: underline;
 }
+
+#runnerEditSave{
+    color:  #fff;
+    background-color: #e64525;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
+
+#runnerEditSave:hover{
+    color:  #e64525;
+    background-color: #fff;
+    border: 2px solid #e64525;
+    border-radius: 15px;
+}
