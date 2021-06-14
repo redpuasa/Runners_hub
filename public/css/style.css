@@ -485,7 +485,28 @@ textarea{
 -------------------------------------------------*/
 
 /*------------------------------------------------
-    Style for Make a Request - Start
+    Style for Make a Private Request - Start
+-------------------------------------------------*/
+#post_btn{
+    background-color: #e64525;
+    border: 2px solid #e64525;
+}
+
+#post_btn:hover{
+    background-color: #fff;
+    border: 2px solid #e64525;
+    color: #e64525;
+}
+
+#runnerModal{
+    border: solid #152b32;
+}
+/*------------------------------------------------
+    Style for Make a Private Request - End
+-------------------------------------------------*/
+
+/*------------------------------------------------
+    Style for Make an Open Request - Start
 -------------------------------------------------*/
 /* Changing the open form request colour */
 #open_request_form{
@@ -501,7 +522,7 @@ textarea{
     font-size: 20px;
 }
 /*------------------------------------------------
-    Style for Make a Request - End
+    Style for Make an Open Request - End
 -------------------------------------------------*/
 
 /*------------------------------------------------
