@@ -736,7 +736,7 @@ router.get('/edit-profile', (req, res) => {
     res.render('editRunnerProfile', {title: 'Runner Page'})
 })
 
-router.post('/updated', (req,res) => {
+router.post('/updates', (req,res) => {
     const query = {"_id" : currentRunner._id};
     const updateProfile = {$set: {
         fName: req.body.fName, 
