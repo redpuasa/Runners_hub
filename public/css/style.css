@@ -591,14 +591,14 @@ textarea{
     text-decoration: underline;
 }
 
-#runnerEditSave{
+#EditSave{
     color:  #fff;
     background-color: #e64525;
     border: 2px solid #e64525;
     border-radius: 15px;
 }
 
-#runnerEditSave:hover{
+#EditSave:hover{
     color:  #e64525;
     background-color: #fff;
     border: 2px solid #e64525;

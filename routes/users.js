@@ -707,9 +707,15 @@ router.get('/edit_profile', (req, res) => {
     res.render('editUserProfile', {title: 'User Page'})
 })
 
-router.post('/user', (req,res) => {
+router.post('/updated', (req,res) => {
     const query = {"_id" : currentUser._id}
-    const updateProfile = {$set: {fName: req.body.fName, lName: req.body.lName}}
+    const updateProfile = {$set:
+         {
+            fName: req.body.fName,
+            lName: req.body.lName,
+            phone: req.body.Phone,
+            address: req.body.Address
+        }}
     User.updateOne(query, updateProfile, {multi: true, rawResult: true}, (err, doc) => {
         if (err) return res.status(500, {error: err});
         return res.render('acc-update', {
@@ -730,13 +736,12 @@ router.get('/edit-profile', (req, res) => {
     res.render('editRunnerProfile', {title: 'Runner Page'})
 })
 
-router.post('/runner', (req,res) => {
+router.post('/updated', (req,res) => {
     const query = {"_id" : currentRunner._id};
     const updateProfile = {$set: {
         fName: req.body.fName, 
         lName: req.body.lName,
         phone: req.body.Phone,
-        address: req.body.Address,
         brunei: req.body.brunei,
         temburong: req.body.temburong,
         tutong: req.body.tutong,
